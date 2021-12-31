@@ -9,14 +9,14 @@ class News(models.Model):
   title = models.CharField(max_length=200, blank=True, null=True)
   description = models.TextField(blank=True, null=True)
   createdAt = models.DateTimeField(auto_now_add=True)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
 class Comment(models.Model):
   id = models.AutoField(primary_key=True)
   text = models.TextField(blank=True, null=True)
   createdAt = models.DateTimeField(auto_now_add=True)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  news = models.ForeignKey(News, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+  news = models.ForeignKey(News, on_delete=models.SET_NULL, null=True)
 
 class Sponsor(models.Model):
   id = models.AutoField(primary_key=True)
@@ -60,7 +60,7 @@ class Photo(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=50)
   image = models.ImageField(null=True, blank=True)
-  match = models.ForeignKey(Match, on_delete=models.CASCADE, null=True)
+  match = models.ForeignKey(Match, on_delete=models.SET_NULL, null=True)
 
 class Set(models.Model):
   number = models.IntegerField(blank=True, null=True)

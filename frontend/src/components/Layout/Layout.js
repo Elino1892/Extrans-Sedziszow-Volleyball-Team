@@ -1,15 +1,13 @@
 import Footer from "../Footer/Footer";
-import Navigation from "../Navigation/Navigation";
+import Header from "../Header/Header";
 
 const Layout = ({ children }) => {
   return (
-    <>
-      <Navigation />
-      <main>
-        {children}
-      </main>
+    <div className="wrapper">
+      <Header />
+      {children}
       <Footer />
-    </>
+    </div>
   )
 }
 

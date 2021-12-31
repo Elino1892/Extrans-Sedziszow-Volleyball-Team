@@ -1,8 +1,10 @@
+import NewsListBanner from "../components/News/NewsList/NewsListBanner/NewsListBanner";
+
 const HomePage = () => {
   return (
-    <div>
-
-    </div>
+    <>
+      <NewsListBanner />
+    </>
   )
 }
 
