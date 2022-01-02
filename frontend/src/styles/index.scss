@@ -2,7 +2,11 @@
 @import "variables";
 @import "base";
 @import "animations";
+@import "../components/UI/Card/Card";
 @import "../components/Header/Header";
 @import "../components/Navigation/Navigation";
 @import "../components/News/NewsList/NewsListBanner/NewsListBanner";
-@import "../components/UI/Gradient/Gradient"
+@import "../components/UI/Gradient/Gradient";
+@import "../components/Home/Gameplay/Gameplay";
+@import "../components/Home/Gameplay/Match/Match";
+@import "../components/Home/Gameplay/TableLeague/TableLeague";

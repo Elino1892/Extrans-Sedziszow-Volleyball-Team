@@ -1,0 +1,122 @@
+.next-game{
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  // margin: 0 50px;
+  // margin-right: ;
+  flex-basis: 100%;
+  &__title{
+    flex-basis: 100%;
+    font-size: 4rem;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: 300;
+  }
+  &__info{
+    flex-basis: 100%;
+    text-align: center;
+  }
+  &__round{
+    opacity: 50%;
+    padding: 5px 0;
+    font-size: 1.3rem;
+  }
+  &__date{
+    padding: 10px 0;
+     font-size: 1.6rem;
+  }
+  &__hour{
+    padding: 10px 0;
+    font-weight: bold;
+    background-color: #ccc;
+    width: 10%;
+    // text-align: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    border-radius: 20%;
+  }
+  &__match{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    // padding: 0 70px;
+  }
+  &__team{
+    // justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: space-between;
+    // justify-content: center;
+    flex-basis: 30%;
+    flex-wrap: wrap;
+    &-logo{
+      // width: 50%;
+      width: 192px;
+      height: 192px;
+    }
+    &-name{
+      margin-top: auto;
+      flex-basis: 100%;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 300;
+      font-size: 1.7rem;
+    }
+  }
+  &__hall-info{
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    opacity: 60%;
+  }
+
+  &__set-info{
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 30px;
+    opacity: 60%;
+    font-size: 1.4rem;
+  }
+
+  &__hall-name{
+    padding-bottom: 5px;
+  }
+}
+
+.VS{
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+.button-match{
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  transition: .3s;
+  &:hover{
+    background-color: #ccc;
+  }
+}
+.prev-match{
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+  }
+  .next-match{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+  }
+
+.fas{
+  font-size: 1.7rem;
+}

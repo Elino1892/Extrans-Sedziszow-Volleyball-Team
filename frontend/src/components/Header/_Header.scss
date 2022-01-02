@@ -1,5 +1,5 @@
 .header{
-  height: 200px;
+  height: 250px;
   // background-color: #ddd;
   position: relative;
   display: flex;
@@ -7,9 +7,9 @@
   &__logo-volleyball-team{
    display: block;
    position: absolute;
-    top: 10px;
+    top: 0px;
     left: 10px;
-    height: 80%;
+    height: 95%;
     // cursor: pointer;
     z-index: 1;
   }
@@ -40,7 +40,7 @@
     transform: translateX(-50%);
   }
   &__image-company-extrans{
-    height: 70%;
+    height: 100%;
   }
   &__team-info{
     display: flex;

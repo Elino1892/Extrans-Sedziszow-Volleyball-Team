@@ -1,0 +1,75 @@
+.gameplay{
+  position: relative;
+  min-height: 120vh;
+  // transition: .3s;
+  width: 100%;
+  
+  &__container-top{
+  // background-color: $main-color;
+  background-image: url("../../../images/background_image_section_gameplay.png"), linear-gradient(to top, $dark-main-color, $main-color);
+  background-repeat: repeat-x;
+  height: 216px;
+  width: 100%;
+  }
+  &__container-main{
+  // background-color: $main-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("../../../images/background_image_section_gameplay-horizontal.png"), linear-gradient(to top, $light-main-color, $dark-main-color);
+  background-repeat: repeat-x;
+  background-position: bottom;
+  // height: 770px;
+  // height: 100%;
+  height: 120vh;
+
+  // clip-path: polygon(0 0, 100% 0, 100% calc(100% - 17vw), 0 100%);
+
+  // height: 216px;
+  // transition: .3s;
+  width: 100%;
+  overflow: hidden;
+  }
+  &__container-position{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.game-container{
+  transition: .5s;
+  width: 500%;
+  display: flex;
+}
+
+.card-background-table-league{
+   background: linear-gradient(180deg, $main-color 0%, black 100%);
+}
+
+.card-background-next{
+   background-image: url('../../../images/bg.jpg');
+   background-blend-mode: multiply;
+   background-position: center;
+   background-size: cover;
+}
+
+// .card-position{
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   &--next-match{
+// top: 120px;
+//   }
+//   &--table-league{
+//     top: 635px
+//   }
+// }
+
