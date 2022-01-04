@@ -7,6 +7,7 @@ class News(models.Model):
   id = models.AutoField(primary_key=True)
   image = models.ImageField(null=True, blank=True)
   title = models.CharField(max_length=200, blank=True, null=True)
+  subtitle = models.CharField(max_length=200, blank=True, null=True)
   description = models.TextField(blank=True, null=True)
   createdAt = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

@@ -8,7 +8,7 @@ const Navigation = () => {
           <Link className="nav__link" to={"/aktualnosci"}>Aktualności</Link>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/rozgrywki"}>Mecze</Link>
+          <Link className="nav__link" to={"/rozgrywki"}>Rozgrywki</Link>
         </li>
         <li className="nav__item">
           <Link className="nav__link" to={"/druzyna"}>Drużyna</Link>
