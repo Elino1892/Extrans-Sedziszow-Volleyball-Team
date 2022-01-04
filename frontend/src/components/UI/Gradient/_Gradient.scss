@@ -27,4 +27,7 @@
   &:hover~.news-sliders__background{
     transform: scale(1.2);
   }
+    &:hover~.news-item__card-body{
+    transform: scale(1.2);
+  }
 }

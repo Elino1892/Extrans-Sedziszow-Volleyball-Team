@@ -28,6 +28,8 @@ class Player(models.Model):
   id = models.AutoField(primary_key=True)
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=100)
+  position = models.CharField(max_length=50,null=True, blank=True)
+  year_of_join = models.DateTimeField()
   image = models.ImageField(null=True, blank=True)
   height = models.IntegerField(blank=True, null=True)
   weight = models.IntegerField(blank=True, null=True)

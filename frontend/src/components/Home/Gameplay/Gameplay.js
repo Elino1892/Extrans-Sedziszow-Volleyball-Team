@@ -11,6 +11,7 @@ import Match from "./Match/Match"
 import TableLeague from "./TableLeague/TableLeague"
 
 const dummyMatches = [{
+  'id': 1,
   'round': '14',
   'date': 'sobota, 11 grudnia 2021',
   'hour': '17 : 00',
@@ -26,6 +27,7 @@ const dummyMatches = [{
   }
 },
 {
+  'id': 2,
   'round': '15',
   'date': 'sobota, 18 grudnia 2021',
   'hour': '18 : 00',
@@ -41,6 +43,7 @@ const dummyMatches = [{
   }
 },
 {
+  'id': 3,
   'round': '16',
   'date': 'sobota, 08 stycznia 2021',
   'hour': '17 : 00',
@@ -54,6 +57,7 @@ const dummyMatches = [{
   }
 },
 {
+  'id': 4,
   'round': '17',
   'date': 'sobota, 15 stycznia 2021',
   'hour': '17 : 00',
@@ -67,6 +71,7 @@ const dummyMatches = [{
   }
 },
 {
+  'id': 5,
   'round': '18',
   'date': 'sobota, 22 stycznia 2021',
   'hour': '17 : 00',
@@ -123,6 +128,7 @@ const Gameplay = () => {
             <div className="game-container" style={{ transform: `translate3d(${numberItem * -20}%, 0px, 0px)` }}>
               {dummyMatches.map((match, index) =>
                 <Match
+                  key={match.id}
                   round={match.round}
                   date={match.date}
                   hour={match.hour}
@@ -136,6 +142,7 @@ const Gameplay = () => {
                   index={index}
                   result={match.result}
                   set={match.set}
+
                 />
               )}
             </div>

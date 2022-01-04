@@ -5,22 +5,22 @@ const Navigation = () => {
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__item">
-          <Link className="nav__link" to={"/"}>Aktualności</Link>
+          <Link className="nav__link" to={"/aktualnosci"}>Aktualności</Link>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/"}>Mecze</Link>
+          <Link className="nav__link" to={"/rozgrywki"}>Mecze</Link>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/"}>Drużyna</Link>
+          <Link className="nav__link" to={"/druzyna"}>Drużyna</Link>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/"}>Klub</Link>
+          <Link className="nav__link" to={"/klub"}>Klub</Link>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/"}>Galeria</Link>
+          <Link className="nav__link" to={"/galeria"}>Galeria</Link>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/"}>Sponsorzy</Link>
+          <Link className="nav__link" to={"/sponsorzy"}>Sponsorzy</Link>
         </li>
       </ul>
     </nav>

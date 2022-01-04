@@ -54,11 +54,12 @@
    background: linear-gradient(180deg, $main-color 0%, black 100%);
 }
 
-.card-background-next{
+.card-background-next-match{
    background-image: url('../../../images/bg.jpg');
    background-blend-mode: multiply;
    background-position: center;
    background-size: cover;
+   overflow: hidden;
 }
 
 // .card-position{

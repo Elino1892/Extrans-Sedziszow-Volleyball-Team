@@ -1,4 +1,4 @@
-const Gradient = ({ type, children }) => {
+const Gradient = ({ type, children, style }) => {
 
   // const content = type === 'top-gradient' ?
   //   <div className='top-gradient'>
@@ -11,10 +11,10 @@ const Gradient = ({ type, children }) => {
   return (
     <>
       {type === 'top-gradient' ?
-        <div className='top-gradient'>
+        <div className='top-gradient' style={style}>
         </div>
         :
-        <div className='bottom-gradient'>
+        <div className='bottom-gradient' style={style}>
           {children}
         </div>
       }
