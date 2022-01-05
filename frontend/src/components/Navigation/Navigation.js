@@ -1,26 +1,26 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navigation = () => {
   return (
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__item">
-          <Link className="nav__link" to={"/aktualnosci"}>Aktualności</Link>
+          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/aktualnosci"}>Aktualności</NavLink>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/rozgrywki"}>Rozgrywki</Link>
+          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/rozgrywki"}>Rozgrywki</NavLink>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/druzyna"}>Drużyna</Link>
+          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/druzyna"}>Drużyna</NavLink>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/klub"}>Klub</Link>
+          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/klub"}>Klub</NavLink>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/galeria"}>Galeria</Link>
+          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/galeria"}>Galeria</NavLink>
         </li>
         <li className="nav__item">
-          <Link className="nav__link" to={"/sponsorzy"}>Sponsorzy</Link>
+          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/sponsorzy"}>Sponsorzy</NavLink>
         </li>
       </ul>
     </nav>

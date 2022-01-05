@@ -58,6 +58,7 @@ class Match(models.Model):
   is_home = models.BooleanField(default=False)
   home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
   guest_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='guest_team')
+  is_finished = models.BooleanField(default=False)
 
 class Photo(models.Model):
   id = models.AutoField(primary_key=True)

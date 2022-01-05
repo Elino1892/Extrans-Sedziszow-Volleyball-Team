@@ -27,8 +27,15 @@
       letter-spacing: 1px;
       color: white;
       transition: .3s;
+      height: 55px;
+      display: flex;
+      align-items: center;
       &:hover{
         color: #6AA9E8;
       }
     }
   }
+
+.active{
+  border-bottom: 2px solid white;
+}

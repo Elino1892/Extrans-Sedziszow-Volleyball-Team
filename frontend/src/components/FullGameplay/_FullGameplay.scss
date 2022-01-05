@@ -1,0 +1,50 @@
+.full-gameplay{
+  // height: 200vh;
+  font-family: 'Lato', 'Roboto', 'sans-serif';
+  &__bgc{
+    background-image: url("../../images/logo_volleyball_team.png")
+  ;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  z-index: -5;
+  }
+
+  &__sub-nav{
+    width: 100%;
+    height: 120px;
+    margin: 0 auto;
+    background-color: white;
+    // border-bottom: 2px solid gray;
+    -webkit-box-shadow: 0px 0px 61px 16px rgba(148, 148, 148, 1);
+-moz-box-shadow: 0px 0px 61px 16px rgba(148, 148, 148, 1);
+box-shadow: 0px 0px 61px 16px rgba(148, 148, 148, 1);
+    &-content{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  &__button{
+    font-family: 'Lato', 'Roboto', 'sans-serif';
+    width: 20%;
+    letter-spacing: 2px;
+    font-size: 3rem;
+    
+    &-active{
+color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+    }
+  }
+}

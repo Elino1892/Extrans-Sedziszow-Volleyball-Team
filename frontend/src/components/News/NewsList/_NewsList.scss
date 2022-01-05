@@ -8,8 +8,8 @@ background-image: url("../../../images/logo_volleyball_team.png")
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 250px;
-  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: -5;
 }
 .news{

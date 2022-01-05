@@ -10,11 +10,15 @@
 @import "../components/UI/Gradient/Gradient";
 @import "../components/Home/Gameplay/Gameplay";
 @import "../components/Home/Gameplay/Match/Match";
-@import "../components/Home/Gameplay/TableLeague/TableLeague";
+@import "../components/Home/Gameplay/ShortTableLeague/ShortTableLeague";
 @import "../components/Home/Player/Player";
 @import "../components/Home/Player/PlayerDetails/PlayerDetails";
 @import "../components/Home/Player/PlayerItem/PlayerItem";
 @import "../components/News/NewsList/NewsList";
 @import "../components/News/NewsItem/NewsItem";
 @import "../components/News/ArticleItem.js/ArticleItem";
+@import "../components/FullGameplay/FullGameplay";
+@import "../components/FullGameplay/Match/MatchList/MatchList";
+@import "../components/FullGameplay/TableLeague/TableLeague";
+@import "../components/FullGameplay/Match/MatchItem/MatchItem";
 @import "../components/Footer/Footer";

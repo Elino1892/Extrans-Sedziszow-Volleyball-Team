@@ -8,7 +8,7 @@ import fourthTeamLogo from "../../../images/team-logo/rybik-logo-192x192.jpg"
 import fifthTeamLogo from "../../../images/team-logo/JSW-logo-192x192.jpg"
 import sixthTeamLogo from "../../../images/team-logo/Jaslo-logo-192x192.jpg"
 import Match from "./Match/Match"
-import TableLeague from "./TableLeague/TableLeague"
+import ShortTableLeague from "./ShortTableLeague/ShortTableLeague"
 
 const dummyMatches = [{
   'id': 1,
@@ -150,7 +150,7 @@ const Gameplay = () => {
           </Card>
 
           <Card nameClass='card-background-table-league'>
-            <TableLeague />
+            <ShortTableLeague />
           </Card>
         </div>
 

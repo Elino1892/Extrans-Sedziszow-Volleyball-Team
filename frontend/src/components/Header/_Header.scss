@@ -1,9 +1,10 @@
 .header{
   height: 250px;
-  // background-color: #ddd;
+  background-color: white;
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  // z-index: 5;
   &__logo-volleyball-team{
    display: block;
    position: absolute;

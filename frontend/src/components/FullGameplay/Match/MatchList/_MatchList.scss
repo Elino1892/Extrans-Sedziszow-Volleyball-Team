@@ -1,0 +1,38 @@
+.matches{
+  // min-height: 100vh;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-evenly;
+  align-items: center;
+  // flex-wrap: wrap;
+  &__skewed-box{
+    width: 28px;
+    height: 40px;
+    background-color: $main-color;
+    clip-path: polygon(0px 0px, 100% 0px, 100% 82%, 0px 100%);
+    margin-right: 1rem;
+  }
+
+  &__round{
+    // min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    &-info{
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    &-title{
+      // width: 90%;
+      // margin-bottom: 40px;
+      font-size: 3rem;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  &__results{
+    margin-bottom: 50px;
+  }
+}
