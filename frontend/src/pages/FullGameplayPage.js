@@ -237,10 +237,12 @@ const dummyMatches = [
   },
 ]
 
-const dummyTableLeague = [
+const dummyLeagueTable = [
   {
-    'place': '1',
+    'id': 1,
+    'place': 1,
     'name': 'MCKiS Jaworzno',
+    'isHome': false,
     'numberOfMatches': '15',
     'numberOfWonMatches': '15',
     'numberOfLostMatches': '0',
@@ -251,11 +253,13 @@ const dummyTableLeague = [
     'lostSmallPoints': '924',
     'ratioSets': '15.00',   // OBLICZYĆ
     'ratioSmallPoints': '1.289',   // OBLICZYĆ
-    'image': '',
+    'image': teamLogo2,
   },
   {
+    'id': 2,
     'place': '2',
     'name': 'MCKiS Jaworzno',
+    'isHome': false,
     'numberOfMatches': '15',
     'numberOfWonMatches': '15',
     'numberOfLostMatches': '0',
@@ -266,11 +270,13 @@ const dummyTableLeague = [
     'lostSmallPoints': '924',
     'ratioSets': '15.00',   // OBLICZYĆ
     'ratioSmallPoints': '1.289',   // OBLICZYĆ
-    'image': '',
+    'image': teamLogo2,
   },
   {
+    'id': 3,
     'place': '3',
     'name': 'MCKiS Jaworzno',
+    'isHome': false,
     'numberOfMatches': '15',
     'numberOfWonMatches': '15',
     'numberOfLostMatches': '0',
@@ -281,7 +287,194 @@ const dummyTableLeague = [
     'lostSmallPoints': '924',
     'ratioSets': '15.00',   // OBLICZYĆ
     'ratioSmallPoints': '1.289',   // OBLICZYĆ
-    'image': '',
+    'image': teamLogo2,
+  },
+  {
+    'id': 4,
+    'place': '4',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 5,
+    'place': '5',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 6,
+    'place': '6',
+    'name': 'MCKiS Jaworzno',
+    'isHome': true,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 7,
+    'place': '7',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 8,
+    'place': '8',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 9,
+    'place': '9',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 10,
+    'place': '10',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 11,
+    'place': '11',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 12,
+    'place': '12',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 13,
+    'place': '13',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
+  },
+  {
+    'id': 14,
+    'place': '14',
+    'name': 'MCKiS Jaworzno',
+    'isHome': false,
+    'numberOfMatches': '15',
+    'numberOfWonMatches': '15',
+    'numberOfLostMatches': '0',
+    'points': '44',
+    'wonSets': '45',
+    'lostSets': '3',
+    'wonSmallPoints': '1191',
+    'lostSmallPoints': '924',
+    'ratioSets': '15.00',   // OBLICZYĆ
+    'ratioSmallPoints': '1.289',   // OBLICZYĆ
+    'image': teamLogo2,
   },
 ]
 
@@ -294,7 +487,7 @@ const GameplayPage = () => {
   return (
     <FullGameplay
       matches={dummyMatches}
-      tableLeague={dummyTableLeague}
+      leagueTable={dummyLeagueTable}
     />
   )
 }

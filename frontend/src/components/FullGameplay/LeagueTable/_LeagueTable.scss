@@ -1,0 +1,99 @@
+.league-table{
+  // min-height: 100vh;
+  overflow: hidden;
+  &__container{
+    width: 100%;
+    margin: 100px 0;
+    // padding: 0 50px;
+    font-family: 'Open Sans', 'Roboto', 'sans-serif';
+    border-collapse: collapse;
+  }
+  &__table-head{
+      border-top: 1px solid rgba(0,0,0,0.12);
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      white-space: nowrap;
+      
+    &-line{
+      font-size: 1.7rem;
+      font-weight: 400;
+      opacity: 0.7;
+      
+      height: 50px;
+      th:nth-child(1){
+        padding: 0 10px 0 40px;
+      }
+      th{
+        padding: 0 10px;
+      }
+      th:nth-child(1),th:nth-child(2),th:nth-child(3),th:nth-child(4), th:nth-child(5),th:nth-child(6){
+        border-right: 1px solid rgba(0,0,0,0.12);
+      }
+
+      &-second{
+        height: 25px;
+        font-size: 1.3rem;
+         opacity: 0.7;
+          th:nth-child(3),th:nth-child(5),th:nth-child(7){
+        border-right: 1px solid rgba(0,0,0,0.12);
+      }
+         th{
+            padding: 10px 0;
+         }
+         
+        //  margin-bottom: 20px;
+      }
+    }
+
+  }
+
+  &__table-body-line{
+    text-align: center;
+    font-size: 1.5rem;
+
+    &:nth-child(2n){
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    td:nth-child(1){
+font-size: 1.8rem;
+font-weight: bold;
+    }
+
+    td:nth-child(2){
+display: flex;
+justify-content: center;
+padding: 20px 0 20px 10px;
+    }
+
+    td:nth-child(4){
+font-size: 1.8rem;
+font-weight: bold;
+    }
+
+    td{
+      border-right: 1px solid rgba(0,0,0,0.12);
+      &:nth-child(2),&:nth-child(5),&:nth-child(6),&:nth-child(8),&:nth-child(10),&:nth-child(12),&:nth-child(13){
+        border: none;
+      }
+    }
+  }
+
+  &__logo-team{
+    width: 100px;
+    height: 100px;
+    
+
+    &-img{
+      width: 100%;
+      
+      border-radius: 50%;
+    
+    }
+  }
+
+  &__highlighted{
+    background-color: $main-color;
+    color: white;
+  }
+
+}

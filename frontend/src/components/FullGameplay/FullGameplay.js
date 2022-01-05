@@ -1,8 +1,8 @@
 import { useState } from "react";
 import MatchList from "./Match/MatchList/MatchList";
-import TableLeague from "./TableLeague/TableLeague";
+import LeagueTable from "./LeagueTable/LeagueTable";
 
-const FullGameplay = ({ matches, tableLeague }) => {
+const FullGameplay = ({ matches, leagueTable }) => {
 
   // POBRAĆ OD RAZU WSZYSTKIE MECZE I CAŁĄ TABELĘ, ŻEBY ŁATWO SIĘ PRZEMIESZCZAĆ
 
@@ -30,8 +30,8 @@ const FullGameplay = ({ matches, tableLeague }) => {
           matches={matches}
         />
         :
-        <TableLeague
-          tableLeague={tableLeague}
+        <LeagueTable
+          leagueTable={leagueTable}
         />
       }
 
