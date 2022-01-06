@@ -30,7 +30,7 @@ class Player(models.Model):
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=100)
   position = models.CharField(max_length=50,null=True, blank=True)
-  year_of_join = models.DateTimeField()
+  year_of_join = models.DateTimeField(null=True, blank=True)
   image = models.ImageField(null=True, blank=True)
   height = models.IntegerField(blank=True, null=True)
   weight = models.IntegerField(blank=True, null=True)
