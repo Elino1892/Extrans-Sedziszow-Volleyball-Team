@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 import Card from "../../../UI/Card/Card";
 import Gradient from "../../../UI/Gradient/Gradient"
 
-const PlayerDetails = ({ firstName, lastName, position, number, largeImage, dateOfBirth, yearOfJoin, showNextPlayerHandler, showPrevPlayerHandler, index, theLastPlayer }) => {
+const PlayerDetails = ({ id, firstName, lastName, position, number, largeImage, dateOfBirth, yearOfJoin, showNextPlayerHandler, showPrevPlayerHandler, index, theLastPlayer }) => {
   return (
     <div className="player-details" style={{ backgroundImage: `url(${largeImage})` }}>
       <Gradient type="top-gradient" />
@@ -34,7 +36,7 @@ const PlayerDetails = ({ firstName, lastName, position, number, largeImage, date
             <p className="player-details__date-details-number">{yearOfJoin}</p>
           </div>
         </div>
-        <button className="button player-details__button">Zobacz zawodnika</button>
+        <Link to={`/druzyna/${id}`} className="button player-details__button">Zobacz zawodnika</Link>
       </Card>
 
     </div>

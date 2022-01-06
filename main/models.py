@@ -29,7 +29,6 @@ class Player(models.Model):
   id = models.AutoField(primary_key=True)
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=100)
-  position = models.CharField(max_length=50,null=True, blank=True)
   year_of_join = models.DateTimeField(null=True, blank=True)
   image = models.ImageField(null=True, blank=True)
   height = models.IntegerField(blank=True, null=True)
@@ -38,6 +37,18 @@ class Player(models.Model):
   range_in_block = models.IntegerField(blank=True, null=True)
   date_of_birth = models.DateTimeField()
   number = models.IntegerField(blank=True, null=True)
+  description = models.TextField(blank=True, null=True)
+
+class Previous_Club(models.Model):
+  id = models.AutoField(primary_key=True)
+  name = models.CharField(max_length=100)
+  season = models.CharField(max_length=20)
+  position = models.CharField(max_length=30)
+
+class Player_Previous_Club(models.Model):
+  id = models.AutoField(primary_key=True)
+  player = models.ForeignKey(Player, on_delete=models.CASCADE, null=False)
+  previous_club = models.ForeignKey(Previous_Club, on_delete=models.CASCADE, null=False)
 
 class Group(models.Model):
   id = models.AutoField(primary_key=True)

@@ -22,8 +22,8 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
               <h1 className="article-item__text-title">{title}</h1>
               <p className="article-item__text-date">{createdAt}</p>
               <h2 className="article-item__text-subtitle">{subtitle}</h2>
-              {description.map(paragraph =>
-                <p className="article-item__text-paragraph">{paragraph}</p>
+              {description.map((paragraph, index) =>
+                <p key={index} className="article-item__text-paragraph">{paragraph}</p>
               )}
             </div>
           </div>

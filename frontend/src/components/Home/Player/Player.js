@@ -89,6 +89,7 @@ const Player = () => {
         {dummyPlayers.map((player, index) =>
           <PlayerDetails
             key={player.id}
+            id={player.id}
             firstName={player.firstName}
             lastName={player.lastName}
             position={player.position}

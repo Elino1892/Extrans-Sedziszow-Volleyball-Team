@@ -15,6 +15,10 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #eee;
+    &--player-info{
+      width: 100%;
+      background-color: black;
+    }
   }
 
   &__text{
@@ -35,6 +39,12 @@
       padding-left: 9.5vw;
       display: flex;
       flex-direction: column;
+
+      &--player-info{
+        padding-top: 150px;
+        padding-right: 7vw;
+        margin-top: -50px;
+      }
     }
 
     &-author{
