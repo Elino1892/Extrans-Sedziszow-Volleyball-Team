@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import ArticleItem from "../components/News/ArticleItem.js/ArticleItem";
+import ArticleItem from "../../components/News/ArticleItem.js/ArticleItem";
 
-import bgc1 from "../images/268437504_261248222659880_4987107035931412424_n.jpg"
+import bgc1 from "../../images/268437504_261248222659880_4987107035931412424_n.jpg"
 
 const dummyNewsItem = {
 

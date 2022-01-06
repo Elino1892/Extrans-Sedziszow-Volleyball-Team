@@ -1,10 +1,10 @@
 import { useEffect } from "react"
-import NewsList from "../components/News/NewsList/NewsList"
+import NewsList from "../../components/News/NewsList/NewsList"
 
-import bgc1 from "../images/268437504_261248222659880_4987107035931412424_n.jpg"
-import bgc2 from "../images/267728645_260641312720571_5759638841539975658_n.jpg"
-import bgc3 from "../images/267742441_260641359387233_6497856279913374496_n.jpg"
-import bgc4 from "../images/267939888_261017389349630_8832917883968479510_n.jpg"
+import bgc1 from "../../images/268437504_261248222659880_4987107035931412424_n.jpg"
+import bgc2 from "../../images/267728645_260641312720571_5759638841539975658_n.jpg"
+import bgc3 from "../../images/267742441_260641359387233_6497856279913374496_n.jpg"
+import bgc4 from "../../images/267939888_261017389349630_8832917883968479510_n.jpg"
 
 const dummyNews = [
   {

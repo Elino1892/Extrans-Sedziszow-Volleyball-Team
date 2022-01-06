@@ -38,7 +38,7 @@ const TableLeague = () => {
             <td>31</td>
             <td>15</td>
           </tr>
-          <tr className="short-league-table__table-body-line league-table__table-body-line--highlighted">
+          <tr className="short-league-table__table-body-line short-league-table__table-body-line--highlighted">
             <td>6</td>
             <td><img src={sedziszowTeamLogo} alt="" className="short-league-table__table-body-image"></img></td>
             <td>Extrans Sędziszów Małopolski</td>

@@ -1,7 +1,7 @@
-import FullGameplay from "../components/FullGameplay/FullGameplay";
+import FullGameplay from "../../components/FullGameplay/FullGameplay";
 
-import teamLogo2 from "../images/team-logo/Jaworzno-logo-192x192.jpg"
-import teamLogo1 from "../images/team-logo/Debica-logo-192x192.jpg"
+import teamLogo2 from "../../images/team-logo/Jaworzno-logo-192x192.jpg"
+import teamLogo1 from "../../images/team-logo/Debica-logo-192x192.jpg"
 import { useEffect } from "react";
 
 const dummyMatches = [

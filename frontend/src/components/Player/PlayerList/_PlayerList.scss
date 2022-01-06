@@ -1,0 +1,96 @@
+.team{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  // align-items: ;
+  z-index: 11;
+  flex-basis: 100%;
+  min-height: 100vh;
+
+  &__background{
+    background-image: linear-gradient(black,black), url("../../../images/players/team_background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: saturation;
+    position: relative;
+    width: 100%;
+    flex-basis: 600px;
+    z-index: 10;
+    overflow: hidden;
+
+    &-dark-overlay{
+      background: #101010;
+      opacity: 0.65;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+  }
+
+  &__logo{
+    width: 50%;
+    opacity: 0.3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    &-image{
+      width: 100%;
+    }
+  }
+
+  &__skewed-gradient{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    top: 800px;
+    left: 0;
+  }
+
+  &__gradient{
+    background: linear-gradient(rgba(255, 255, 255, 0.12), transparent);
+    height: 80rem;
+    transform: skewY(-9deg);
+    width: 100%;
+  }
+
+  &__players{
+    
+    min-height: 100vh;
+    width: 100%;
+    background-color: $main-color;
+    color: white;
+
+    &-wrapper{
+      z-index: 100;
+      width: 80%;
+      margin: 150px auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    
+
+  }
+
+  &__group{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
+    &-name{
+      flex-basis: 100%;
+      padding-bottom: 50px;
+      padding-left: 30px;
+      font-size: 3rem;
+      text-transform: capitalize;
+      opacity: 0.7;
+    }
+  }
+
+}

@@ -5,6 +5,8 @@
   flex-wrap: wrap;
   background-color: #262626;
   justify-content: center;
+  position: relative;
+  z-index: 20;
   &__sponsors{
     flex-basis: 100%;
     display: flex;

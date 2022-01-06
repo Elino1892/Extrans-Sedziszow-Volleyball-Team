@@ -1,5 +1,6 @@
 .player-item{
   width: calc(100%/3);
+  // width: 100%;
   margin: 0 30px;
   position: relative;
   height: 200px;
@@ -7,6 +8,8 @@
   background-image: url('../../../../images/players/4006.jpg');
   background-position: center;
   background-size: cover;
+  transition: .5s;
+  cursor: pointer;
   // display: flex;
   // margin-bottom: 20px;
   &__image-container{
@@ -14,6 +17,10 @@
     bottom: 0;
     right: 0;
     width: 60%;
+    &--team{
+      width: 45%;
+      right: 10px;
+    }
   }
   &__image{
     width: 100%;
@@ -27,29 +34,99 @@
     color: white;
     padding-left: 5px;
     // line-height: 3rem;
+    &--team{
+      // flex-wrap: nowrap;
+      width: 52%;
+      padding-left: 10px;
+      height: 100%;
+    }
   }
   &__number{
     flex-basis: 100%;
     font-size: 6rem;
     // color: $dark-main-color;
+    &--team{
+      // flex-basis: 20%;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 20rem;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      left: 0;
+      // z-index: -1;
+      overflow: hidden;
+      font-size: 22rem;
+      padding-left: 21px;
+    }
   }
   &__first-name{
     flex-basis: 50%;
     font-size: 2rem;
     letter-spacing: 1.5px;
+    
+    &--team{
+      font-size: 3rem;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      flex-basis: 100%;
+      justify-content: center;
+    }
   }
   &__last-name{
     flex-basis: 50%;
     font-size: 2rem;
     letter-spacing: 1.5px;
+    &--team{
+      font-size: 3rem;
+      flex-basis: 100%;
+    }
   }
   &__position{
     font-size: 1.3rem;
     padding-top: 20px;
   }
 
+  &--team{
+    width: 100%;
+    margin: 0;
+    // display: flex;
+    // align-items: center;
+    
+    min-width: 200px;
+    position: relative;
+  }
+
+  &__name-wrapper{
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    // justify-content: center;
+    // align-items: center;
+    text-align: center;
+    // padding-left: 20px;
+    // font-size: 3rem;
+  }
+
+&:hover{
+  transform: scale(1.2);
 }
 
-// background: #000000;  /* fallback for old browsers */
-// background: -webkit-linear-gradient(to right, #e74c3c, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-// background: linear-gradient(to right, #e74c3c, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+&-link{
+  display: block;
+  width: 43.333333%;
+  text-decoration: none;
+  // margin-bottom: 170px;
+  margin: 0 30px 170px 30px;
+  &:nth-last-child(1),&:nth-last-child(2){
+      margin-bottom: 0;
+    }
+}
+
+}
+
+
