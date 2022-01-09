@@ -16,6 +16,27 @@ const dummyNewsItem = {
 
 }
 
+const dummyComments = [
+  {
+    'id': 1,
+    'user': 'user1',
+    'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea delectus natus aspernatur temporibus et odit numquam tempora adipisci quos, dolore quaerat aperiam rerum ipsa porro iure dicta veritatis laudantium exercitationem.',
+    'createdAt': '09.01.2022 18:15',
+  },
+  {
+    'id': 2,
+    'user': 'user2',
+    'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea delectus natus aspernatur temporibus et odit numquam tempora adipisci quos, dolore quaerat aperiam rerum ipsa porro iure dicta veritatis laudantium exercitationem.',
+    'createdAt': '08.01.2022 18:15',
+  },
+  {
+    'id': 3,
+    'user': 'user3',
+    'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea delectus natus aspernatur temporibus et odit numquam tempora adipisci quos, dolore quaerat aperiam rerum ipsa porro iure dicta veritatis laudantium exercitationem.',
+    'createdAt': '07.01.2022 18:15',
+  },
+]
+
 const ArticleItemPage = () => {
 
   const params = useParams();
@@ -23,6 +44,7 @@ const ArticleItemPage = () => {
 
   useEffect(() => {
     document.title = dummyNewsItem.title
+    window.scrollTo(0, 0)
   }, [])
 
   return (
@@ -34,6 +56,8 @@ const ArticleItemPage = () => {
       background={dummyNewsItem.background}
       author={dummyNewsItem.author}
       createdAt={dummyNewsItem.createdAt}
+
+      comments={dummyComments}
     />
   )
 }

@@ -14,7 +14,7 @@ class News(models.Model):
 
 class Comment(models.Model):
   id = models.AutoField(primary_key=True)
-  text = models.TextField(blank=True, null=True)
+  text = models.TextField(blank=True, null=True, max_length=1000)
   createdAt = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
   news = models.ForeignKey(News, on_delete=models.SET_NULL, null=True)

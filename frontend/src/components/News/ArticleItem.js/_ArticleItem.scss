@@ -1,5 +1,6 @@
 .article-item{
   font-family: 'Lato', 'Roboto', 'sans-serif';
+  background-color: #eee;
   &__photo{
     position: relative;
     &-bgc{
@@ -14,10 +15,10 @@
     overflow: visible;
     display: flex;
     flex-wrap: wrap;
-    background-color: #eee;
     &--player-info{
       width: 100%;
       background-color: black;
+      
     }
   }
 
@@ -29,6 +30,12 @@
       transform: skewY(-10deg);
       transform-origin: right;
       background-color: white;
+
+      &--club{
+        position: relative;
+        z-index: 100;
+      }
+
     }
 
     &-content{
@@ -44,7 +51,13 @@
         padding-top: 150px;
         padding-right: 7vw;
         margin-top: -50px;
+        z-index: 20;
       }
+
+      &--club{
+        margin-top: -40px;
+      }
+
     }
 
     &-author{
@@ -87,6 +100,77 @@
       margin-bottom: 20px;
       line-height: 3rem;
       letter-spacing: 1px;
+    }
+
+  }
+
+  &__comments{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    margin-bottom: 50px;
+    justify-content: center;
+    &-title{
+      // flex: 0 0 calc(100%*2/3);
+      flex-basis: 100%;
+      text-align: center;
+      font-size: 3rem;
+      padding: 20px 0;
+    }
+
+    &-users{
+      // flex: 0 0 calc(100%*2/3);
+      flex-basis: 70%;
+    }
+
+    &-form{
+      margin: 20px 0;
+    }
+
+    &-textarea-wrapper{
+      min-height: 200px;
+         width: 100%;;
+         background-color: #fff;
+         border-radius: 30px;
+         position: relative;
+         z-index: 1;
+     
+    }
+
+    &-textarea{
+      resize: none;
+      min-height: 200px;
+      padding: 20px 35px 0;
+      display: block;
+      width: 100%;
+      // background-color: transparent;
+      position: relative;
+      border-radius: 30px;
+      font-size: 1.8rem;
+      // color: #ccc;
+      line-height: 2rem;
+      border: none;
+      outline: none;
+      // transition: .2s;
+      
+       &:focus{
+        border: 2px solid $main-color;
+         padding: 18px 33px 0;
+      }
+    }
+
+
+
+    &-button{
+      margin: 20px auto 50px;
+      display: block;
+      background-color: #1A1A1A;;
+      color: white;
+
+      &:hover{
+        background-color: white;
+        color: #1A1A1A;
+      }
     }
 
   }

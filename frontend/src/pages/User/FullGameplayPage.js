@@ -482,6 +482,7 @@ const GameplayPage = () => {
 
   useEffect(() => {
     document.title = 'Rozgrywki - Extrans Sędziszów Małopolski'
+    window.scrollTo(0, 0)
   }, [])
 
   return (

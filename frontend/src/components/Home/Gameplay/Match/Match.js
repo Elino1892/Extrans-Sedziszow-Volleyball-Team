@@ -1,8 +1,11 @@
+import Button from "../../../UI/Button/Button";
+
 const Match = ({ round, date, hour, teamHome, logoTeamHome, teamAway, logoTeamAway, result, set, hallInfo, showNextMatchHandler, showPrevMatchHandler, index }) => {
   return (
     <div className="next-game">
-      <button className="button-match prev-match" disabled={index === 0} onClick={showPrevMatchHandler}><span className="fas fa-arrow-left"></span></button>
-      <button className="button-match next-match" disabled={index === 4} onClick={showNextMatchHandler}><span className="fas fa-arrow-right"></span></button>
+
+      <Button className="button-match prev-match" disabled={index === 0} onClick={showPrevMatchHandler}><span className="fas fa-arrow-left"></span></Button>
+      <Button className="button-match next-match" disabled={index === 4} onClick={showNextMatchHandler}><span className="fas fa-arrow-right"></span></Button>
       <h2 className="next-game__title">{index === 0 || index === 1 ? 'Poprzedni mecz' : 'Następny mecz'}</h2>
       <div className="next-game__info">
         <p className="next-game__round">{round} Kolejka</p>

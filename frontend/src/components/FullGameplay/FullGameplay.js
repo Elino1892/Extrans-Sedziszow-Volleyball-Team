@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MatchList from "./Match/MatchList/MatchList";
 import LeagueTable from "./LeagueTable/LeagueTable";
+import Button from "../UI/Button/Button";
 
 const FullGameplay = ({ matches, leagueTable }) => {
 
@@ -21,8 +22,8 @@ const FullGameplay = ({ matches, leagueTable }) => {
       <div className="full-gameplay__bgc"></div>
       <div className="full-gameplay__sub-nav">
         <div className="full-gameplay__sub-nav-content">
-          <button onClick={() => changeViewScreenHandler(true)} className={isMatchActive ? "button full-gameplay__button full-gameplay__button-active" : "button full-gameplay__button"}>Mecze</button>
-          <button onClick={() => changeViewScreenHandler(false)} className={!isMatchActive ? "button full-gameplay__button full-gameplay__button-active" : "button full-gameplay__button"}>Tabela</button>
+          <Button onClick={() => changeViewScreenHandler(true)} className={isMatchActive ? "button full-gameplay__button full-gameplay__button-active" : "button full-gameplay__button"}>Mecze</Button>
+          <Button onClick={() => changeViewScreenHandler(false)} className={!isMatchActive ? "button full-gameplay__button full-gameplay__button-active" : "button full-gameplay__button"}>Tabela</Button>
         </div>
       </div>
       {isMatchActive ?

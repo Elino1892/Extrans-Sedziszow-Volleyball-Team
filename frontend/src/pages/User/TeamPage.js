@@ -241,6 +241,7 @@ const TeamPage = () => {
 
   useEffect(() => {
     document.title = "Drużyna - Extrans Sędziszów Małopolski"
+    window.scrollTo(0, 0)
   }, [])
 
   return (

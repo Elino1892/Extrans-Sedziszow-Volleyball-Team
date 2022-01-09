@@ -1,0 +1,32 @@
+.comment{
+  padding: 20px 0 50px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  flex-wrap: wrap;
+
+  &:nth-of-type(1){
+    border-top: 1px solid rgba(0,0,0,0.2);
+  }
+
+  &__user{
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    flex-grow: 1;
+  }
+
+  &__date{
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    opacity: 0.6;
+  }
+
+  &__text{
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-family: 'Open Sans', 'Roboto', 'sans-serif';
+    line-height: 3rem;
+    letter-spacing: 1px;
+  }
+}

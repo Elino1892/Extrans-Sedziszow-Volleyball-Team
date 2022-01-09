@@ -2,7 +2,7 @@
 @import "variables";
 @import "base";
 @import "animations";
-@import "button";
+@import "../components/UI/Button/Button";
 @import "../components/UI/Card/Card";
 @import "../components/Header/Header";
 @import "../components/Navigation/Navigation";
@@ -23,4 +23,8 @@
 @import "../components/FullGameplay/Match/MatchItem/MatchItem";
 @import "../components/Player/PlayerList/PlayerList";
 @import "../components/Player/PlayerInfo/PlayerInfo";
+@import "../components/Club/Club";
+@import "../components/Auth/Login/Login";
+@import "../components/Auth/Profile/Profile";
+@import "../components/News/Comment/Comment";
 @import "../components/Footer/Footer";

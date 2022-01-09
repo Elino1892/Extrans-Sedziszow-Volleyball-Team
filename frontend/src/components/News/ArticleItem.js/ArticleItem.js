@@ -1,6 +1,22 @@
+import { useEffect, useRef } from "react";
 import Gradient from "../../UI/Gradient/Gradient"
+import Comment from "../Comment/Comment";
 
-const ArticleItem = ({ title, subtitle, description, background, author, createdAt }) => {
+import Input from "../../UI/Input/Input";
+import Button from "../../UI/Button/Button";
+
+const ArticleItem = ({ title, subtitle, description, background, author, createdAt, comments }) => {
+
+  const textInputRef = useRef();
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  const submitHandler = () => {
+
+  }
+
   return (
     <section className="article-item">
       <div
@@ -29,6 +45,40 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
           </div>
         </div>
 
+      </div>
+
+      <div className="article-item__comments">
+        <p className="article-item__comments-title">Komentarze ({comments.length})</p>
+        <div className="article-item__comments-users">
+          <form className="article-item__comments-form" onSubmit={submitHandler}>
+            <textarea
+              ref={textInputRef}
+              className="article-item__comments-textarea"
+              maxLength={1000}
+              minLength={3}
+              placeholder="Napisz komentarz..."
+              required
+
+            ></textarea>
+            {/* <textarea
+              ref={textInputRef}
+              className="article-item__comments-input"
+              input={{
+                type: 'text',
+                placeholder: 'Napisz komentarz...'
+                
+              }}
+            /> */}
+            <Button type={'submit'} className="button article-item__comments-button">Wyślij</Button>
+          </form>
+          {comments.map(comment =>
+            <Comment
+              user={comment.user}
+              text={comment.text}
+              createdAt={comment.createdAt}
+            />
+          )}
+        </div>
       </div>
 
     </section>

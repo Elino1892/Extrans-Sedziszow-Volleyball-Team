@@ -101,6 +101,7 @@ const NewsPage = () => {
 
   useEffect(() => {
     document.title = "Aktualności - Extrans Sędziszów Małopolski"
+    window.scrollTo(0, 0)
   }, [])
 
   return (

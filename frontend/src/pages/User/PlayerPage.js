@@ -46,6 +46,7 @@ const PlayerPage = () => {
 
   useEffect(() => {
     document.title = `${dummyPlayer.firstName} ${dummyPlayer.lastName} - Extrans Sędziszów Małopolski`
+    window.scrollTo(0, 0)
   }, [])
 
   return (

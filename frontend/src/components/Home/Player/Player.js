@@ -10,6 +10,7 @@ import largeImageRafałSzczęch from '../../../images/players/Rafał_Szczęch_ba
 import largeImageJanPyrsak from '../../../images/players/Jan_Pyrsak_background.jpg';
 import PlayerDetails from './PlayerDetails/PlayerDetails';
 import PlayerItem from './PlayerItem/PlayerItem';
+import Button from '../../UI/Button/Button';
 
 
 const dummyPlayers = [{
@@ -105,8 +106,8 @@ const Player = () => {
         )}
       </div>
       <div className="player__list-player-visible">
-        <button className="button-player prev-player" onClick={showPrevPlayerHandler}><span className="fas fa-arrow-left"></span></button>
-        <button className="button-player next-player" onClick={showNextPlayerHandler}><span className="fas fa-arrow-right"></span></button>
+        <Button className="button-player prev-player" onClick={showPrevPlayerHandler}><span className="fas fa-arrow-left"></span></Button>
+        <Button className="button-player next-player" onClick={showNextPlayerHandler}><span className="fas fa-arrow-right"></span></Button>
         {/* <div className="player__list-player-bgc"> */}
         <div className="player__list-player-ovh">
           <div className="player__list-player-container" style={{ transform: `translate3d(${numberItem * -(100 / dummyPlayers.length)}%, 0px, 0px)`, width: `${dummyPlayers.length * (100 / 3)}%` }}>

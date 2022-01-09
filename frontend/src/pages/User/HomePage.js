@@ -7,6 +7,7 @@ const HomePage = () => {
 
   useEffect(() => {
     document.title = "Strona główna - Extrans Sędziszów Małopolski"
+    window.scrollTo(0, 0)
   }, [])
 
   return (
