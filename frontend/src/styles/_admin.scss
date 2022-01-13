@@ -1,0 +1,38 @@
+.admin{
+  background: linear-gradient(0deg, #C7C5F4, lighten($main-color,10%));
+  padding: 50px;
+  font-size: 2rem;
+  text-align: center;
+  // color: white;
+  // height: 100%;
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+	min-height: 50vh;
+	// font-family: Raleway, sans-serif;
+
+  &__title{
+    font-size: 4rem !important;
+    color: white;
+  }
+
+  &__search-input{
+    font-size: 2rem !important;
+  }
+
+  &__table td, &__table th{
+    padding: 20px !important;
+    color: #eee !important;
+    letter-spacing: 1px !important;
+  }
+
+  &__link{
+    margin-right: 20px;
+    
+  }
+
+  .fas{
+font-size: 2rem;
+padding: 5px;
+  }
+}

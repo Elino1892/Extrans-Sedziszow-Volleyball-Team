@@ -54,10 +54,14 @@
       display: flex;
       align-items: center;
       // width: 100%;
+      
+
       &:hover{
         color: #6AA9E8;
       }
     }
+
+    
 
 
     &__dropdown{
@@ -95,5 +99,6 @@
   }
 
 .active{
+  transition: none;
   border-bottom: 2px solid white;
 }

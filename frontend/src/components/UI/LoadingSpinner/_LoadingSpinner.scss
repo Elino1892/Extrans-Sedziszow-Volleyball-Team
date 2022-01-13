@@ -1,0 +1,20 @@
+.spinner-container{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.spinner {
+  fill: transparent;
+  stroke: $main-color;
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform-origin: center;
+  animation-name: spinner;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier;
+  animation-iteration-count: infinite;
+}

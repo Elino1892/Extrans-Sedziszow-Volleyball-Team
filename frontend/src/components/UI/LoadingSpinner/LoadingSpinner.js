@@ -1,19 +1,19 @@
-import { Spinner } from 'react-bootstrap'
-
 const LoadingSpinner = () => {
   return (
-    <Spinner
-      animation='border'
-      role='status'
-      style={{
-        height: '100px',
-        width: '100px',
-        margin: 'auto',
-        display: 'block'
-      }}
-    >
-      {/* <span className='sr-only'>Loading...</span> */}
-    </Spinner>
+    <div className="spinner-container">
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.5"
+              floodColor="#796dd4" />
+          </filter>
+        </defs>
+        <circle className="spinner"
+          // style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);"
+          style={{ filter: "url(#shadow)" }}
+          cx="50" cy="50" r="45" />
+      </svg>
+    </div>
   )
 }
 

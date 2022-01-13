@@ -10,6 +10,9 @@ import PlayerPage from './pages/User/PlayerPage';
 import ClubPage from './pages/User/ClubPage';
 import LoginPage from './pages/User/LoginPage';
 import RegisterPage from './pages/User/RegisterPage';
+import ProfilePage from './pages/User/ProfilePage';
+
+import UserListPage from './pages/Admin/UserListPage';
 
 const App = () => {
   return (
@@ -17,6 +20,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/profil" element={<ProfilePage />}></Route>
           <Route path="/aktualnosci" element={<NewsPage />}></Route>
           <Route path="/aktualnosci/:articleId" element={<ArticleItemPage />}></Route>
           <Route path="/rozgrywki" element={<FullGameplayPage />}></Route>
@@ -25,6 +29,8 @@ const App = () => {
           <Route path="/klub" element={<ClubPage />}></Route>
           <Route path="/logowanie" element={<LoginPage />}></Route>
           <Route path="/rejestracja" element={<RegisterPage />}></Route>
+
+          <Route path="/admin/uzytkownicy" element={<UserListPage />}></Route>
         </Routes>
       </Layout>
     </>

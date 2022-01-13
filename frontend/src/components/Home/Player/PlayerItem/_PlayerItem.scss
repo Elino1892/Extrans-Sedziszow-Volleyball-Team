@@ -10,6 +10,7 @@
   background-size: cover;
   transition: .5s;
   cursor: pointer;
+  
   // display: flex;
   // margin-bottom: 20px;
   &__image-container{
@@ -113,7 +114,11 @@
   }
 
 &:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+&--active{
+  transform: scale(1.2) !important;
 }
 
 &-link{

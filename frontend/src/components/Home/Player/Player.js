@@ -84,6 +84,10 @@ const Player = () => {
     // }
   }
 
+  const showClickPlayerHandler = (value) => {
+    setNumberItem(value)
+  }
+
   return (
     <section className="player">
       <div className="player__details-container" style={{ transform: `translate3d(${numberItem * -(100 / dummyPlayers.length)}%, 0px, 0px)`, width: `${dummyPlayers.length * 100}%` }}>
@@ -110,7 +114,13 @@ const Player = () => {
         <Button className="button-player next-player" onClick={showNextPlayerHandler}><span className="fas fa-arrow-right"></span></Button>
         {/* <div className="player__list-player-bgc"> */}
         <div className="player__list-player-ovh">
-          <div className="player__list-player-container" style={{ transform: `translate3d(${numberItem * -(100 / dummyPlayers.length)}%, 0px, 0px)`, width: `${dummyPlayers.length * (100 / 3)}%` }}>
+          <div
+            className="player__list-player-container"
+            style={{
+              transform: `translate3d(${numberItem * -(100 / dummyPlayers.length)}%, 0px, 0px)`,
+              width: `${dummyPlayers.length * (100 / 3)}%`
+
+            }}>
             {dummyPlayers.map((player, index) =>
               <PlayerItem
                 key={player.id}
@@ -119,10 +129,12 @@ const Player = () => {
                 position={player.position}
                 number={player.number}
                 smallImage={player.smallImage}
-                showNextPlayerHandler={showNextPlayerHandler}
-                showPrevPlayerHandler={showPrevPlayerHandler}
+                // showNextPlayerHandler={showNextPlayerHandler}
+                // showPrevPlayerHandler={showPrevPlayerHandler}
                 index={index}
                 theLastPlayer={dummyPlayers.length - 1}
+                numberItem={numberItem}
+                showClickPlayerHandler={showClickPlayerHandler}
               />
             )}
           </div>

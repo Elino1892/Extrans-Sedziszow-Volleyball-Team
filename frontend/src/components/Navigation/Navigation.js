@@ -45,7 +45,7 @@ const Navigation = () => {
         </li> */}
         {userInfo ?
           <li className="nav__item nav__dropdown">
-            <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn active" : "nav__link nav__link-dropbtn"} to={"/profile"}>{userInfo.name} <span className="fas fa-arrow-down"></span></NavLink>
+            <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn active" : "nav__link nav__link-dropbtn"} to={"/profil"}>{userInfo.name} <span className="fas fa-arrow-down"></span></NavLink>
             <ul className="nav__dropdown-content">
               <Button className="nav__dropdown-item" onClick={logoutHandler}>Wyloguj się </Button>
             </ul>
