@@ -309,7 +309,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/users/update/${user._id}/`,
+      `http://127.0.0.1:8000/api/users/update/${user.id}/`,
       user,
       config
     )

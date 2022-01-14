@@ -18,24 +18,22 @@ const UserList = ({ users, deleteHandler, loading, error }) => {
     setSearchEmail(value)
   }
 
-  console.log(users)
 
   return (
-    <div className='local-bootstrap'>
-      {/* <Container> */}
-      <div className='admin'>
-        <h1 className='admin__title'>Użytkownicy</h1>
-        <Form.Control
-          type='text'
-          placeholder='Wyszukaj użytkownika...'
-          // value={searchEmail}
-          onChange={searchEmailHandler}
-          style={{ margin: '20px 0' }}
-          className='admin__search-input'
-        >
+    <>
+      <h1 className='admin__title'>Użytkownicy</h1>
+      <Form.Control
+        type='text'
+        placeholder='Wyszukaj użytkownika...'
+        // value={searchEmail}
+        onChange={searchEmailHandler}
+        style={{ margin: '20px 0' }}
+        className='admin__search-input'
+      >
 
-        </Form.Control>
-        {loading && users.length
+      </Form.Control>
+      {
+        loading
           ? (<LoadingSpinner />)
           : error
             ? (<p>Błąd: {error}</p>)
@@ -69,7 +67,7 @@ const UserList = ({ users, deleteHandler, loading, error }) => {
                         <i className='fas fa-check' style={{ color: 'red' }}></i>
                       )}</td>
                       <td>
-                        <LinkContainer className={'admin__link'} to={`/admin/user/${user.id}/edit`}>
+                        <LinkContainer className={'admin__link'} to={`/admin/uzytkownik/${user.id}/edycja`}>
                           <Button variant='light' className='btn-sm'>
                             <i className='fas fa-edit'></i>
                           </Button>
@@ -83,10 +81,9 @@ const UserList = ({ users, deleteHandler, loading, error }) => {
                   ))}
                 </tbody>
               </Table>
-            )}
-      </div>
-      {/* </Container> */}
-    </div>
+            )
+      }
+    </>
   )
 }
 

@@ -13,6 +13,11 @@ import RegisterPage from './pages/User/RegisterPage';
 import ProfilePage from './pages/User/ProfilePage';
 
 import UserListPage from './pages/Admin/UserListPage';
+import UserEditPage from './pages/Admin/UserEditPage';
+import NewsListPage from './pages/Admin/NewsListPage';
+import NewsCreatePage from './pages/Admin/NewsCreatePage';
+import NewsEditPage from './pages/Admin/NewsEditPage';
+
 
 const App = () => {
   return (
@@ -31,6 +36,10 @@ const App = () => {
           <Route path="/rejestracja" element={<RegisterPage />}></Route>
 
           <Route path="/admin/uzytkownicy" element={<UserListPage />}></Route>
+          <Route path="/admin/uzytkownik/:id/edycja" element={<UserEditPage />}></Route>
+          <Route path="/admin/aktualnosci" element={<NewsListPage />}></Route>
+          <Route path="/admin/aktualnosci/tworzenie" element={<NewsCreatePage />}></Route>
+          <Route path="/admin/aktualnosci/:id/edycja" element={<NewsEditPage />}></Route>
         </Routes>
       </Layout>
     </>

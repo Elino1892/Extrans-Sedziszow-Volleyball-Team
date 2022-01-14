@@ -37,7 +37,7 @@ const Navigation = () => {
         <li className="nav__item">
           <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/druzyna"}>Drużyna</NavLink>
         </li>
-        <li className="nav__item nav__item--margin-right">
+        <li className="nav__item">
           <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/klub"}>Klub</NavLink>
         </li>
         {/* <li className="nav__item">
@@ -45,8 +45,9 @@ const Navigation = () => {
         </li> */}
         {userInfo ?
           <li className="nav__item nav__dropdown">
-            <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn active" : "nav__link nav__link-dropbtn"} to={"/profil"}>{userInfo.name} <span className="fas fa-arrow-down"></span></NavLink>
+            <p className="nav__link nav__link-dropbtn">{userInfo.name} <span className="fas fa-arrow-down"></span></p>
             <ul className="nav__dropdown-content">
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={"/profil"}>Profil</NavLink>
               <Button className="nav__dropdown-item" onClick={logoutHandler}>Wyloguj się </Button>
             </ul>
           </li>
@@ -60,6 +61,16 @@ const Navigation = () => {
               <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/rejestracja"}>Rejestracja</NavLink>
             </li>
           </>
+        }
+        {(userInfo && userInfo.isAdmin) &&
+          <li className="nav__item nav__dropdown">
+            <p className="nav__link nav__link-dropbtn">Admin <span className="fas fa-arrow-down"></span></p>
+            <ul className="nav__dropdown-content">
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/uzytkownicy'}>Użytkownicy</NavLink>
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/aktualnosci'}>Aktualności</NavLink>
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/komentarze'}>Komentarze</NavLink>
+            </ul>
+          </li>
         }
       </ul>
     </nav>

@@ -73,6 +73,7 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
           </form>
           {comments.map(comment =>
             <Comment
+              key={comment.id}
               user={comment.user}
               text={comment.text}
               createdAt={comment.createdAt}

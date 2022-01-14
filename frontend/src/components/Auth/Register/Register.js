@@ -19,7 +19,7 @@ const Register = ({ loading, error, submitHandler }) => {
           {loading ? <LoadingSpinner />
             : error ? <p>Błąd: {error}</p>
               :
-              <form onSubmit={(e) => submitHandler(e, emailInputRef, nameInputRef, passwordInputRef, confirmPasswordInputRef)} className="login login-register">
+              <form onSubmit={(e) => submitHandler(e, nameInputRef, emailInputRef, passwordInputRef, confirmPasswordInputRef)} className="login login-register">
                 <div className="login__field">
                   <span className="login__icon fas fa-user"></span>
                   <Input

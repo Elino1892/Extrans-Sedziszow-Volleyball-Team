@@ -8,16 +8,33 @@
 	// display: flex;
 	// align-items: center;
 	// justify-content: center;
-	min-height: 50vh;
+	min-height: 80vh;
 	// font-family: Raleway, sans-serif;
+
+  &__container-action{
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    position: relative;
+  }
 
   &__title{
     font-size: 4rem !important;
     color: white;
+    flex-basis: 100%;
+    &--edit-user{
+      // text-align: start;
+      margin-bottom: 50px !important;
+    }
   }
 
   &__search-input{
     font-size: 2rem !important;
+
+    &--short{
+      width: 50% !important;
+      margin: 0 auto !important;
+    }
   }
 
   &__table td, &__table th{
@@ -28,11 +45,74 @@
 
   &__link{
     margin-right: 20px;
+    // margin-top: 20px;
+    &--margin{
+      margin-right: 10px;
+      // margin-bottom: 20px;
+    }
+    &-text{
+      
+      text-align: left;
+      display: block;
+      text-decoration: none !important;
+      color: white !important;
+      margin-bottom: 100px;
+      
+      &:hover{
+        text-decoration: underline !important;
+        // transform: translateY(0) !important;
+      }
+
+      &--create{
+        position: absolute !important;
+      width: 20% !important;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%) !important;
+        text-decoration: none !important;
+      background-color: #1A1A1A !important;
+      color: white !important;
+
+      &:hover{
+        background-color: white !important;
+        color: #1A1A1A !important;
+        text-decoration: none !important;
+        // transform: translateY(0) !important;
+      }
+    }
+    }
+
     
+
   }
 
   .fas{
 font-size: 2rem;
 padding: 5px;
+  }
+
+
+  &__form{
+    font-size: 3rem !important;
+    color: #ddd;
+&-label{
+    margin: 20px 0 !important;
+  }
+
+  &-group{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    label{
+margin-left: 20px;
+    }
+  }
+  }
+  
+  &__button{
+    margin-top: 20px !important;
+    font-size: 2rem !important;
+    padding: 10px !important
   }
 }

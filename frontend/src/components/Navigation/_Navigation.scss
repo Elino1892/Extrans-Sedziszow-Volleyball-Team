@@ -54,11 +54,30 @@
       display: flex;
       align-items: center;
       // width: 100%;
-      
+      cursor: pointer;
+      .fa-arrow-down{
+        margin-left: 10px;
+      }
 
       &:hover{
         color: #6AA9E8;
       }
+
+      &-dropbtn{
+        
+      &--item{
+        color: black;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        &:hover{
+        color: black !important;
+       background-color: #ccc;
+      }
+      }
+    }
     }
 
     
@@ -90,7 +109,8 @@
         font-size: 2rem;
         cursor: pointer;
         padding: 20px 0;
-
+        font-weight: 400;
+        
         &:hover{
           background-color: #ccc;
         }
@@ -101,4 +121,10 @@
 .active{
   transition: none;
   border-bottom: 2px solid white;
+
+  &-drop-item{
+    border-bottom: none;
+    background-color: #ccc;
+    font-weight: bold;
+  }
 }

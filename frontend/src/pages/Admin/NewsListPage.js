@@ -4,45 +4,45 @@ import { Table, Button, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner'
 // import Message from '../components/Message'
-import { listUsers, deleteUser } from '../../store/actions/userActions'
+import { listNews, deleteNews } from '../../store/actions/newsActions'
 import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
-import { USER_DETAILS_RESET } from '../../constants/userConstants'
-import UserList from '../../components/Admin/User/UserList/UserList'
+import { NEWS_DETAILS_RESET } from '../../constants/newsConstants'
+
 import AdminLayout from '../../components/Layout/AdminLayout/AdminLayout'
+import NewsList from '../../components/Admin/News/NewsList/NewsList'
 
 
-const UserListPage = () => {
+const NewsListPage = () => {
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const userList = useSelector(state => state.userList)
-  const { loading, error, users } = userList
+  const newsList = useSelector(state => state.newsList)
+  const { loading, error, news } = newsList
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
-  const userDelete = useSelector(state => state.userDelete)
-  const { success: successDelete } = userDelete
-
+  const newsDelete = useSelector(state => state.newsDelete)
+  const { success: successDelete } = newsDelete
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      document.title = "Użytkownicy - Administrator"
-      dispatch(listUsers())
-      dispatch({ type: USER_DETAILS_RESET })
+      document.title = "Aktualności - Administrator"
+      dispatch(listNews())
+      dispatch({ type: NEWS_DETAILS_RESET })
     } else {
       navigate('/logowanie')
     }
 
-  }, [dispatch, successDelete, userInfo, navigate])
+  }, [dispatch, userInfo, navigate, successDelete])
 
   const deleteHandler = (id) => {
 
-    if (window.confirm('Jesteś pewny, że chcesz usunąć tego użytkownika?')) {
-      dispatch(deleteUser(id))
+    if (window.confirm('Jesteś pewny, że chcesz usunąć ten artykuł?')) {
+      dispatch(deleteNews(id))
     }
   }
 
@@ -51,8 +51,8 @@ const UserListPage = () => {
   return (
     <AdminLayout>
       {loading ? <LoadingSpinner /> :
-        <UserList
-          users={users}
+        <NewsList
+          news={news}
           deleteHandler={deleteHandler}
           loading={loading}
           error={error}
@@ -62,4 +62,4 @@ const UserListPage = () => {
   )
 }
 
-export default UserListPage;
+export default NewsListPage;
