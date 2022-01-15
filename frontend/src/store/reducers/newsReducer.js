@@ -6,6 +6,7 @@ import {
   NEWS_DETAILS_REQUEST,
   NEWS_DETAILS_SUCCESS,
   NEWS_DETAILS_FAIL,
+  NEWS_DETAILS_RESET,
 
   NEWS_DELETE_REQUEST,
   NEWS_DELETE_SUCCESS,
@@ -22,14 +23,14 @@ import {
   NEWS_UPDATE_RESET,
 
 
-  // NEWS_CREATE_REVIEW_REQUEST,
-  // NEWS_CREATE_REVIEW_SUCCESS,
-  // NEWS_CREATE_REVIEW_FAIL,
-  // NEWS_CREATE_REVIEW_RESET,
+  NEWS_CREATE_COMMENT_REQUEST,
+  NEWS_CREATE_COMMENT_SUCCESS,
+  NEWS_CREATE_COMMENT_FAIL,
+  NEWS_CREATE_COMMENT_RESET,
 
-  NEWS_TOP_REQUEST,
-  NEWS_TOP_SUCCESS,
-  NEWS_TOP_FAIL,
+  NEWS_LAST_REQUEST,
+  NEWS_LAST_SUCCESS,
+  NEWS_LAST_FAIL,
 } from '../../constants/newsConstants'
 
 
@@ -64,6 +65,9 @@ export const newsDetailsReducer = (state = { news: {} }, action) => {
 
     case NEWS_DETAILS_FAIL:
       return { loading: false, error: action.payload }
+
+    case NEWS_DETAILS_RESET:
+      return { news: {} }
 
     default:
       return state
@@ -130,38 +134,38 @@ export const newsUpdateReducer = (state = { news: {} }, action) => {
 
 
 
-// export const NEWSReviewCreateReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case NEWS_CREATE_REVIEW_REQUEST:
-//       return { loading: true }
+export const newsCommentCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case NEWS_CREATE_COMMENT_REQUEST:
+      return { loading: true }
 
-//     case NEWS_CREATE_REVIEW_SUCCESS:
-//       return { loading: false, success: true, }
+    case NEWS_CREATE_COMMENT_SUCCESS:
+      return { loading: false, success: true, }
 
-//     case NEWS_CREATE_REVIEW_FAIL:
-//       return { loading: false, error: action.payload }
+    case NEWS_CREATE_COMMENT_FAIL:
+      return { loading: false, error: action.payload }
 
-//     case NEWS_CREATE_REVIEW_RESET:
-//       return {}
+    case NEWS_CREATE_COMMENT_RESET:
+      return {}
 
-//     default:
-//       return state
-//   }
-// }
+    default:
+      return state
+  }
+}
 
 
-// export const newsTopRatedReducer = (state = { new: [] }, action) => {
-//   switch (action.type) {
-//     case NEWS_TOP_REQUEST:
-//       return { loading: true, news: [] }
+export const newsLastReducer = (state = { news: [] }, action) => {
+  switch (action.type) {
+    case NEWS_LAST_REQUEST:
+      return { loading: true, news: [] }
 
-//     case NEWS_TOP_SUCCESS:
-//       return { loading: false, news: action.payload, }
+    case NEWS_LAST_SUCCESS:
+      return { loading: false, news: action.payload, }
 
-//     case NEWS_TOP_FAIL:
-//       return { loading: false, error: action.payload }
+    case NEWS_LAST_FAIL:
+      return { loading: false, error: action.payload }
 
-//     default:
-//       return state
-//   }
-// }
+    default:
+      return state
+  }
+}

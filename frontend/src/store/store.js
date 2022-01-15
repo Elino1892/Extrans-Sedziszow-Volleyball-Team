@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer, userUpdateReducer } from './reducers/userReducer';
 
-import { newsCreateReducer, newsDeleteReducer, newsListReducer, newsUpdateReducer, newsDetailsReducer } from './reducers/newsReducer';
+import { newsCreateReducer, newsDeleteReducer, newsListReducer, newsUpdateReducer, newsDetailsReducer, newsLastReducer, newsCommentCreateReducer } from './reducers/newsReducer';
 
 
 
@@ -23,6 +23,8 @@ export const reducer = combineReducers({
   newsList: newsListReducer,
   newsUpdate: newsUpdateReducer,
   newsDetails: newsDetailsReducer,
+  newsLast: newsLastReducer,
+  newsCommentCreate: newsCommentCreateReducer,
 })
 
 

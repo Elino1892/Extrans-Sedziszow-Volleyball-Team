@@ -27,6 +27,7 @@ const UserEditPage = () => {
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Edycja użytkownika - Administrator"
+      window.scrollTo(0, 0)
       if (successUpdate) {
         dispatch({ type: USER_UPDATE_RESET })
         navigate('/admin/uzytkownicy')

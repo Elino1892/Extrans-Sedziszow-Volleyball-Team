@@ -14,9 +14,7 @@ const NewsList = ({ news }) => {
               key={newsItem.id}
               id={newsItem.id}
               title={newsItem.title}
-              description={newsItem.description}
-              background={newsItem.background}
-              author={newsItem.author}
+              image={newsItem.image}
               createdAt={newsItem.createdAt}
             />
           )

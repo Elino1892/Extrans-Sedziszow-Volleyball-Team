@@ -29,6 +29,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     document.title = "Twój profil"
+    window.scrollTo(0, 0)
     if (!userInfo) {
       navigate('/logowanie');
     }

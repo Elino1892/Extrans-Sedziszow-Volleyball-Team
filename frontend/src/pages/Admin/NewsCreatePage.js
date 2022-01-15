@@ -24,7 +24,7 @@ const NewsCreatePage = () => {
 
     if (userInfo && userInfo.isAdmin) {
       document.title = "Tworzenie artykułu";
-
+      window.scrollTo(0, 0)
     } else {
       navigate('/logowanie');
     }

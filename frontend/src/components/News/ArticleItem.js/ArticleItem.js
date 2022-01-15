@@ -1,21 +1,31 @@
 import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Gradient from "../../UI/Gradient/Gradient"
 import Comment from "../Comment/Comment";
+import { Link } from 'react-router-dom'
 
+import { createNewsComment } from "../../../store/actions/newsActions";
 import Input from "../../UI/Input/Input";
 import Button from "../../UI/Button/Button";
 
-const ArticleItem = ({ title, subtitle, description, background, author, createdAt, comments }) => {
+const ArticleItem = ({ title, subtitle, description, background, author, createdAt, comments, userInfo, articleId }) => {
 
   const textInputRef = useRef();
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  const dispatch = useDispatch();
 
-  const submitHandler = () => {
+  const newsCommentCreate = useSelector(state => state.newsCommentCreate);
+  const { loading, error, success } = newsCommentCreate;
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    if (textInputRef.current.value) {
+      dispatch(createNewsComment(articleId, textInputRef.current.value))
+    }
   }
+
+
 
   return (
     <section className="article-item">
@@ -38,9 +48,9 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
               <h1 className="article-item__text-title">{title}</h1>
               <p className="article-item__text-date">{createdAt}</p>
               <h2 className="article-item__text-subtitle">{subtitle}</h2>
-              {description.map((paragraph, index) =>
-                <p key={index} className="article-item__text-paragraph">{paragraph}</p>
-              )}
+              {/* {description.map((paragraph, index) => */}
+              <p className="article-item__text-paragraph">{description}</p>
+              {/* )} */}
             </div>
           </div>
         </div>
@@ -50,27 +60,28 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
       <div className="article-item__comments">
         <p className="article-item__comments-title">Komentarze ({comments.length})</p>
         <div className="article-item__comments-users">
-          <form className="article-item__comments-form" onSubmit={submitHandler}>
-            <textarea
-              ref={textInputRef}
-              className="article-item__comments-textarea"
-              maxLength={1000}
-              minLength={3}
-              placeholder="Napisz komentarz..."
-              required
 
-            ></textarea>
-            {/* <textarea
-              ref={textInputRef}
-              className="article-item__comments-input"
-              input={{
-                type: 'text',
-                placeholder: 'Napisz komentarz...'
-                
-              }}
-            /> */}
-            <Button type={'submit'} className="button article-item__comments-button">Wyślij</Button>
-          </form>
+          {/* {success} */}
+
+          {userInfo ? (
+            <form className="article-item__comments-form" onSubmit={(e) => submitHandler(e)}>
+              <textarea
+                ref={textInputRef}
+                className="article-item__comments-textarea"
+                maxLength={1000}
+                minLength={3}
+                placeholder="Napisz komentarz..."
+                required
+
+              ></textarea>
+              <Button type={'submit'} className="button article-item__comments-button">Wyślij</Button>
+            </form>
+          ) :
+            <p className="article-item__comments-info">Proszę się <Link className="article-item__comments-info-link" to={'/logowanie'}>zalogować</Link>, aby napisać komentarz</p>
+
+          }
+
+
           {comments.map(comment =>
             <Comment
               key={comment.id}

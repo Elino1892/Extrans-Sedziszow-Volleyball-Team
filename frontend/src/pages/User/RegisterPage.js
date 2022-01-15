@@ -18,6 +18,7 @@ const RegisterPage = () => {
 
   useEffect(() => {
     document.title = "Rejestracja"
+    window.scrollTo(0, 0)
     if (userInfo) {
       navigate("/", { replace: true })
     }

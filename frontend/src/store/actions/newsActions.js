@@ -23,14 +23,14 @@ import {
   NEWS_UPDATE_RESET,
 
 
-  // NEWS_CREATE_REVIEW_REQUEST,
-  // NEWS_CREATE_REVIEW_SUCCESS,
-  // NEWS_CREATE_REVIEW_FAIL,
-  // NEWS_CREATE_REVIEW_RESET,
+  NEWS_CREATE_COMMENT_REQUEST,
+  NEWS_CREATE_COMMENT_SUCCESS,
+  NEWS_CREATE_COMMENT_FAIL,
+  NEWS_CREATE_COMMENT_RESET,
 
-  NEWS_TOP_REQUEST,
-  NEWS_TOP_SUCCESS,
-  NEWS_TOP_FAIL,
+  NEWS_LAST_REQUEST,
+  NEWS_LAST_SUCCESS,
+  NEWS_LAST_FAIL,
 } from '../../constants/newsConstants'
 
 
@@ -55,20 +55,20 @@ export const listNews = () => async (dispatch) => {
   }
 }
 
-export const newsTopProducts = () => async (dispatch) => {
+export const listLastNews = () => async (dispatch) => {
   try {
-    dispatch({ type: NEWS_TOP_REQUEST })
+    dispatch({ type: NEWS_LAST_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/news/top/`)
+    const { data } = await axios.get(`http://127.0.0.1:8000/api/news/last`)
 
     dispatch({
-      type: NEWS_TOP_SUCCESS,
+      type: NEWS_LAST_SUCCESS,
       payload: data
     })
 
   } catch (error) {
     dispatch({
-      type: NEWS_TOP_FAIL,
+      type: NEWS_LAST_FAIL,
       payload: error.response && error.response.data.detail
         ? error.response.data.detail
         : error.message,
@@ -82,6 +82,7 @@ export const getNewsDetails = (id) => async (dispatch) => {
     dispatch({ type: NEWS_DETAILS_REQUEST })
 
     const { data } = await axios.get(`http://127.0.0.1:8000/api/news/${id}`)
+
 
     dispatch({
       type: NEWS_DETAILS_SUCCESS,
@@ -224,42 +225,42 @@ export const updateNews = (news) => async (dispatch, getState) => {
   }
 }
 
-// export const createProductReview = (productId, review) => async (dispatch, getState) => {
-//   try {
-//     dispatch({
-//       type: PRODUCT_CREATE_REVIEW_REQUEST
-//     })
+export const createNewsComment = (articleId, comment) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: NEWS_CREATE_COMMENT_REQUEST
+    })
 
-//     const {
-//       userLogin: { userInfo },
-//     } = getState()
+    const {
+      userLogin: { userInfo },
+    } = getState()
 
-//     const config = {
-//       headers: {
-//         'Content-type': 'application/json',
-//         Authorization: `Bearer ${userInfo.token}`
-//       }
-//     }
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
 
-//     const { data } = await axios.post(
-//       `http://127.0.0.1:8000/api/products/${productId}/reviews/`,
-//       review,
-//       config
-//     )
-//     dispatch({
-//       type: PRODUCT_CREATE_REVIEW_SUCCESS,
-//       payload: data,
-//     })
+    const { data } = await axios.post(
+      `http://127.0.0.1:8000/api/news/${articleId}/comments/`,
+      comment,
+      config
+    )
+    dispatch({
+      type: NEWS_CREATE_COMMENT_SUCCESS,
+      payload: data,
+    })
 
 
 
-//   } catch (error) {
-//     dispatch({
-//       type: PRODUCT_CREATE_REVIEW_FAIL,
-//       payload: error.response && error.response.data.detail
-//         ? error.response.data.detail
-//         : error.message,
-//     })
-//   }
-// }
+  } catch (error) {
+    dispatch({
+      type: NEWS_CREATE_COMMENT_FAIL,
+      payload: error.response && error.response.data.detail
+        ? error.response.data.detail
+        : error.message,
+    })
+  }
+}
 

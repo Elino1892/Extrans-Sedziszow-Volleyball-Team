@@ -26,8 +26,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/profil" element={<ProfilePage />}></Route>
-          <Route path="/aktualnosci" element={<NewsPage />}></Route>
           <Route path="/aktualnosci/:articleId" element={<ArticleItemPage />}></Route>
+          <Route path="/aktualnosci" element={<NewsPage />}></Route>
           <Route path="/rozgrywki" element={<FullGameplayPage />}></Route>
           <Route path="/druzyna" element={<TeamPage />}></Route>
           <Route path="/druzyna/:playerId" element={<PlayerPage />}></Route>

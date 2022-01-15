@@ -8,5 +8,9 @@ urlpatterns = [
   path('update/<str:pk>/', views.updateNews, name="news-update"),
   path('create/', views.createNews, name="news-create"),
   path('upload/', views.uploadImage, name="image-upload"),
+
+  path('<str:pk>/comments/', views.createNewsComment, name="create-comment"),
+  path('last/', views.getLastViews, name='last-views'),
+
   path('<str:pk>/', views.getSingleNews, name="single-news"),
 ]

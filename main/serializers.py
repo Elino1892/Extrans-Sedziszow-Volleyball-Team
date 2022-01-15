@@ -4,6 +4,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import News, Comment
 from django.contrib.auth.models import User
 
+from datetime import datetime
+import babel.dates
+
 
 class UserSerializer(serializers.ModelSerializer):
     isAdmin = serializers.SerializerMethodField(read_only=True)
@@ -51,6 +54,15 @@ class NewsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_comments(self,obj):
-        comments = obj.comment_set.all()
+        comments = obj.comment_set.order_by('-createdAt')
         serializer = CommentSerializer(comments, many=True)
+
+        for comment in serializer.data:
+            user = User.objects.get(id=comment['user'])
+            user_serializer = UserSerializer(user, many=False)
+            comment['user'] = user_serializer.data['name']
+            time = comment['createdAt'][:16]
+            time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
+            comment['createdAt'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
+            
         return serializer.data

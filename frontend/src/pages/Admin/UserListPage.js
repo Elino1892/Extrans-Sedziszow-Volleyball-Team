@@ -31,6 +31,7 @@ const UserListPage = () => {
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Użytkownicy - Administrator"
+      window.scrollTo(0, 0)
       dispatch(listUsers())
       dispatch({ type: USER_DETAILS_RESET })
     } else {

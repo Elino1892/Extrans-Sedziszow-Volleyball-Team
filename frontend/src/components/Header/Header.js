@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation';
 
+import logoVolleyballTeam from '../../images/logo_volleyball_team.png'
+import logoExtrans from '../../images/logo_company_extrans.png'
+
 const Header = () => {
   return (
     <header className="header">
       <Link className="header__logo-volleyball-team" to={"/"}>
-        <img className="header__image-volleyball-team" src="../../images/logo_volleyball_team.png" alt="logo-drużyna-siatkarska" />
+        <img className="header__image-volleyball-team" src={logoVolleyballTeam} alt="logo-drużyna-siatkarska" />
       </Link>
       <div className="header__upper">
         <div className="header__logo-company-extrans">
-          <img className="header__image-company-extrans" src="../../images/logo_company_extrans.png" alt="logo-firma-extrans" />
+          <img className="header__image-company-extrans" src={logoExtrans} alt="logo-firma-extrans" />
         </div>
         <div className="header__team-info">
           <div className="header__social">

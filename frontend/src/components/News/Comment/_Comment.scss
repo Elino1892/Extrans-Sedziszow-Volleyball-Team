@@ -1,9 +1,9 @@
 .comment{
-  padding: 20px 0 50px;
+  padding: 20px 0 40px;
   border-bottom: 1px solid rgba(0,0,0,0.2);
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: space-between;
   &:nth-of-type(1){
     border-top: 1px solid rgba(0,0,0,0.2);
   }
@@ -12,7 +12,7 @@
     font-size: 1.8rem;
     font-weight: bold;
     letter-spacing: 1px;
-    flex-grow: 1;
+    // flex-basis: 75%;
   }
 
   &__date{
@@ -20,10 +20,12 @@
     align-items: center;
     font-size: 1.3rem;
     opacity: 0.6;
+    // flex-basis: 25%;
   }
 
   &__text{
-    margin-top: 20px;
+    flex-basis: 100%;
+    margin-top: 30px;
     font-size: 1.8rem;
     font-family: 'Open Sans', 'Roboto', 'sans-serif';
     line-height: 3rem;

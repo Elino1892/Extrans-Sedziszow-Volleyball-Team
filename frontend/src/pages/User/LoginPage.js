@@ -18,6 +18,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     document.title = "Logowanie"
+    window.scrollTo(0, 0)
     if (userInfo) {
       navigate('/', { replace: true })
     }

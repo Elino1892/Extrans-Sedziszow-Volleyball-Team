@@ -30,6 +30,7 @@ const NewsEditPage = () => {
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Edycja artykułu";
+      window.scrollTo(0, 0)
       if (successUpdate) {
         dispatch({ type: NEWS_UPDATE_RESET })
         navigate('/admin/aktualnosci');

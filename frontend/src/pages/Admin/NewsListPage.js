@@ -31,6 +31,7 @@ const NewsListPage = () => {
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Aktualności - Administrator"
+      window.scrollTo(0, 0)
       dispatch(listNews())
       dispatch({ type: NEWS_DETAILS_RESET })
     } else {
