@@ -28,6 +28,11 @@ import {
   NEWS_CREATE_COMMENT_FAIL,
   NEWS_CREATE_COMMENT_RESET,
 
+  NEWS_DELETE_COMMENT_REQUEST,
+  NEWS_DELETE_COMMENT_SUCCESS,
+  NEWS_DELETE_COMMENT_FAIL,
+  NEWS_DELETE_COMMENT_RESET,
+
   NEWS_LAST_REQUEST,
   NEWS_LAST_SUCCESS,
   NEWS_LAST_FAIL,
@@ -257,6 +262,44 @@ export const createNewsComment = (articleId, comment) => async (dispatch, getSta
   } catch (error) {
     dispatch({
       type: NEWS_CREATE_COMMENT_FAIL,
+      payload: error.response && error.response.data.detail
+        ? error.response.data.detail
+        : error.message,
+    })
+  }
+}
+
+export const deleteNewsComment = (commentId) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: NEWS_DELETE_COMMENT_REQUEST
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.delete(
+      `http://127.0.0.1:8000/api/news/comments/delete/${commentId}/`,
+      config
+    )
+    dispatch({
+      type: NEWS_DELETE_COMMENT_SUCCESS,
+      payload: data,
+    })
+
+
+
+  } catch (error) {
+    dispatch({
+      type: NEWS_DELETE_COMMENT_FAIL,
       payload: error.response && error.response.data.detail
         ? error.response.data.detail
         : error.message,

@@ -131,3 +131,12 @@ def createNewsComment(request, pk):
         )
 
         return Response('Komentarz dodany')
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteComment(request,pk):
+  comment = Comment.objects.get(id = pk)
+  comment.delete()
+  return Response('Komentarz usunięty')
+  

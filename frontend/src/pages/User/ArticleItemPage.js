@@ -24,8 +24,9 @@ const ArticleItemPage = () => {
   const newsCommentCreate = useSelector(state => state.newsCommentCreate);
   const { loading: loadingCommentCreate, error: errorCommentCreate, success: successCommentCreate } = newsCommentCreate;
 
-  // console.log(news)
-  // console.log(loading)
+  const newsCommentDelete = useSelector(state => state.newsCommentDelete);
+  const { loading: loadingCommentDelete, error: errorCommentDelete, success: successCommentDelete } = newsCommentDelete;
+
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,7 @@ const ArticleItemPage = () => {
       dispatch({ type: NEWS_DETAILS_RESET })
     }
 
-  }, [dispatch, articleId, successCommentCreate])
+  }, [dispatch, articleId, successCommentCreate, successCommentDelete])
 
   return (
     <>

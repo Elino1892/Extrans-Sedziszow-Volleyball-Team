@@ -14,8 +14,10 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
 
   const dispatch = useDispatch();
 
-  const newsCommentCreate = useSelector(state => state.newsCommentCreate);
-  const { loading, error, success } = newsCommentCreate;
+  // const newsCommentCreate = useSelector(state => state.newsCommentCreate);
+  // const { loading, error, success } = newsCommentCreate;
+
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -85,9 +87,11 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
           {comments.map(comment =>
             <Comment
               key={comment.id}
+              id={comment.id}
               user={comment.user}
               text={comment.text}
               createdAt={comment.createdAt}
+              userInfo={userInfo}
             />
           )}
         </div>

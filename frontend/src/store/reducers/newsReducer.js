@@ -28,6 +28,11 @@ import {
   NEWS_CREATE_COMMENT_FAIL,
   NEWS_CREATE_COMMENT_RESET,
 
+  NEWS_DELETE_COMMENT_REQUEST,
+  NEWS_DELETE_COMMENT_SUCCESS,
+  NEWS_DELETE_COMMENT_FAIL,
+  NEWS_DELETE_COMMENT_RESET,
+
   NEWS_LAST_REQUEST,
   NEWS_LAST_SUCCESS,
   NEWS_LAST_FAIL,
@@ -147,6 +152,22 @@ export const newsCommentCreateReducer = (state = {}, action) => {
 
     case NEWS_CREATE_COMMENT_RESET:
       return {}
+
+    default:
+      return state
+  }
+}
+
+export const newsCommentDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case NEWS_DELETE_COMMENT_REQUEST:
+      return { loading: true }
+
+    case NEWS_DELETE_COMMENT_SUCCESS:
+      return { loading: false, success: true, }
+
+    case NEWS_DELETE_COMMENT_FAIL:
+      return { loading: false, error: action.payload }
 
     default:
       return state

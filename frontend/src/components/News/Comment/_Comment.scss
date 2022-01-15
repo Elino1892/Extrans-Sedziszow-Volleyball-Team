@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
   &:nth-of-type(1){
     border-top: 1px solid rgba(0,0,0,0.2);
   }
@@ -12,6 +13,7 @@
     font-size: 1.8rem;
     font-weight: bold;
     letter-spacing: 1px;
+    margin-top: 20px;
     // flex-basis: 75%;
   }
 
@@ -20,6 +22,7 @@
     align-items: center;
     font-size: 1.3rem;
     opacity: 0.6;
+    margin-top: 20px;
     // flex-basis: 25%;
   }
 
@@ -30,5 +33,31 @@
     font-family: 'Open Sans', 'Roboto', 'sans-serif';
     line-height: 3rem;
     letter-spacing: 1px;
+  }
+
+  &__delete-item{
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    top: 10px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: lighten(red, 10%);
+    border-radius: 5px;
+    transition: .3s;
+    color: white;
+    &:hover{
+      background-color: #eee;
+      color: red;
+    }
+
+    .fa-times{
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
   }
 }
