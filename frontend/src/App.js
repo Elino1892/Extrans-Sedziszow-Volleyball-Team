@@ -12,12 +12,19 @@ import LoginPage from './pages/User/LoginPage';
 import RegisterPage from './pages/User/RegisterPage';
 import ProfilePage from './pages/User/ProfilePage';
 
-import UserListPage from './pages/Admin/UserListPage';
-import UserEditPage from './pages/Admin/UserEditPage';
-import NewsListPage from './pages/Admin/NewsListPage';
-import NewsCreatePage from './pages/Admin/NewsCreatePage';
-import NewsEditPage from './pages/Admin/NewsEditPage';
+import UserListPage from './pages/Admin/User/UserListPage';
+import UserEditPage from './pages/Admin/User/UserEditPage';
+import NewsListPage from './pages/Admin/News/NewsListPage';
+import NewsCreatePage from './pages/Admin/News/NewsCreatePage';
+import NewsEditPage from './pages/Admin/News/NewsEditPage';
 
+import PlayerListPage from './pages/Admin/Player/PlayerListPage';
+import PlayerCreatePage from './pages/Admin/Player/PlayerCreatePage';
+import PlayerEditPage from './pages/Admin/Player/PlayerEditPage';
+
+import GroupListPage from './pages/Admin/Group/GroupListPage';
+import GroupCreatePage from './pages/Admin/Group/GroupCreatePage';
+import GroupEditPage from './pages/Admin/Group/GroupUpdatePage';
 
 const App = () => {
   return (
@@ -26,20 +33,33 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/profil" element={<ProfilePage />}></Route>
+
           <Route path="/aktualnosci/:articleId" element={<ArticleItemPage />}></Route>
           <Route path="/aktualnosci" element={<NewsPage />}></Route>
           <Route path="/rozgrywki" element={<FullGameplayPage />}></Route>
           <Route path="/druzyna" element={<TeamPage />}></Route>
           <Route path="/druzyna/:playerId" element={<PlayerPage />}></Route>
           <Route path="/klub" element={<ClubPage />}></Route>
+
           <Route path="/logowanie" element={<LoginPage />}></Route>
           <Route path="/rejestracja" element={<RegisterPage />}></Route>
 
+
           <Route path="/admin/uzytkownicy" element={<UserListPage />}></Route>
           <Route path="/admin/uzytkownik/:id/edycja" element={<UserEditPage />}></Route>
+
           <Route path="/admin/aktualnosci" element={<NewsListPage />}></Route>
           <Route path="/admin/aktualnosci/tworzenie" element={<NewsCreatePage />}></Route>
           <Route path="/admin/aktualnosci/:id/edycja" element={<NewsEditPage />}></Route>
+
+          <Route path="/admin/zawodnicy" element={<PlayerListPage />}></Route>
+          <Route path="/admin/zawodnicy/tworzenie" element={<PlayerCreatePage />}></Route>
+          <Route path="/admin/zawodnicy/:id/edycja" element={<PlayerEditPage />}></Route>
+
+          <Route path="/admin/grupy" element={<GroupListPage />}></Route>
+          <Route path="/admin/grupy/tworzenie" element={<GroupCreatePage />}></Route>
+          <Route path="/admin/grupy/:id/edycja" element={<GroupEditPage />}></Route>
+
         </Routes>
       </Layout>
     </>

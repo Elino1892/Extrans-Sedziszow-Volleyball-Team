@@ -7,6 +7,10 @@ import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdatePr
 
 import { newsCreateReducer, newsDeleteReducer, newsListReducer, newsUpdateReducer, newsDetailsReducer, newsLastReducer, newsCommentCreateReducer, newsCommentDeleteReducer } from './reducers/newsReducer';
 
+import { playerCreateReducer, playerDeleteReducer, playerListReducer, playerUpdateReducer, playerDetailsReducer } from './reducers/playerReducer';
+
+import { groupCreateReducer, groupDeleteReducer, groupListReducer, groupUpdateReducer, groupDetailsReducer } from './reducers/groupReducer';
+
 
 
 export const reducer = combineReducers({
@@ -26,6 +30,18 @@ export const reducer = combineReducers({
   newsLast: newsLastReducer,
   newsCommentCreate: newsCommentCreateReducer,
   newsCommentDelete: newsCommentDeleteReducer,
+
+  playerCreate: playerCreateReducer,
+  playerDelete: playerDeleteReducer,
+  playerList: playerListReducer,
+  playerUpdate: playerUpdateReducer,
+  playerDetails: playerDetailsReducer,
+
+  groupCreate: groupCreateReducer,
+  groupDelete: groupDeleteReducer,
+  groupList: groupListReducer,
+  groupUpdate: groupUpdateReducer,
+  groupDetails: groupDetailsReducer,
 })
 
 

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import News, Comment
+from .models import News, Comment, Player, Group, Previous_Club, Player_Previous_Club
 from django.contrib.auth.models import User
 
 from datetime import datetime
@@ -66,3 +66,24 @@ class NewsSerializer(serializers.ModelSerializer):
             comment['createdAt'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
             
         return serializer.data
+
+
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Player
+        fields = '__all__'
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Group
+        fields = '__all__'
+
+class PreviousClubSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Previous_Club
+        fields = '__all__'
+
+class PlayerPreviousClubSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Player_Previous_Club
+        fields = '__all__'

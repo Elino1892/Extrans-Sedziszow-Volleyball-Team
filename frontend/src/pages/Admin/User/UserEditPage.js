@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner'
-import { getUserDetails, updateUser } from '../../store/actions/userActions'
-import { USER_UPDATE_RESET } from '../../constants/userConstants'
-import UserEdit from '../../components/Admin/User/UserEdit/UserEdit'
-import AdminLayout from '../../components/Layout/AdminLayout/AdminLayout'
+import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner'
+import { getUserDetails, updateUser } from '../../../store/actions/userActions'
+import { USER_UPDATE_RESET } from '../../../constants/userConstants'
+import UserEdit from '../../../components/Admin/User/UserEdit/UserEdit'
+import AdminLayout from '../../../components/Layout/AdminLayout/AdminLayout'
 
 const UserEditPage = () => {
 

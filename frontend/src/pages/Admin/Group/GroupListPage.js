@@ -2,38 +2,38 @@ import { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner'
+import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner'
 // import Message from '../components/Message'
-import { listNews, deleteNews } from '../../store/actions/newsActions'
+import { listGroups, deleteGroup } from '../../../store/actions/groupActions'
 import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
-import { NEWS_DETAILS_RESET } from '../../constants/newsConstants'
+import { GROUP_DETAILS_RESET } from '../../../constants/groupConstants'
 
-import AdminLayout from '../../components/Layout/AdminLayout/AdminLayout'
-import NewsList from '../../components/Admin/News/NewsList/NewsList'
+import AdminLayout from '../../../components/Layout/AdminLayout/AdminLayout'
+import GroupList from '../../../components/Admin/Group/GroupList/GroupList'
 
 
-const NewsListPage = () => {
+const GroupListPage = () => {
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const newsList = useSelector(state => state.newsList)
-  const { loading, error, news } = newsList
+  const groupList = useSelector(state => state.groupList)
+  const { loading, error, groups } = groupList
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
-  const newsDelete = useSelector(state => state.newsDelete)
-  const { success: successDelete } = newsDelete
+  const groupDelete = useSelector(state => state.groupDelete)
+  const { success: successDelete } = groupDelete
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      document.title = "Aktualności - Administrator"
+      document.title = "Grupy - Administrator"
       window.scrollTo(0, 0)
-      dispatch(listNews())
-      dispatch({ type: NEWS_DETAILS_RESET })
+      dispatch(listGroups())
+      dispatch({ type: GROUP_DETAILS_RESET })
     } else {
       navigate('/logowanie')
     }
@@ -42,8 +42,8 @@ const NewsListPage = () => {
 
   const deleteHandler = (id) => {
 
-    if (window.confirm('Jesteś pewny, że chcesz usunąć ten artykuł?')) {
-      dispatch(deleteNews(id))
+    if (window.confirm('Jesteś pewny, że chcesz usunąć tę grupę ?')) {
+      dispatch(deleteGroup(id))
     }
   }
 
@@ -52,8 +52,8 @@ const NewsListPage = () => {
   return (
     <AdminLayout>
       {loading ? <LoadingSpinner /> :
-        <NewsList
-          news={news}
+        <GroupList
+          groups={groups}
           deleteHandler={deleteHandler}
           loading={loading}
           error={error}
@@ -63,4 +63,4 @@ const NewsListPage = () => {
   )
 }
 
-export default NewsListPage;
+export default GroupListPage;

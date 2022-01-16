@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
-import NewsCreate from "../../components/Admin/News/NewsCreate/NewsCreate";
-import { NEWS_CREATE_RESET } from "../../constants/newsConstants"
-import AdminLayout from '../../components/Layout/AdminLayout/AdminLayout';
-import { createNews } from '../../store/actions/newsActions';
+import NewsCreate from "../../../components/Admin/News/NewsCreate/NewsCreate";
+import { NEWS_CREATE_RESET } from "../../../constants/newsConstants"
+import AdminLayout from '../../../components/Layout/AdminLayout/AdminLayout';
+import { createNews } from '../../../store/actions/newsActions';
 
 const NewsCreatePage = () => {
 

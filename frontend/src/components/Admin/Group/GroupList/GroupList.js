@@ -9,14 +9,14 @@ import { Container } from 'react-bootstrap'
 
 
 
-const NewsList = ({ news, deleteHandler, loading, error }) => {
+const GroupList = ({ groups, deleteHandler, loading, error }) => {
 
-  const [searchTitle, setSearchTitle] = useState('')
+  const [searchGroup, setSearchGroup] = useState('')
 
-  const searchTitleHandler = (e) => {
+  const searchGroupHandler = (e) => {
     const { value } = e.target;
 
-    setSearchTitle(value)
+    setSearchGroup(value)
   }
 
 
@@ -26,21 +26,21 @@ const NewsList = ({ news, deleteHandler, loading, error }) => {
       {/* <Row className='align-items-center'> */}
       {/* <Col> */}
       <div className="admin__container-action">
-        <h1 className='admin__title'>Aktualności</h1>
+        <h1 className='admin__title'>Grupy</h1>
         {/* </Col> */}
 
         {/* <Col className='text-right'> */}
-        <Link className='button admin__link-text admin__link-text--create' to={"/admin/aktualnosci/tworzenie"}>
-          <i className='fas fa-plus'></i> Stwórz artykuł
+        <Link className='button admin__link-text admin__link-text--create' to={"/admin/grupy/tworzenie"}>
+          <i className='fas fa-plus'></i> Stwórz grupę
         </Link>
       </div>
       {/* </Col> */}
       {/* </Row> */}
       <Form.Control
         type='text'
-        placeholder='Wyszukaj aktualności po tytule...'
+        placeholder='Wyszukaj grupę po nazwie...'
         // value={searchEmail}
-        onChange={searchTitleHandler}
+        onChange={searchGroupHandler}
         style={{ margin: '20px 0' }}
         className='admin__search-input'
       >
@@ -56,39 +56,30 @@ const NewsList = ({ news, deleteHandler, loading, error }) => {
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>TYTUŁ</th>
-                    <th>PODTYTUŁ</th>
-                    <th>OPIS</th>
-                    <th>DATA STWORZENIA</th>
-                    {/* <th>ZDJĘCIE</th> */}
-                    <th>AUTOR</th>
+                    <th>NAZWA</th>
                     <th style={{ width: '140px' }}></th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {news.filter(val => {
-                    if (searchTitle == "") {
+                  {groups.filter(val => {
+                    if (searchGroup == "") {
                       return val
-                    } else if (val.title.toLowerCase().includes(searchTitle.toLowerCase())) {
+                    } else if (val.name.toLowerCase().includes(searchGroup.toLowerCase())) {
                       return val
                     }
-                  }).map(newsItem => (
-                    <tr key={newsItem.id}>
-                      <td>{newsItem.id}</td>
-                      <td>{newsItem.title}</td>
-                      <td>{newsItem.subtitle}</td>
-                      <td>{`${newsItem.description.slice(0, 200)}...`}</td>
-                      <td>{newsItem.createdAt}</td>
-                      <td>{newsItem.user}</td>
+                  }).map(group => (
+                    <tr key={group.id}>
+                      <td>{group.id}</td>
+                      <td>{group.name}</td>
                       <td>
-                        <LinkContainer className={'admin__link admin__link--margin'} to={`/admin/aktualnosci/${newsItem.id}/edycja`}>
+                        <LinkContainer className={'admin__link admin__link--margin'} to={`/admin/grupy/${group.id}/edycja`}>
                           <Button variant='light' className='btn-sm'>
                             <i className='fas fa-edit'></i>
                           </Button>
                         </LinkContainer>
 
-                        <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(newsItem.id)}>
+                        <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(group.id)}>
                           <i className='fas fa-trash'></i>
                         </Button>
                       </td>
@@ -102,4 +93,4 @@ const NewsList = ({ news, deleteHandler, loading, error }) => {
   )
 }
 
-export default NewsList;
+export default GroupList;

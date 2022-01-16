@@ -3,11 +3,11 @@ import { useNavigate, useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
-import { NEWS_UPDATE_RESET } from "../../constants/newsConstants"
-import AdminLayout from '../../components/Layout/AdminLayout/AdminLayout';
-import { getNewsDetails, updateNews } from '../../store/actions/newsActions';
-import NewsEdit from '../../components/Admin/News/NewsEdit/NewsEdit';
-import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner'
+import { NEWS_UPDATE_RESET } from "../../../constants/newsConstants"
+import AdminLayout from '../../../components/Layout/AdminLayout/AdminLayout';
+import { getNewsDetails, updateNews } from '../../../store/actions/newsActions';
+import NewsEdit from '../../../components/Admin/News/NewsEdit/NewsEdit';
+import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner'
 
 const NewsEditPage = () => {
 
