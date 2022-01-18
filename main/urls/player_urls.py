@@ -8,5 +8,6 @@ urlpatterns = [
   path('update/<str:pk>/', views.updatePlayer, name="player-update"),
   path('create/', views.createPlayer, name="player-create"),
   path('upload/', views.uploadImage, name="image-upload"),
+  path('upload-bgc/', views.uploadBackgroundImage, name="bgc-upload"),
   path('<str:pk>/', views.getPlayer, name="player"),
 ]

@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import LoadingSpinner from '../../../UI/LoadingSpinner/LoadingSpinner'
 
 
-const PlayerCreate = ({ submitHandler, loadingCreate, errorCreate }) => {
+const PlayerCreate = ({ groups, submitHandler, loadingCreate, errorCreate }) => {
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -17,6 +17,18 @@ const PlayerCreate = ({ submitHandler, loadingCreate, errorCreate }) => {
   const [yearOfJoin, setYearOfJoin] = useState('')
   const [description, setDescription] = useState('')
   const [picture, setPicture] = useState([])
+  const [pictureBackground, setPictureBackground] = useState([])
+  const [group, setGroup] = useState('')
+
+  // const getGroupFromInputHandler = (e) => {
+  //   const { value, id } = e.target;
+
+  //   setGroup({
+  //     id,
+  //     name: value,
+  //   });
+  // }
+
 
   return (
     <>
@@ -26,7 +38,7 @@ const PlayerCreate = ({ submitHandler, loadingCreate, errorCreate }) => {
       <h1 className='admin__title admin__title--edit-user'>Dodawanie zawodnika</h1>
       {loadingCreate && <LoadingSpinner />}
       {errorCreate && <p>Błąd: {errorCreate}</p>}
-      <Form className='admin__form' onSubmit={(e) => submitHandler(e, firstName, lastName, height, weight, rangeInAttack, rangeInBlock, dateOfBirth, number, yearOfJoin, description, picture)}>
+      <Form className='admin__form' onSubmit={(e) => submitHandler(e, firstName, lastName, Number(height), Number(weight), Number(rangeInAttack), Number(rangeInBlock), dateOfBirth, Number(number), Number(yearOfJoin), description, group, picture, pictureBackground)}>
         <Form.Group controlId='name'>
           <Form.Label className='admin__form-label'>Imię</Form.Label>
           <Form.Control
@@ -128,6 +140,23 @@ const PlayerCreate = ({ submitHandler, loadingCreate, errorCreate }) => {
           </Form.Control>
         </Form.Group>
 
+        <Form.Group controlId='groups' className='admin__form-checkbox-container'>
+          <Form.Label className='admin__form-label'>Pozycja</Form.Label>
+          {groups.map(group => (
+            <Form.Check
+              type='radio'
+              key={group.id}
+              className='admin__search-input admin__search-input--short'
+              name='group-option'
+              id={group.id}
+              inline
+              onChange={(e) => setGroup(e.target.value)}
+              value={group.id}
+              label={group.name}
+            />
+          ))}
+        </Form.Group>
+
 
         <Form.Group controlId='description'>
           <Form.Label className='admin__form-label'>Opis</Form.Label>
@@ -146,6 +175,15 @@ const PlayerCreate = ({ submitHandler, loadingCreate, errorCreate }) => {
             type="file"
             label='Wybierz plik'
             onChange={(e) => setPicture([e.target.files[0]])}
+          >
+          </Form.Control>
+        </Form.Group>
+        <Form.Group controlId='bgc'>
+          <Form.Label className='admin__form-label'>Tło</Form.Label>
+          <Form.Control
+            type="file"
+            label='Wybierz plik'
+            onChange={(e) => setPictureBackground([e.target.files[0]])}
           >
           </Form.Control>
         </Form.Group>

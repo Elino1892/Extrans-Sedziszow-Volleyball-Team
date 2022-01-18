@@ -7,6 +7,8 @@ import PlayerCreate from "../../../components/Admin/Player/PlayerCreate/PlayerCr
 import { PLAYER_CREATE_RESET } from "../../../constants/playerConstants"
 import AdminLayout from '../../../components/Layout/AdminLayout/AdminLayout';
 import { createPlayer } from '../../../store/actions/playerActions';
+import { listGroups } from '../../../store/actions/groupActions';
+import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner';
 
 const PlayerCreatePage = () => {
 
@@ -19,12 +21,16 @@ const PlayerCreatePage = () => {
   const playerCreate = useSelector(state => state.playerCreate)
   const { loading: loadingCreate, error: errorCreate, success: successCreate } = playerCreate
 
+  const groupList = useSelector(state => state.groupList)
+  const { loading, error, groups } = groupList
+
 
   useEffect(() => {
 
     if (userInfo && userInfo.isAdmin) {
       document.title = "Dodawanie zawodnika";
       window.scrollTo(0, 0)
+      dispatch(listGroups())
     } else {
       navigate('/logowanie');
     }
@@ -36,8 +42,9 @@ const PlayerCreatePage = () => {
   }, [userInfo, navigate, successCreate, dispatch])
 
 
-  const submitHandler = (e, first_name, last_name, height, weight, range_in_attack, range_in_block, date_of_birth, number, year_of_join, description, picture) => {
+  const submitHandler = (e, first_name, last_name, height, weight, range_in_attack, range_in_block, date_of_birth, number, year_of_join, description, group, picture, pictureBackground) => {
     e.preventDefault();
+
 
     dispatch(createPlayer({
       first_name,
@@ -50,18 +57,25 @@ const PlayerCreatePage = () => {
       number,
       year_of_join,
       description,
+      group,
     })).then((data) => {
-      uploadFileHandler(picture[0], data.id)
+      uploadFileHandler(picture[0], data.id, false)
+      setTimeout(() => { uploadFileHandler(pictureBackground[0], data.id, true) }, 2000)
+      // return data;
     })
+    //   .then((data) => {
+
+    // })
 
   }
 
 
-  const uploadFileHandler = async (file, id) => {
+  const uploadFileHandler = async (file, id, isBgc) => {
     const formData = new FormData()
 
     formData.append('image', file)
     formData.append('player_id', id)
+    // formData.append('isBgc', isBgc)
 
     try {
       const config = {
@@ -70,7 +84,12 @@ const PlayerCreatePage = () => {
         }
       }
 
-      await axios.post('http://127.0.0.1:8000/api/players/upload/', formData, config)
+      if (isBgc) {
+        await axios.post('http://127.0.0.1:8000/api/players/upload-bgc/', formData, config)
+      } else {
+        await axios.post('http://127.0.0.1:8000/api/players/upload/', formData, config)
+      }
+
 
     } catch (error) {
       throw new Error(error)
@@ -79,11 +98,14 @@ const PlayerCreatePage = () => {
 
   return (
     <AdminLayout>
-      <PlayerCreate
-        submitHandler={submitHandler}
-        loadingCreate={loadingCreate}
-        errorCreate={errorCreate}
-      />
+      {loading ? <LoadingSpinner /> :
+        <PlayerCreate
+          groups={groups}
+          submitHandler={submitHandler}
+          loadingCreate={loadingCreate}
+          errorCreate={errorCreate}
+        />
+      }
     </AdminLayout>
   )
 }

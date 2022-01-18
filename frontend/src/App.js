@@ -24,7 +24,14 @@ import PlayerEditPage from './pages/Admin/Player/PlayerEditPage';
 
 import GroupListPage from './pages/Admin/Group/GroupListPage';
 import GroupCreatePage from './pages/Admin/Group/GroupCreatePage';
-import GroupEditPage from './pages/Admin/Group/GroupUpdatePage';
+import GroupEditPage from './pages/Admin/Group/GroupEditPage';
+
+import PreviousClubListPage from './pages/Admin/PreviousClub/PreviousClubListPage';
+import PreviousClubCreatePage from './pages/Admin/PreviousClub/PreviousClubCreatePage';
+import PreviousClubEditPage from './pages/Admin/PreviousClub/PreviousClubEditPage';
+
+import PlayerPreviousClubEditPage from './pages/Admin/PlayerPreviousClub/PlayerPreviousClubEditPage';
+import PlayerPreviousClubCreatePage from './pages/Admin/PlayerPreviousClub/PlayerPreviousClubCreatePage';
 
 const App = () => {
   return (
@@ -38,7 +45,7 @@ const App = () => {
           <Route path="/aktualnosci" element={<NewsPage />}></Route>
           <Route path="/rozgrywki" element={<FullGameplayPage />}></Route>
           <Route path="/druzyna" element={<TeamPage />}></Route>
-          <Route path="/druzyna/:playerId" element={<PlayerPage />}></Route>
+          <Route path="/druzyna/:id" element={<PlayerPage />}></Route>
           <Route path="/klub" element={<ClubPage />}></Route>
 
           <Route path="/logowanie" element={<LoginPage />}></Route>
@@ -60,6 +67,12 @@ const App = () => {
           <Route path="/admin/grupy/tworzenie" element={<GroupCreatePage />}></Route>
           <Route path="/admin/grupy/:id/edycja" element={<GroupEditPage />}></Route>
 
+          <Route path="/admin/poprzednie-kluby" element={<PreviousClubListPage />}></Route>
+          <Route path="/admin/poprzednie-kluby/tworzenie" element={<PreviousClubCreatePage />}></Route>
+          <Route path="/admin/poprzednie-kluby/:id/edycja" element={<PreviousClubEditPage />}></Route>
+
+          <Route path="/admin/poprzednie-kluby/zawodnicy/:id/edycja" element={<PlayerPreviousClubEditPage />}></Route>
+          <Route path="/admin/poprzednie-kluby/zawodnicy/tworzenie" element={<PlayerPreviousClubCreatePage />}></Route>
         </Routes>
       </Layout>
     </>

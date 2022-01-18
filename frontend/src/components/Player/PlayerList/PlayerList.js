@@ -1,7 +1,7 @@
 import logoImage from "../../../images/logo_volleyball_team.png"
 import PlayerItem from "../PlayerItem/PlayerItem";
 
-const PlayerList = ({ team }) => {
+const PlayerList = ({ team, groups }) => {
 
   return (
     <section className="team">
@@ -21,20 +21,20 @@ const PlayerList = ({ team }) => {
       </div>
       <div className="team__players">
         <div className="team__players-wrapper">
-          {team.map(group =>
+          {groups.map(group =>
             <div key={group.id} className="team__group">
-              <p className="team__group-name">{group.group}</p>
-              {group.players.map(player =>
+              <p className="team__group-name">{group.name}</p>
+              {team.map(player =>
+                player.group.name === group.name &&
                 <PlayerItem
                   key={player.id}
                   id={player.id}
-                  firstName={player.firstName}
-                  lastName={player.lastName}
+                  firstName={player.first_name}
+                  lastName={player.last_name}
                   number={player.number}
                   smallImage={player.image}
                 />
               )}
-
             </div>
           )}
         </div>

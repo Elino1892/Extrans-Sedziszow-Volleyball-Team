@@ -69,9 +69,31 @@ class NewsSerializer(serializers.ModelSerializer):
 
 
 class PlayerSerializer(serializers.ModelSerializer):
+    group = serializers.SerializerMethodField(read_only=True)
+    playerPreviousClubs = serializers.SerializerMethodField(read_only=True)
+
     class Meta: 
         model = Player
         fields = '__all__'
+
+    def get_group(self,obj):
+        group = obj.group
+        serializer = GroupSerializer(group, many=False)
+        return serializer.data
+    
+    def get_playerPreviousClubs(self,obj):
+        playerPreviousClubs = Player_Previous_Club.objects.filter(player__id = obj.id)
+        serializer = PlayerPreviousClubSerializer(playerPreviousClubs, many=True)
+
+        for player_previous_club in serializer.data:
+            previous_club = Previous_Club.objects.get(id=player_previous_club['previous_club'])
+            previous_club_serializer = PreviousClubSerializer(previous_club, many=False)
+            player_previous_club['previous_club'] = previous_club_serializer.data['name']
+            group = Group.objects.get(id=player_previous_club['position'])
+            group_serializer = GroupSerializer(group, many=False)
+            player_previous_club['position'] = group_serializer.data['name']
+
+        return serializer.data
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta: 

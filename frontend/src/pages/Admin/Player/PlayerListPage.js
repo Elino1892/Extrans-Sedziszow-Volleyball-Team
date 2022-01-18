@@ -33,7 +33,7 @@ const PlayerListPage = () => {
       document.title = "Zawodnicy - Administrator"
       window.scrollTo(0, 0)
       dispatch(listPlayers())
-      // dispatch({ type: PLAYER_DETAILS_RESET })
+      dispatch({ type: PLAYER_DETAILS_RESET })
     } else {
       navigate('/logowanie')
     }
@@ -51,7 +51,7 @@ const PlayerListPage = () => {
 
   return (
     <AdminLayout>
-      {players.length === 0 ? <LoadingSpinner /> :
+      {loading ? <LoadingSpinner /> :
         <PlayerList
           players={players}
           deleteHandler={deleteHandler}

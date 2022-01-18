@@ -65,11 +65,12 @@ const Navigation = () => {
         {(userInfo && userInfo.isAdmin) &&
           <li className="nav__item nav__dropdown">
             <p className="nav__link nav__link-dropbtn">Admin <span className="fas fa-arrow-down"></span></p>
-            <ul className="nav__dropdown-content">
+            <ul className="nav__dropdown-content nav__dropdown-content--big">
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/uzytkownicy'}>Użytkownicy</NavLink>
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/aktualnosci'}>Aktualności</NavLink>
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/zawodnicy'}>Zawodnicy</NavLink>
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/grupy'}>Grupy</NavLink>
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/poprzednie-kluby'}>Poprzednie kluby zawodników</NavLink>
             </ul>
           </li>
         }

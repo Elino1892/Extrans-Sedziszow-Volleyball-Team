@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom"
 
 const PlayerInfo = ({ id, firstName, lastName, height, weight, rangeInAttack, rangeInBlock, dateOfBirth, yearOfJoin, number, position, image, bgc, description, previousClubs }) => {
+
+  useEffect(() => {
+    document.title = `${firstName} ${lastName} - Extrans Sędziszów Małopolski`
+  }, [])
+
   return (
     <main className="player-info">
       <div className="player-info__navigation">
@@ -82,7 +88,7 @@ const PlayerInfo = ({ id, firstName, lastName, height, weight, rangeInAttack, ra
                   <div className="player-info__previous-clubs-body-table">
                     {previousClubs.map(club =>
                       <p key={club.id} className="player-info__previous-clubs-body-line">
-                        <span>{club.name}</span>
+                        <span>{club.previous_club}</span>
                         <span>{club.season}</span>
                         <span>{club.position}</span>
                       </p>

@@ -1,8 +1,13 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
+import { getPlayerDetails } from "../../store/actions/playerActions";
+import { PLAYER_DETAILS_RESET } from "../../constants/playerConstants";
 
 import playerImage from '../../images/players/Piotr_Świeczka.png'
 import playerBgc from '../../images/players/Piotr_Świeczka_background.jpg'
 import PlayerInfo from "../../components/Player/PlayerInfo/PlayerInfo";
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 
 const dummyPlayer = {
 
@@ -44,29 +49,49 @@ const dummyPlayer = {
 
 const PlayerPage = () => {
 
+  const params = useParams()
+  const { id: playerId } = params;
+
+  const dispatch = useDispatch();
+
+  const playerDetails = useSelector(state => state.playerDetails)
+  const { loading, error, player } = playerDetails
+
   useEffect(() => {
-    document.title = `${dummyPlayer.firstName} ${dummyPlayer.lastName} - Extrans Sędziszów Małopolski`
     window.scrollTo(0, 0)
-  }, [])
+
+    if (!player.last_name || player.id !== Number(playerId)) {
+      dispatch(getPlayerDetails(playerId))
+    }
+
+    // return () => {
+    //   dispatch({ type: PLAYER_DETAILS_RESET })
+    // }
+  }, [dispatch, player, playerId])
+
 
   return (
-    <PlayerInfo
-      id={dummyPlayer.id}
-      firstName={dummyPlayer.firstName}
-      lastName={dummyPlayer.lastName}
-      height={dummyPlayer.height}
-      weight={dummyPlayer.weight}
-      rangeInAttack={dummyPlayer.rangeInAttack}
-      rangeInBlock={dummyPlayer.rangeInBlock}
-      dateOfBirth={dummyPlayer.dateOfBirth}
-      yearOfJoin={dummyPlayer.yearOfJoin}
-      number={dummyPlayer.number}
-      position={dummyPlayer.position}
-      image={dummyPlayer.image}
-      bgc={dummyPlayer.bgc}
-      description={dummyPlayer.description}
-      previousClubs={dummyPlayer.previousClubs}
-    />
+    <>
+      {Object.keys(player).length === 0 ? <LoadingSpinner /> :
+        <PlayerInfo
+          id={player.id}
+          firstName={player.first_name}
+          lastName={player.last_name}
+          height={player.height}
+          weight={player.weight}
+          rangeInAttack={player.range_in_attack}
+          rangeInBlock={player.range_in_block}
+          dateOfBirth={player.date_of_birth}
+          yearOfJoin={player.year_of_join}
+          number={player.number}
+          position={player.group.name}
+          image={player.image}
+          bgc={player.background}
+          description={player.description}
+          previousClubs={player.playerPreviousClubs}
+        />
+      }
+    </>
   )
 }
 

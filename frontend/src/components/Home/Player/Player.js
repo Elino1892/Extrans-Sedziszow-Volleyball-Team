@@ -13,58 +13,58 @@ import PlayerItem from './PlayerItem/PlayerItem';
 import Button from '../../UI/Button/Button';
 
 
-const dummyPlayers = [{
-  'id': 1,
-  'firstName': 'Piotr',
-  'lastName': 'Świeczka',
-  'position': 'przyjmujący',
-  'dateOfBirth': '01 stycznia 1996',
-  'yearOfJoin': '2021',
-  'number': '1',
-  'smallImage': smallImagePiotrŚwieczka,
-  'largeImage': largeImagePiotrŚwieczka,
-},
-{
-  'id': 2,
-  'firstName': 'Jan',
-  'lastName': 'Pyrsak',
-  'position': 'przyjmujący',
-  'dateOfBirth': '01 stycznia 1998',
-  'yearOfJoin': '2018',
-  'number': '12',
-  'smallImage': smallImageJanPyrsak,
-  'largeImage': largeImageJanPyrsak,
-},
-{
-  'id': 3,
-  'firstName': 'Tomasz',
-  'lastName': 'Kotyla',
-  'position': 'przyjmujący',
-  'dateOfBirth': '01 stycznia 1993',
-  'yearOfJoin': '2017',
-  'number': '15',
-  'smallImage': smallImageTomaszKotyla,
-  'largeImage': largeImageTomaszKotyla,
-},
-{
-  'id': 4,
-  'firstName': 'Rafał',
-  'lastName': 'Szczęch',
-  'position': 'Libero',
-  'dateOfBirth': '01 stycznia 1997',
-  'yearOfJoin': '2017',
-  'number': '16',
-  'smallImage': smallImageRafałSzczęch,
-  'largeImage': largeImageRafałSzczęch,
-},
-]
+// const dummyPlayers = [{
+//   'id': 1,
+//   'firstName': 'Piotr',
+//   'lastName': 'Świeczka',
+//   'position': 'przyjmujący',
+//   'dateOfBirth': '01 stycznia 1996',
+//   'yearOfJoin': '2021',
+//   'number': '1',
+//   'smallImage': smallImagePiotrŚwieczka,
+//   'largeImage': largeImagePiotrŚwieczka,
+// },
+// {
+//   'id': 2,
+//   'firstName': 'Jan',
+//   'lastName': 'Pyrsak',
+//   'position': 'przyjmujący',
+//   'dateOfBirth': '01 stycznia 1998',
+//   'yearOfJoin': '2018',
+//   'number': '12',
+//   'smallImage': smallImageJanPyrsak,
+//   'largeImage': largeImageJanPyrsak,
+// },
+// {
+//   'id': 3,
+//   'firstName': 'Tomasz',
+//   'lastName': 'Kotyla',
+//   'position': 'przyjmujący',
+//   'dateOfBirth': '01 stycznia 1993',
+//   'yearOfJoin': '2017',
+//   'number': '15',
+//   'smallImage': smallImageTomaszKotyla,
+//   'largeImage': largeImageTomaszKotyla,
+// },
+// {
+//   'id': 4,
+//   'firstName': 'Rafał',
+//   'lastName': 'Szczęch',
+//   'position': 'Libero',
+//   'dateOfBirth': '01 stycznia 1997',
+//   'yearOfJoin': '2017',
+//   'number': '16',
+//   'smallImage': smallImageRafałSzczęch,
+//   'largeImage': largeImageRafałSzczęch,
+// },
+// ]
 
-const Player = () => {
+const Player = ({ players }) => {
 
   const [numberItem, setNumberItem] = useState(0);
 
   const showNextPlayerHandler = () => {
-    if (numberItem < dummyPlayers.length - 1) {
+    if (numberItem < players.length - 1) {
       // setIsTheLastMatch(false)
       setNumberItem(() => numberItem + 1)
     }
@@ -90,22 +90,22 @@ const Player = () => {
 
   return (
     <section className="player">
-      <div className="player__details-container" style={{ transform: `translate3d(${numberItem * -(100 / dummyPlayers.length)}%, 0px, 0px)`, width: `${dummyPlayers.length * 100}%` }}>
-        {dummyPlayers.map((player, index) =>
+      <div className="player__details-container" style={{ transform: `translate3d(${numberItem * -(100 / players.length)}%, 0px, 0px)`, width: `${players.length * 100}%` }}>
+        {players.map((player, index) =>
           <PlayerDetails
             key={player.id}
             id={player.id}
-            firstName={player.firstName}
-            lastName={player.lastName}
-            position={player.position}
-            dateOfBirth={player.dateOfBirth}
-            yearOfJoin={player.yearOfJoin}
+            firstName={player.first_name}
+            lastName={player.last_name}
+            position={player.group.name}
+            dateOfBirth={player.date_of_birth}
+            yearOfJoin={player.year_of_join}
             number={player.number}
-            largeImage={player.largeImage}
+            largeImage={player.background}
             showNextPlayerHandler={showNextPlayerHandler}
             showPrevPlayerHandler={showPrevPlayerHandler}
             index={index}
-            theLastPlayer={dummyPlayers.length - 1}
+            theLastPlayer={players.length - 1}
           />
         )}
       </div>
@@ -117,22 +117,22 @@ const Player = () => {
           <div
             className="player__list-player-container"
             style={{
-              transform: `translate3d(${numberItem * -(100 / dummyPlayers.length)}%, 0px, 0px)`,
-              width: `${dummyPlayers.length * (100 / 3)}%`
+              transform: `translate3d(${numberItem * -(100 / players.length)}%, 0px, 0px)`,
+              width: `${players.length * (100 / 3)}%`
 
             }}>
-            {dummyPlayers.map((player, index) =>
+            {players.map((player, index) =>
               <PlayerItem
                 key={player.id}
-                firstName={player.firstName}
-                lastName={player.lastName}
-                position={player.position}
+                firstName={player.first_name}
+                lastName={player.last_name}
+                position={player.group.name}
                 number={player.number}
-                smallImage={player.smallImage}
+                smallImage={player.image}
                 // showNextPlayerHandler={showNextPlayerHandler}
                 // showPrevPlayerHandler={showPrevPlayerHandler}
                 index={index}
-                theLastPlayer={dummyPlayers.length - 1}
+                theLastPlayer={players.length - 1}
                 numberItem={numberItem}
                 showClickPlayerHandler={showClickPlayerHandler}
               />

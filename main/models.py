@@ -1,3 +1,5 @@
+from asyncio.windows_events import NULL
+from tokenize import group
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,12 +14,20 @@ class News(models.Model):
   createdAt = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
+  def __str__(self):
+    return f"{self.title}"
+    # return '%s - %s' % (self.poll_name, self.ID)
+
+
 class Comment(models.Model):
   id = models.AutoField(primary_key=True)
   text = models.TextField(blank=True, null=True, max_length=1000)
   createdAt = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
   news = models.ForeignKey(News, on_delete=models.SET_NULL, null=True)
+  
+  def __str__(self):
+    return f"{self.text}"
 
 class Sponsor(models.Model):
   id = models.AutoField(primary_key=True)
@@ -25,40 +35,66 @@ class Sponsor(models.Model):
   image = models.ImageField(null=True, blank=True)
   group = models.CharField(max_length=200)
 
+  def __str__(self):
+    return f"{self.name}"
+
+
+class Group(models.Model):
+  id = models.AutoField(primary_key=True)
+  name = models.CharField(max_length=200, blank=True, null=True)
+
+  def __str__(self):
+    return f"{self.name}"
+
+
 class Player(models.Model):
   id = models.AutoField(primary_key=True)
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=100)
   year_of_join = models.IntegerField(null=True, blank=True)
   image = models.ImageField(null=True, blank=True)
-  height = models.IntegerField(blank=True, null=True)
-  weight = models.IntegerField(blank=True, null=True)
-  range_in_attack = models.IntegerField(blank=True, null=True)
-  range_in_block = models.IntegerField(blank=True, null=True)
+  background = models.ImageField(null=True, blank=True)
+  height = models.IntegerField(blank=True, null=True, default=0)
+  weight = models.IntegerField(blank=True, null=True, default=0)
+  range_in_attack = models.IntegerField(blank=True, null=True, default=0)
+  range_in_block = models.IntegerField(blank=True, null=True, default=0)
   date_of_birth = models.DateField(null=True, blank=True)
-  number = models.IntegerField(blank=True, null=True)
+  number = models.IntegerField(blank=True, null=True, default=0)
   description = models.TextField(blank=True, null=True)
+  group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
+
+  def __str__(self):
+    return f"{self.first_name} {self.last_name}"
+
 
 class Previous_Club(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100)
-  season = models.CharField(max_length=20)
-  position = models.CharField(max_length=30)
+  
+
+  def __str__(self):
+    return f"{self.name}"
 
 class Player_Previous_Club(models.Model):
   id = models.AutoField(primary_key=True)
   player = models.ForeignKey(Player, on_delete=models.CASCADE, null=False)
   previous_club = models.ForeignKey(Previous_Club, on_delete=models.CASCADE, null=False)
+  position = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
+  season = models.CharField(max_length=20, default='')
+  # position = models.CharField(max_length=30, default='')
 
-class Group(models.Model):
-  id = models.AutoField(primary_key=True)
-  name = models.CharField(max_length=200, blank=True, null=True)
+
+  def __str__(self):
+    return f"{self.player} - {self.previous_club}"
 
 class Team(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100)
   image = models.ImageField(null=True, blank=True)
   coach = models.CharField(max_length=100)
+
+  def __str__(self):
+    return f"{self.name}"
 
 class Match(models.Model):
   id = models.AutoField(primary_key=True)
@@ -71,13 +107,22 @@ class Match(models.Model):
   guest_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='guest_team')
   is_finished = models.BooleanField(default=False)
 
+  def __str__(self):
+    return f"{self.date} | {self.home_team} - {self.guest_team}"
+
 class Photo(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=50)
   image = models.ImageField(null=True, blank=True)
   match = models.ForeignKey(Match, on_delete=models.SET_NULL, null=True)
 
+  def __str__(self):
+    return f"{self.name}"
+
 class Set(models.Model):
   number = models.IntegerField(blank=True, null=True)
   home_team_score_set = models.IntegerField(blank=True, null=True)
   guest_team_score_set = models.IntegerField(blank=True, null=True)
+
+  def __str__(self):
+    return f"{self.number}"

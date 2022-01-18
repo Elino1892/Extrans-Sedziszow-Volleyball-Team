@@ -59,6 +59,7 @@ const PlayerList = ({ players, deleteHandler, loading, error }) => {
                     <th>IMIĘ</th>
                     <th>NAZWISKO</th>
                     <th>DATA URODZENIA</th>
+                    <th>POZYCJA</th>
                     <th>NUMER</th>
                     <th>WZROST</th>
                     <th>WAGA</th>
@@ -83,12 +84,13 @@ const PlayerList = ({ players, deleteHandler, loading, error }) => {
                       <td>{player.first_name}</td>
                       <td>{player.last_name}</td>
                       <td>{player.date_of_birth}</td>
-                      <td>{player.number}</td>
-                      <td>{player.height} cm</td>
-                      <td>{player.weight} kg</td>
-                      <td>{player.range_in_attack} cm</td>
-                      <td>{player.range_in_block} cm</td>
-                      <td>{player.year_of_join}</td>
+                      <td>{player.group.name}</td>
+                      <td>{!player.number ? '-' : player.number}</td>
+                      <td>{!player.height ? '-' : `${player.height} cm`}</td>
+                      <td>{!player.weight ? '-' : `${player.weight} kg`} </td>
+                      <td>{!player.range_in_attack ? '-' : `${player.range_in_attack} cm`} </td>
+                      <td>{!player.range_in_block ? '-' : `${player.range_in_block} cm`}</td>
+                      <td>{!player.year_of_join ? '-' : player.year_of_join}</td>
                       <td>{`${player.description.slice(0, 100)}...`}</td>
                       <td>
                         <LinkContainer className={'admin__link admin__link--margin'} to={`/admin/zawodnicy/${player.id}/edycja`}>

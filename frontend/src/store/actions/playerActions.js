@@ -53,7 +53,6 @@ export const getPlayerDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(`http://127.0.0.1:8000/api/players/${id}`)
 
-
     dispatch({
       type: PLAYER_DETAILS_SUCCESS,
       payload: data

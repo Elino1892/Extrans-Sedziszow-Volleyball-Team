@@ -50,6 +50,8 @@ def getPlayer(request, pk):
 def createPlayer(request):
     data = request.data
 
+    group = Group.objects.get(id=data['group'])
+
     player = Player.objects.create(
       first_name = data['first_name'],
       last_name = data['last_name'],
@@ -60,11 +62,13 @@ def createPlayer(request):
       date_of_birth = data['date_of_birth'],
       number = data['number'],
       year_of_join = data['year_of_join'],
-      description = data['description']
+      description = data['description'],
+      group = group,
     )
 
     serializer = PlayerSerializer(player, many=False)
     return Response(serializer.data)
+    # return Response()
 
 
 @api_view(['PUT'])
@@ -72,6 +76,8 @@ def createPlayer(request):
 def updatePlayer(request, pk):
     data = request.data
     player = Player.objects.get(id=pk)
+
+    group = Group.objects.get(id=data['group'])
 
     player.first_name = data['first_name']
     player.last_name = data['last_name']
@@ -83,6 +89,7 @@ def updatePlayer(request, pk):
     player.number = data['number']
     player.year_of_join = data['year_of_join']
     player.description = data['description']
+    player.group = group
 
     player.save()
 
@@ -102,7 +109,31 @@ def uploadImage(request):
     data = request.data
     player_id = data['player_id']
     player = Player.objects.get(id=player_id)
+    # print('\n')
+    # print(request.FILES.get('image'))
+    # print(data['isBgc'])
+    # if(data['isBgc']):
+    #   print('bgc')
+    #   player.background = request.FILES.get('image')
+    # else:
+    #   print('image')
+    print(request.FILES.get('image'))
     player.image = request.FILES.get('image')
     player.save()
 
+    # print(player.background)
+    print(player.image)
+    # print('\n')
+
     return Response('Zdjęcie zostało przesłane')
+
+
+@api_view(['POST'])
+def uploadBackgroundImage(request):
+    data = request.data
+    player_id = data['player_id']
+    player = Player.objects.get(id=player_id)
+    player.background = request.FILES.get('image')
+    player.save()
+
+    return Response('Tło zostało przesłane')

@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import LoadingSpinner from '../../../UI/LoadingSpinner/LoadingSpinner'
 
 
-const PlayerEdit = ({ player, submitHandler, loadingUpdate, errorUpdate }) => {
+const PlayerEdit = ({ player, groups, submitHandler, loadingUpdate, errorUpdate }) => {
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -17,9 +17,16 @@ const PlayerEdit = ({ player, submitHandler, loadingUpdate, errorUpdate }) => {
   const [yearOfJoin, setYearOfJoin] = useState('')
   const [description, setDescription] = useState('')
   const [picture, setPicture] = useState([])
+  const [pictureBackground, setPictureBackground] = useState([])
   const [image, setImage] = useState('')
+  const [backgroundImage, setBackgroundImage] = useState('')
+  const [isChangeGroup, setIsChangeGroup] = useState(false)
+  const [groupItem, setGroup] = useState(0)
+  const [isBelongGroupList, setisBelongGroupList] = useState([new Array(groups.length).fill(false)])
+
 
   useEffect(() => {
+    console.log(player)
     setFirstName(player.first_name)
     setLastName(player.last_name)
     setHeight(player.height)
@@ -31,7 +38,33 @@ const PlayerEdit = ({ player, submitHandler, loadingUpdate, errorUpdate }) => {
     setYearOfJoin(player.year_of_join)
     setDescription(player.description)
     setImage(player.image)
+    setBackgroundImage(player.background)
+    setGroup(player.group.id)
   }, [player])
+
+  useEffect(() => {
+    const tempArray = [...groups];
+    const tempArray2 = [...isBelongGroupList]
+    tempArray.forEach((group, index) => {
+      if (group.id === player.group.id) {
+        tempArray2[index] = true;
+      }
+    })
+    setisBelongGroupList(tempArray2)
+  }, [])
+
+  const changeInputValueHandler = (e, index) => {
+    const { value } = e.target;
+    const arrayTemp = [...isBelongGroupList]
+    for (let i = 0; i < arrayTemp.length; i++) {
+      arrayTemp[i] = false
+    }
+
+    arrayTemp[index] = true;
+    setisBelongGroupList(arrayTemp)
+
+    setGroup(value)
+  }
 
   return (
     <>
@@ -41,7 +74,7 @@ const PlayerEdit = ({ player, submitHandler, loadingUpdate, errorUpdate }) => {
       <h1 className='admin__title admin__title--edit-user'>Edycja zawodnika</h1>
       {loadingUpdate && <LoadingSpinner />}
       {errorUpdate && <p>Błąd: {errorUpdate}</p>}
-      <Form className='admin__form' onSubmit={(e) => submitHandler(e, firstName, lastName, height, weight, rangeInAttack, rangeInBlock, dateOfBirth, number, yearOfJoin, description, picture)}>
+      <Form className='admin__form' onSubmit={(e) => submitHandler(e, firstName, lastName, Number(height), Number(weight), Number(rangeInAttack), Number(rangeInBlock), dateOfBirth, Number(number), Number(yearOfJoin), description, groupItem, picture, pictureBackground)}>
         <Form.Group controlId='name'>
           <Form.Label className='admin__form-label'>Imię</Form.Label>
           <Form.Control
@@ -143,6 +176,25 @@ const PlayerEdit = ({ player, submitHandler, loadingUpdate, errorUpdate }) => {
           </Form.Control>
         </Form.Group>
 
+        <Form.Group controlId='groups' className='admin__form-checkbox-container'>
+          <Form.Label className='admin__form-label'>Pozycja</Form.Label>
+          {groups.map((group, index) => (
+            <Form.Check
+              type='radio'
+              checked={isBelongGroupList[index]}
+
+              key={group.id}
+              className='admin__search-input admin__search-input--short'
+              name='group-option'
+              id={group.id}
+              inline
+              onChange={(e) => changeInputValueHandler(e, index)}
+              value={group.id}
+              label={group.name}
+            />
+          ))}
+        </Form.Group>
+
 
         <Form.Group controlId='description'>
           <Form.Label className='admin__form-label'>Opis</Form.Label>
@@ -172,6 +224,28 @@ const PlayerEdit = ({ player, submitHandler, loadingUpdate, errorUpdate }) => {
             label='Wybierz plik'
             // value={picture}
             onChange={(e) => setPicture([e.target.files[0]])}
+          >
+
+          </Form.Control>
+
+        </Form.Group>
+
+        <Form.Group controlId='bgc'>
+          <Form.Label className='admin__form-label'>Tło</Form.Label>
+          <Form.Control
+
+            type='text'
+            placeholder='Plik'
+            value={backgroundImage}
+            onChange={(e) => setBackgroundImage(e.target.value)}
+            disabled
+          >
+          </Form.Control>
+          <Form.Control
+            type="file"
+            label='Wybierz plik'
+            // value={picture}
+            onChange={(e) => setPictureBackground([e.target.files[0]])}
           >
 
           </Form.Control>

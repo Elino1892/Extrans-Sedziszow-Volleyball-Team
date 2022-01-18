@@ -8,6 +8,7 @@ import AdminLayout from '../../../components/Layout/AdminLayout/AdminLayout';
 import { getPlayerDetails, updatePlayer } from '../../../store/actions/playerActions';
 import PlayerEdit from '../../../components/Admin/Player/PlayerEdit/PlayerEdit';
 import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner'
+import { listGroups } from '../../../store/actions/groupActions';
 
 const PlayerEditPage = () => {
 
@@ -26,11 +27,14 @@ const PlayerEditPage = () => {
   const playerUpdate = useSelector(state => state.playerUpdate)
   const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = playerUpdate
 
+  const groupList = useSelector(state => state.groupList)
+  const { loading: loadingGroupList, error: errorGroupList, groups } = groupList
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Edycja zawodnika";
       window.scrollTo(0, 0)
+      dispatch(listGroups())
       if (successUpdate) {
         dispatch({ type: PLAYER_UPDATE_RESET })
         navigate('/admin/zawodnicy');
@@ -44,7 +48,7 @@ const PlayerEditPage = () => {
   }, [userInfo, navigate, successUpdate, dispatch, player, playerId])
 
 
-  const submitHandler = (e, first_name, last_name, height, weight, range_in_attack, range_in_block, date_of_birth, number, year_of_join, description, picture) => {
+  const submitHandler = (e, first_name, last_name, height, weight, range_in_attack, range_in_block, date_of_birth, number, year_of_join, description, group, picture, pictureBackground) => {
     e.preventDefault();
 
     dispatch(updatePlayer({
@@ -59,13 +63,15 @@ const PlayerEditPage = () => {
       number,
       year_of_join,
       description,
-    }))
-
-    uploadFileHandler(picture[0])
+      group,
+    })).then(() => {
+      uploadFileHandler(picture[0], false)
+      setTimeout(() => { uploadFileHandler(pictureBackground[0], true) }, 3000)
+    })
   }
 
 
-  const uploadFileHandler = async (file) => {
+  const uploadFileHandler = async (file, isBgc) => {
     const formData = new FormData()
 
     formData.append('image', file)
@@ -78,7 +84,11 @@ const PlayerEditPage = () => {
         }
       }
 
-      await axios.post('http://127.0.0.1:8000/api/players/upload/', formData, config)
+      if (isBgc) {
+        await axios.post('http://127.0.0.1:8000/api/players/upload-bgc/', formData, config)
+      } else {
+        await axios.post('http://127.0.0.1:8000/api/players/upload/', formData, config)
+      }
 
     } catch (error) {
       throw new Error(error)
@@ -87,13 +97,15 @@ const PlayerEditPage = () => {
 
   return (
     <AdminLayout>
-      {loading ? <LoadingSpinner /> :
-        <PlayerEdit
-          player={player}
-          submitHandler={submitHandler}
-          loadingUpdate={loadingUpdate}
-          errorUpdate={errorUpdate}
-        />
+      {Object.keys(player).length === 0 ? <LoadingSpinner /> :
+        groups.length === 0 ? <LoadingSpinner /> :
+          <PlayerEdit
+            player={player}
+            groups={groups}
+            submitHandler={submitHandler}
+            loadingUpdate={loadingUpdate}
+            errorUpdate={errorUpdate}
+          />
       }
     </AdminLayout>
   )
