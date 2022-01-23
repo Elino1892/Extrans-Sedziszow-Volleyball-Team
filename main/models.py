@@ -16,7 +16,9 @@ class News(models.Model):
 
   def __str__(self):
     return f"{self.title}"
-    # return '%s - %s' % (self.poll_name, self.ID)
+  
+  class Meta:
+        verbose_name_plural = "Aktualności"
 
 
 class Comment(models.Model):
@@ -28,6 +30,9 @@ class Comment(models.Model):
   
   def __str__(self):
     return f"{self.text}"
+  
+  class Meta:
+        verbose_name_plural = "Komentarze"
 
 class Sponsor(models.Model):
   id = models.AutoField(primary_key=True)
@@ -38,6 +43,9 @@ class Sponsor(models.Model):
   def __str__(self):
     return f"{self.name}"
 
+  class Meta:
+        verbose_name_plural = "Sponsorzy"
+
 
 class Group(models.Model):
   id = models.AutoField(primary_key=True)
@@ -45,6 +53,9 @@ class Group(models.Model):
 
   def __str__(self):
     return f"{self.name}"
+
+  class Meta:
+        verbose_name_plural = "Grupy"
 
 
 class Player(models.Model):
@@ -65,6 +76,9 @@ class Player(models.Model):
 
   def __str__(self):
     return f"{self.first_name} {self.last_name}"
+  
+  class Meta:
+        verbose_name_plural = "Członkowie zespołu"
 
 
 class Previous_Club(models.Model):
@@ -74,6 +88,9 @@ class Previous_Club(models.Model):
 
   def __str__(self):
     return f"{self.name}"
+  
+  class Meta:
+        verbose_name_plural = "Poprzednie kluby"
 
 class Player_Previous_Club(models.Model):
   id = models.AutoField(primary_key=True)
@@ -87,14 +104,20 @@ class Player_Previous_Club(models.Model):
   def __str__(self):
     return f"{self.player} - {self.previous_club}"
 
+  class Meta:
+        verbose_name_plural = "Zawodnicy z poprzednimi klubami"
+
 class Team(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100)
-  image = models.ImageField(null=True, blank=True)
-  coach = models.CharField(max_length=100)
+  logo = models.ImageField(null=True, blank=True)
+  # coach = models.CharField(max_length=100)
 
   def __str__(self):
     return f"{self.name}"
+
+  class Meta:
+        verbose_name_plural = "Drużyny"
 
 class Match(models.Model):
   id = models.AutoField(primary_key=True)
@@ -106,23 +129,35 @@ class Match(models.Model):
   home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team')
   guest_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='guest_team')
   is_finished = models.BooleanField(default=False)
+  result = models.CharField(max_length=10, blank=True, null=True)
+  set_results = models.CharField(max_length=50, blank=True, null=True)
+  round = models.IntegerField(blank=True, null=True, default=1)
 
   def __str__(self):
-    return f"{self.date} | {self.home_team} - {self.guest_team}"
+    return f"{self.home_team} - {self.guest_team}"
+
+  class Meta:
+        verbose_name_plural = "Mecze"
 
 class Photo(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=50)
   image = models.ImageField(null=True, blank=True)
-  match = models.ForeignKey(Match, on_delete=models.SET_NULL, null=True)
 
   def __str__(self):
     return f"{self.name}"
+  
+  class Meta:
+        verbose_name_plural = "Zdjęcia"
 
 class Set(models.Model):
   number = models.IntegerField(blank=True, null=True)
   home_team_score_set = models.IntegerField(blank=True, null=True)
   guest_team_score_set = models.IntegerField(blank=True, null=True)
+  match = models.ForeignKey(Match, on_delete=models.CASCADE, null=False, default=False)
 
   def __str__(self):
     return f"{self.number}"
+
+  class Meta:
+        verbose_name_plural = "Sety"

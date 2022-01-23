@@ -109,21 +109,11 @@ def uploadImage(request):
     data = request.data
     player_id = data['player_id']
     player = Player.objects.get(id=player_id)
-    # print('\n')
-    # print(request.FILES.get('image'))
-    # print(data['isBgc'])
-    # if(data['isBgc']):
-    #   print('bgc')
-    #   player.background = request.FILES.get('image')
-    # else:
-    #   print('image')
-    print(request.FILES.get('image'))
-    player.image = request.FILES.get('image')
-    player.save()
 
-    # print(player.background)
-    print(player.image)
-    # print('\n')
+    if(request.FILES.get('image')):
+      player.image = request.FILES.get('image')
+      player.save()
+
 
     return Response('Zdjęcie zostało przesłane')
 
@@ -133,7 +123,9 @@ def uploadBackgroundImage(request):
     data = request.data
     player_id = data['player_id']
     player = Player.objects.get(id=player_id)
-    player.background = request.FILES.get('image')
-    player.save()
+
+    if(request.FILES.get('image')):
+      player.background = request.FILES.get('image')
+      player.save()
 
     return Response('Tło zostało przesłane')

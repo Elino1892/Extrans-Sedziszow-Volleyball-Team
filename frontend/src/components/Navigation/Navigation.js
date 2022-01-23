@@ -71,6 +71,8 @@ const Navigation = () => {
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/zawodnicy'}>Zawodnicy</NavLink>
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/grupy'}>Grupy</NavLink>
               <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/poprzednie-kluby'}>Poprzednie kluby zawodników</NavLink>
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/druzyny'}>Drużyny</NavLink>
+              <NavLink className={navData => navData.isActive ? "nav__link nav__link-dropbtn nav__link-dropbtn--item active active-drop-item" : "nav__link nav__link-dropbtn nav__link-dropbtn--item"} to={'/admin/mecze'}>Mecze</NavLink>
             </ul>
           </li>
         }

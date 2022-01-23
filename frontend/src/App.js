@@ -33,6 +33,14 @@ import PreviousClubEditPage from './pages/Admin/PreviousClub/PreviousClubEditPag
 import PlayerPreviousClubEditPage from './pages/Admin/PlayerPreviousClub/PlayerPreviousClubEditPage';
 import PlayerPreviousClubCreatePage from './pages/Admin/PlayerPreviousClub/PlayerPreviousClubCreatePage';
 
+import TeamListPage from './pages/Admin/Team/TeamListPage'
+import TeamCreatePage from './pages/Admin/Team/TeamCreatePage';
+import TeamEditPage from './pages/Admin/Team/TeamEditPage';
+
+import MatchListPage from './pages/Admin/Match/MatchListPage';
+import MatchCreatePage from './pages/Admin/Match/MatchCreatePage';
+import MatchEditPage from './pages/Admin/Match/MatchEditPage';
+
 const App = () => {
   return (
     <>
@@ -66,6 +74,14 @@ const App = () => {
           <Route path="/admin/grupy" element={<GroupListPage />}></Route>
           <Route path="/admin/grupy/tworzenie" element={<GroupCreatePage />}></Route>
           <Route path="/admin/grupy/:id/edycja" element={<GroupEditPage />}></Route>
+
+          <Route path="/admin/druzyny" element={<TeamListPage />}></Route>
+          <Route path="/admin/druzyny/tworzenie" element={<TeamCreatePage />}></Route>
+          <Route path="/admin/druzyny/:id/edycja" element={<TeamEditPage />}></Route>
+
+          <Route path="/admin/mecze" element={<MatchListPage />}></Route>
+          <Route path="/admin/mecze/tworzenie" element={<MatchCreatePage />}></Route>
+          <Route path="/admin/mecze/:id/edycja" element={<MatchEditPage />}></Route>
 
           <Route path="/admin/poprzednie-kluby" element={<PreviousClubListPage />}></Route>
           <Route path="/admin/poprzednie-kluby/tworzenie" element={<PreviousClubCreatePage />}></Route>

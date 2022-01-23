@@ -90,8 +90,9 @@ def uploadImage(request):
     data = request.data
     news_id = data['news_id']
     news = News.objects.get(id=news_id)
-    news.image = request.FILES.get('image')
-    news.save()
+    if(request.FILES.get('image')):
+      news.image = request.FILES.get('image')
+      news.save()
 
     return Response('Zdjęcie zostało przesłane')
 

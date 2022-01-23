@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import News, Comment, Player, Group, Previous_Club, Player_Previous_Club
+from .models import News, Comment, Player, Group, Previous_Club, Player_Previous_Club, Team, Match, Set
 from django.contrib.auth.models import User
 
 from datetime import datetime
@@ -109,3 +109,30 @@ class PlayerPreviousClubSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Player_Previous_Club
         fields = '__all__'
+
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Team
+        fields = '__all__'
+
+class SetSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Set
+        fields = '__all__'
+
+class MatchSerializer(serializers.ModelSerializer):
+    set = serializers.SerializerMethodField(read_only=True)
+
+    class Meta: 
+        model = Match
+        fields = '__all__'
+
+    def get_set(self,obj):
+        set = Set.objects.filter(match = obj.id)
+        serializer = SetSerializer(set, many=True)
+        for set_item in serializer.data:
+            set_item['match'] = f"{obj.home_team} - {obj.guest_team}"
+        
+        return serializer.data
+
+

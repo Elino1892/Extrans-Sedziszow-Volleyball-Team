@@ -15,6 +15,9 @@ import { previousClubListReducer, previousClubCreateReducer, previousClubDeleteR
 
 import { playerPreviousClubListReducer, playerPreviousClubCreateReducer, playerPreviousClubDeleteReducer, playerPreviousClubDetailsReducer, playerPreviousClubUpdateReducer } from './reducers/playerPreviousClubReducer'
 
+import { teamCreateReducer, teamDeleteReducer, teamDetailsReducer, teamListReducer, teamUpdateReducer } from './reducers/teamReducer'
+
+import { matchCreateReducer, matchDeleteReducer, matchDetailsReducer, matchListReducer, matchRoundListReducer, matchUpdateReducer } from './reducers/matchReducer'
 
 
 
@@ -47,6 +50,19 @@ export const reducer = combineReducers({
   groupList: groupListReducer,
   groupUpdate: groupUpdateReducer,
   groupDetails: groupDetailsReducer,
+
+  teamCreate: teamCreateReducer,
+  teamDelete: teamDeleteReducer,
+  teamList: teamListReducer,
+  teamUpdate: teamUpdateReducer,
+  teamDetails: teamDetailsReducer,
+
+  matchCreate: matchCreateReducer,
+  matchDelete: matchDeleteReducer,
+  matchList: matchListReducer,
+  matchRoundList: matchRoundListReducer,
+  matchUpdate: matchUpdateReducer,
+  matchDetails: matchDetailsReducer,
 
   previousClubCreate: previousClubCreateReducer,
   previousClubDelete: previousClubDeleteReducer,

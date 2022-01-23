@@ -26,7 +26,6 @@ const PlayerEdit = ({ player, groups, submitHandler, loadingUpdate, errorUpdate 
 
 
   useEffect(() => {
-    console.log(player)
     setFirstName(player.first_name)
     setLastName(player.last_name)
     setHeight(player.height)

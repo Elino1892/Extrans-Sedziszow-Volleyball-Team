@@ -32,7 +32,7 @@ const MatchItem = ({ homeTeam, logoHomeTeam, awayTeam, logoAwayTeam, isHome, hom
         </div>
         {isFinished &&
           <div className="match__small-points">
-            {smallPoints.map((points, index) => <span key={index} className="match__small-points-set">{points}</span>)}
+            <span className="match__small-points-set">{smallPoints}</span>
           </div>
         }
 
