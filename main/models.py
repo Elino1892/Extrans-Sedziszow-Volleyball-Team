@@ -36,9 +36,10 @@ class Comment(models.Model):
 
 class Sponsor(models.Model):
   id = models.AutoField(primary_key=True)
-  name = models.CharField(max_length=200)
+  name = models.CharField(max_length=200, null=True, blank=True)
+  link = models.CharField(max_length=200, null=True, blank=True)
   image = models.ImageField(null=True, blank=True)
-  group = models.CharField(max_length=200)
+  group = models.CharField(max_length=200, null=True, blank=True)
 
   def __str__(self):
     return f"{self.name}"

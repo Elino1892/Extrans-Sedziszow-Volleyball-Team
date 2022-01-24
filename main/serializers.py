@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import News, Comment, Player, Group, Previous_Club, Player_Previous_Club, Table, Team, Match, Set
+from .models import News, Comment, Player, Group, Previous_Club, Player_Previous_Club, Sponsor, Table, Team, Match, Set
 from django.contrib.auth.models import User
 
 from datetime import datetime
@@ -138,5 +138,10 @@ class MatchSerializer(serializers.ModelSerializer):
 class TableSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Table
+        fields = '__all__'
+
+class SponsorSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Sponsor
         fields = '__all__'
 

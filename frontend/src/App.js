@@ -41,6 +41,10 @@ import MatchListPage from './pages/Admin/Match/MatchListPage';
 import MatchCreatePage from './pages/Admin/Match/MatchCreatePage';
 import MatchEditPage from './pages/Admin/Match/MatchEditPage';
 
+import SponsorListPage from './pages/Admin/Sponsor/SponsorListPage';
+import SponsorCreatePage from './pages/Admin/Sponsor/SponsorCreatePage'
+import SponsorEditPage from './pages/Admin/Sponsor/SponsorEditPage';
+
 const App = () => {
   return (
     <>
@@ -74,6 +78,10 @@ const App = () => {
           <Route path="/admin/grupy" element={<GroupListPage />}></Route>
           <Route path="/admin/grupy/tworzenie" element={<GroupCreatePage />}></Route>
           <Route path="/admin/grupy/:id/edycja" element={<GroupEditPage />}></Route>
+
+          <Route path="/admin/sponsorzy" element={<SponsorListPage />}></Route>
+          <Route path="/admin/sponsorzy/tworzenie" element={<SponsorCreatePage />}></Route>
+          <Route path="/admin/sponsorzy/:id/edycja" element={<SponsorEditPage />}></Route>
 
           <Route path="/admin/druzyny" element={<TeamListPage />}></Route>
           <Route path="/admin/druzyny/tworzenie" element={<TeamCreatePage />}></Route>

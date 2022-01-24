@@ -21,6 +21,8 @@ import { matchCreateReducer, matchDeleteReducer, matchDetailsReducer, matchLastL
 
 import { shortTableDetailsReducer, tableDetailsReducer } from './reducers/tableReducer';
 
+import { sponsorCreateReducer, sponsorDeleteReducer, sponsorDetailsReducer, sponsorListReducer, sponsorUpdateReducer } from './reducers/sponsorReducer'
+
 
 
 export const reducer = combineReducers({
@@ -52,6 +54,12 @@ export const reducer = combineReducers({
   groupList: groupListReducer,
   groupUpdate: groupUpdateReducer,
   groupDetails: groupDetailsReducer,
+
+  sponsorCreate: sponsorCreateReducer,
+  sponsorDelete: sponsorDeleteReducer,
+  sponsorList: sponsorListReducer,
+  sponsorUpdate: sponsorUpdateReducer,
+  sponsorDetails: sponsorDetailsReducer,
 
   teamCreate: teamCreateReducer,
   teamDelete: teamDeleteReducer,

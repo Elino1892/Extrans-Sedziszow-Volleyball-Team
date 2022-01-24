@@ -13,7 +13,7 @@ const ShortTableLeague = ({ table }) => {
         </thead>
         <tbody className="short-league-table__table-body">
           {table.map(team =>
-            <tr className={team.team === 'Extrans Sędziszów Małopolski' ? "short-league-table__table-body-line short-league-table__table-body-line--highlighted" : "short-league-table__table-body-line"}>
+            <tr key={team.place} className={team.team === 'Extrans Sędziszów Małopolski' ? "short-league-table__table-body-line short-league-table__table-body-line--highlighted" : "short-league-table__table-body-line"}>
               <td>{team.place}</td>
               <td><img src={team.team_logo} alt={`Logo ${team.team}`} className="short-league-table__table-body-image"></img></td>
               <td>{team.team}</td>

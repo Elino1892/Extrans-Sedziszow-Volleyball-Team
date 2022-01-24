@@ -27,6 +27,7 @@
       flex-wrap: wrap;
       justify-content: space-evenly;
       padding: 20px;
+      margin-top: 20px;
       // flex-basis: 80%;
     }
     &-container-image{
@@ -36,9 +37,17 @@
       flex-basis: 20%;
       background-color: white;
       border-radius: 30%;
+      padding: 10px 0;
     }
     &-image{
       width: 70%;
+      opacity: 0.7;
+      transition: opacity .5s linear;
+      filter: grayscale(100%);
+      &:hover{
+        opacity: 1;
+        filter: grayscale(0%);
+      }
     }
   }
 
