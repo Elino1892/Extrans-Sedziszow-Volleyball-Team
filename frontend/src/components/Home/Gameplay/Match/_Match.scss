@@ -36,6 +36,17 @@
     font-size: 1.5rem;
     border-radius: 20%;
   }
+
+  &__result{
+    font-weight: bold;
+    font-size: 4rem;
+    padding: 10px;
+    background-color: $main-color;
+    color: white;
+    border-radius: 10px;
+    letter-spacing: 2px;
+  }
+
   &__match{
     display: flex;
     flex-basis: 100%;

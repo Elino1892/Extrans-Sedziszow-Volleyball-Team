@@ -30,23 +30,23 @@ const LeagueTable = ({ leagueTable }) => {
           </tr>
         </thead>
         <tbody className="league-table__table-body">
-          {leagueTable.map(team =>
+          {leagueTable.map((team, index) =>
             <TeamItem
               key={team.id}
-              place={team.place}
-              name={team.name}
-              isHome={team.isHome}
-              numberOfMatches={team.numberOfMatches}
-              numberOfWonMatches={team.numberOfWonMatches}
-              numberOfLostMatches={team.numberOfLostMatches}
+              place={index + 1}
+              name={team.team}
+              // isHome={team.isHome}
+              numberOfMatches={team.matches_played}
+              numberOfWonMatches={team.matches_won}
+              numberOfLostMatches={team.matches_lost}
               points={team.points}
-              wonSets={team.wonSets}
-              lostSets={team.lostSets}
-              wonSmallPoints={team.wonSmallPoints}
-              lostSmallPoints={team.lostSmallPoints}
-              ratioSets={team.ratioSets}
-              ratioSmallPoints={team.ratioSmallPoints}
-              image={team.image}
+              wonSets={team.sets_won}
+              lostSets={team.sets_lost}
+              wonSmallPoints={team.small_points_won}
+              lostSmallPoints={team.small_points_lost}
+              ratioSets={team.ratio_sets}
+              ratioSmallPoints={team.ratio_small_points}
+              image={team.team_logo}
             />
           )}
         </tbody>

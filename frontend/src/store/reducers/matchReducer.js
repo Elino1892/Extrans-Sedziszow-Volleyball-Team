@@ -7,6 +7,10 @@ import {
   MATCH_ROUND_LIST_SUCCESS,
   MATCH_ROUND_LIST_FAIL,
 
+  MATCH_LAST_LIST_REQUEST,
+  MATCH_LAST_LIST_SUCCESS,
+  MATCH_LAST_LIST_FAIL,
+
   MATCH_DETAILS_REQUEST,
   MATCH_DETAILS_SUCCESS,
   MATCH_DETAILS_FAIL,
@@ -59,6 +63,25 @@ export const matchRoundListReducer = (state = { matches: [] }, action) => {
       }
 
     case MATCH_ROUND_LIST_FAIL:
+      return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
+
+export const matchLastListReducer = (state = { matches: [] }, action) => {
+  switch (action.type) {
+    case MATCH_LAST_LIST_REQUEST:
+      return { loading: true, matches: [] }
+
+    case MATCH_LAST_LIST_SUCCESS:
+      return {
+        loading: false,
+        matches: action.payload,
+      }
+
+    case MATCH_LAST_LIST_FAIL:
       return { loading: false, error: action.payload }
 
     default:

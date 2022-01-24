@@ -7,6 +7,8 @@ import { listLastNews } from '../../store/actions/newsActions'
 import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner'
 import { listPlayers } from '../../store/actions/playerActions'
 import { PLAYER_DETAILS_RESET } from "../../constants/playerConstants";
+import { listLastMatches } from '../../store/actions/matchActions'
+import { getShortTableDetails } from '../../store/actions/tableActions'
 
 const HomePage = () => {
 
@@ -18,12 +20,21 @@ const HomePage = () => {
   const playerList = useSelector(state => state.playerList)
   const { loading: loadingPlayerList, error: errorPlayerList, players } = playerList
 
+  const matchLastList = useSelector(state => state.matchLastList);
+  const { loading: loadingMatchLastList, error: errorMatchLastList, matches } = matchLastList;
+
+  const shortTableDetails = useSelector(state => state.shortTableDetails)
+  const { loading: loadingShortTableDetails, error: errorShortTableDetails, shortTable } = shortTableDetails
+
+
   useEffect(() => {
     document.title = "Strona główna - Extrans Sędziszów Małopolski"
     window.scrollTo(0, 0)
 
     dispatch(listLastNews())
     dispatch(listPlayers())
+    dispatch(listLastMatches())
+    dispatch(getShortTableDetails())
     dispatch({ type: PLAYER_DETAILS_RESET })
   }, [dispatch])
 
@@ -31,15 +42,30 @@ const HomePage = () => {
     <>
       {!news.length ? <LoadingSpinner /> :
         <>
-          <NewsListBanner
-            news={news}
-          />
+          {loadingMatchLastList ? <LoadingSpinner /> :
+            <>
+              {loadingPlayerList ? <LoadingSpinner /> :
+                <>
+                  {loadingShortTableDetails ? <LoadingSpinner /> :
+                    <>
+                      <NewsListBanner
+                        news={news}
+                      />
 
-          <Gameplay />
-          {loadingPlayerList ? <LoadingSpinner /> :
-            <Player
-              players={players}
-            />
+                      <Gameplay
+                        matches={matches}
+                        table={shortTable}
+                      />
+
+
+                      <Player
+                        players={players}
+                      />
+                    </>
+                  }
+                </>
+              }
+            </>
           }
         </>
       }

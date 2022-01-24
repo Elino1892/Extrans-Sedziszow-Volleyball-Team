@@ -1,7 +1,7 @@
-const TeamItem = ({ place, name, isHome, numberOfMatches, numberOfWonMatches, numberOfLostMatches, points, wonSets, lostSets, wonSmallPoints, lostSmallPoints, ratioSets, ratioSmallPoints, image }) => {
+const TeamItem = ({ place, name, numberOfMatches, numberOfWonMatches, numberOfLostMatches, points, wonSets, lostSets, wonSmallPoints, lostSmallPoints, ratioSets, ratioSmallPoints, image }) => {
   return (
     <tr className="league-table__table-body-line">
-      <td className={isHome ? "league-table__highlighted" : ''}>{place}</td>
+      <td className={name === 'Extrans Sędziszów Małopolski' ? "league-table__highlighted" : ''}>{place}</td>
       <td>
         <div className="league-table__logo-team">
           <img src={image} alt={`Logo zespołu ${name}`} className="league-table__logo-team-img" />

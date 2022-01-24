@@ -22,6 +22,8 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
   const [isBelongHomeTeamList, setIsBelongHomeTeamList] = useState([new Array(teams.length).fill(false)])
   const [isBelongGuestTeamList, setIsBelongGuestTeamList] = useState([new Array(teams.length).fill(false)])
 
+  console.log(match.is_finished)
+
   useEffect(() => {
     setHomeTeam(match.home_team)
     setGuestTeam(match.guest_team)
@@ -49,9 +51,9 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
     const tempArray2 = [...isBelongHomeTeamList]
     const tempArray3 = [...isBelongGuestTeamList]
     tempArray.forEach((team, index) => {
-      if (team.name === match.home_team) {
+      if (team.id === match.home_team) {
         tempArray2[index] = true;
-      } else if (team.name === match.guest_team) {
+      } else if (team.id === match.guest_team) {
         tempArray3[index] = true;
       }
     })
@@ -135,7 +137,7 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
       <h1 className='admin__title admin__title--edit-user'>Edycja meczu</h1>
       {loadingUpdate && <LoadingSpinner />}
       {errorUpdate && <p>Błąd: {errorUpdate}</p>}
-      <Form className='admin__form' onSubmit={(e) => submitHandler(e, homeTeam, guestTeam, String(homeTeamScore), String(guestTeamScore), setResultsHome, setResultsGuest, date, hall, isHome, isFinished)}>
+      <Form className='admin__form' onSubmit={(e) => submitHandler(e, homeTeam, guestTeam, Number(homeTeamScore), Number(guestTeamScore), setResultsHome, setResultsGuest, round, date, hall, isHome, isFinished)}>
 
         <Form.Group controlId='home-team' className='admin__form-checkbox-container'>
           <Form.Label className='admin__form-label'>Gospodarz</Form.Label>
@@ -162,11 +164,11 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
           {teams.map((team, index) => (
             <Form.Check
               type='radio'
-              key={team.id}
+              key={team.id + teams.length}
               checked={isBelongGuestTeamList[index]}
               className='admin__search-input admin__search-input--short'
               name='guest-team-option'
-              id={team.id}
+              id={team.id + teams.length + 100}
               inline
               onChange={(e) => changeInputValueHandler(e, index, true)}
               value={team.id}
@@ -183,6 +185,7 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
             placeholder='0'
             value={homeTeamScore}
             onChange={(e) => changeTeamScoreHandler(e, false)}
+            disabled={!isFinished}
           >
           </Form.Control>
         </Form.Group>
@@ -194,6 +197,7 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
             type='number'
             placeholder='0'
             value={guestTeamScore}
+            disabled={!isFinished}
             onChange={(e) => changeTeamScoreHandler(e, true)}
           >
           </Form.Control>
@@ -212,6 +216,7 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
                   placeholder='0'
                   value={setResultsHome[i]}
                   onChange={(e) => setResultsHandler(e.target.value, i, false)}
+                  disabled={!isFinished}
                 >
                 </Form.Control>
               </Form.Group>
@@ -237,7 +242,7 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
           <Form.Label className='admin__form-label'>Kolejka</Form.Label>
           <Form.Control
             className='admin__search-input admin__search-input--short'
-            type='datetime-local'
+            type='number'
             value={round}
             onChange={(e) => setRound(e.target.value)}
           >

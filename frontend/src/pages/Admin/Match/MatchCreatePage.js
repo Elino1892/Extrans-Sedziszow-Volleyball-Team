@@ -45,18 +45,18 @@ const MatchCreatePage = () => {
   const submitHandler = (e, home_team, guest_team, home_team_score, guest_team_score, setResultsHome, setResultsGuest, round, date, hall, is_home, is_finished) => {
     e.preventDefault();
 
-    // console.log({
-    //   home_team,
-    //   guest_team,
-    //   home_team_score,
-    //   guest_team_score,
-    //   set_results_home: setResultsHome,
-    //   set_results_guest: setResultsGuest,
-    //   date,
-    //   hall,
-    //   is_home,
-    //   is_finished
-    // })
+    console.log({
+      home_team,
+      guest_team,
+      home_team_score,
+      guest_team_score,
+      set_results_home: setResultsHome,
+      set_results_guest: setResultsGuest,
+      date,
+      hall,
+      is_home,
+      is_finished
+    })
 
     dispatch(createMatch({
       home_team,

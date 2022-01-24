@@ -139,6 +139,27 @@ class Match(models.Model):
   class Meta:
         verbose_name_plural = "Mecze"
 
+class Table(models.Model):
+  id = models.AutoField(primary_key=True)
+  # place = models.IntegerField(blank=True, null=True)
+  points = models.IntegerField(blank=True, null=True, default=0)
+  matches_played = models.IntegerField(blank=True, null=True, default=0)
+  matches_won = models.IntegerField(blank=True, null=True, default=0)
+  matches_lost = models.IntegerField(blank=True, null=True, default=0)
+  sets_won = models.IntegerField(blank=True, null=True, default=0)
+  sets_lost = models.IntegerField(blank=True, null=True, default=0)
+  small_points_won = models.IntegerField(blank=True, null=True, default=0)
+  small_points_lost = models.IntegerField(blank=True, null=True, default=0)
+  ratio_sets = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=3, default=0)
+  ratio_small_points = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=3, default=0)
+  team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.team}"
+
+  class Meta:
+        verbose_name_plural = "Tabela"
+
 class Photo(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=50)

@@ -1,9 +1,4 @@
-import firstTeamLogo from "../../../../images/team-logo/Jaworzno-logo-192x192.jpg"
-import secondTeamLogo from "../../../../images/team-logo/Andrychow-logo-192x192.jpg"
-import thirdTeamLogo from "../../../../images/team-logo/Krosno-logo-192x192.jpg"
-import sedziszowTeamLogo from "../../../../images/team-logo/sedziszow-mlp-logo-192x192.png"
-
-const TableLeague = () => {
+const ShortTableLeague = ({ table }) => {
   return (
     <div className="short-league-table">
       <h2 className="short-league-table__title">Sezon 2021/2022</h2>
@@ -17,34 +12,15 @@ const TableLeague = () => {
           </tr>
         </thead>
         <tbody className="short-league-table__table-body">
-          <tr className="short-league-table__table-body-line">
-            <td>1</td>
-            <td><img src={firstTeamLogo} alt="" className="short-league-table__table-body-image"></img></td>
-            <td>MCKiS Jaworzno</td>
-            <td>44</td>
-            <td>15</td>
-          </tr>
-          <tr className="short-league-table__table-body-line">
-            <td>2</td>
-            <td><img src={secondTeamLogo} alt="" className="short-league-table__table-body-image"></img></td>
-            <td>MKS Andrychów</td>
-            <td>36</td>
-            <td>15</td>
-          </tr>
-          <tr className="short-league-table__table-body-line">
-            <td>3</td>
-            <td><img src={thirdTeamLogo} alt="" className="short-league-table__table-body-image"></img></td>
-            <td>Karpaty Krosno Glass - KPU w Krośnie</td>
-            <td>31</td>
-            <td>15</td>
-          </tr>
-          <tr className="short-league-table__table-body-line short-league-table__table-body-line--highlighted">
-            <td>6</td>
-            <td><img src={sedziszowTeamLogo} alt="" className="short-league-table__table-body-image"></img></td>
-            <td>Extrans Sędziszów Małopolski</td>
-            <td>25</td>
-            <td>15</td>
-          </tr>
+          {table.map(team =>
+            <tr className={team.team === 'Extrans Sędziszów Małopolski' ? "short-league-table__table-body-line short-league-table__table-body-line--highlighted" : "short-league-table__table-body-line"}>
+              <td>{team.place}</td>
+              <td><img src={team.team_logo} alt={`Logo ${team.team}`} className="short-league-table__table-body-image"></img></td>
+              <td>{team.team}</td>
+              <td>{team.points}</td>
+              <td>{team.matches_played}</td>
+            </tr>
+          )}
         </tbody>
 
       </table>
@@ -52,4 +28,4 @@ const TableLeague = () => {
   )
 }
 
-export default TableLeague;
+export default ShortTableLeague;

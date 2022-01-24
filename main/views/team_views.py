@@ -5,7 +5,7 @@ from rest_framework import status
 import base64
 from main.serializers import TeamSerializer
 
-from main.models import Team
+from main.models import Team, Table
 
 
 
@@ -35,8 +35,29 @@ def createTeam(request):
     team = Team.objects.create(
       name = data['name'],
     )
-
     serializer = TeamSerializer(team, many=False)
+
+    try:
+        Table.objects.get(team=serializer.data['id'])
+    except:
+        Table.objects.create(   
+        points= 0,
+        matches_played = 0,
+        matches_won = 0, 
+        matches_lost = 0,
+        sets_won = 0, 
+        sets_lost = 0,
+        small_points_won = 0, 
+        small_points_lost = 0,
+        ratio_sets = 0,
+        ratio_small_points = 0, 
+        team = team,
+      )
+      
+
+    
+
+    
     return Response(serializer.data)
 
 

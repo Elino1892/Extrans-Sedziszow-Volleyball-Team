@@ -12,4 +12,5 @@ admin.site.register(Team)
 admin.site.register(Match)
 admin.site.register(Photo)
 admin.site.register(Set)
+admin.site.register(Table)
 

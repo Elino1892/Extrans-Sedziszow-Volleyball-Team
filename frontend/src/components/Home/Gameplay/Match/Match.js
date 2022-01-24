@@ -1,6 +1,9 @@
 import Button from "../../../UI/Button/Button";
 
 const Match = ({ round, date, hour, teamHome, logoTeamHome, teamAway, logoTeamAway, result, set, hallInfo, showNextMatchHandler, showPrevMatchHandler, index }) => {
+
+  console.log(set)
+
   return (
     <div className="next-game">
 
@@ -17,7 +20,10 @@ const Match = ({ round, date, hour, teamHome, logoTeamHome, teamAway, logoTeamAw
           <img src={logoTeamHome} alt="" className="next-game__team-logo" />
           <p className="next-game__team-name">{teamHome}</p>
         </div>
-        <span className="VS">{result ? result : 'VS'}</span>
+        {result ?
+          <span className="next-game__result">{result}</span> :
+          <span className="VS">VS</span>
+        }
         <div className="next-game__team">
           <img src={logoTeamAway} alt="" className="next-game__team-logo" />
           <p className="next-game__team-name">{teamAway}</p>
@@ -25,11 +31,13 @@ const Match = ({ round, date, hour, teamHome, logoTeamHome, teamAway, logoTeamAw
       </div>
       {set ? <p className="next-game__set-info">
         {set}
-      </p> :
+      </p>
+        :
+
         <div className="next-game__hall-info">
-          <p className="next-game__hall-name">{hallInfo.name}</p>
-          <p className="next-game__hall-street">{hallInfo.street}</p>
+          <p className="next-game__hall-name">{hallInfo}</p>
         </div>
+
       }
 
     </div>

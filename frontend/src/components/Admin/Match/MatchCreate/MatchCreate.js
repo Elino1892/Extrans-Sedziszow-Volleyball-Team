@@ -68,7 +68,7 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
       <h1 className='admin__title admin__title--edit-user'>Dodawanie meczu</h1>
       {loadingCreate && <LoadingSpinner />}
       {errorCreate && <p>Błąd: {errorCreate}</p>}
-      <Form className='admin__form' onSubmit={(e) => submitHandler(e, homeTeam, guestTeam, homeTeamScore, guestTeamScore, setResultsHome, setResultsGuest, round, date, hall, isHome, isFinished)}>
+      <Form className='admin__form' onSubmit={(e) => submitHandler(e, homeTeam, guestTeam, Number(homeTeamScore), Number(guestTeamScore), setResultsHome, setResultsGuest, round, date, hall, isHome, isFinished)}>
 
         <Form.Group controlId='home-team' className='admin__form-checkbox-container'>
           <Form.Label className='admin__form-label'>Gospodarz</Form.Label>
@@ -92,10 +92,10 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
           {teams.map(team => (
             <Form.Check
               type='radio'
-              key={team.id}
+              key={team.id + teams.length}
               className='admin__search-input admin__search-input--short'
               name='guest-team-option'
-              id={team.id}
+              id={team.id + teams.length + 100}
               inline
               onChange={(e) => setGuestTeam(e.target.value)}
               value={team.id}
@@ -111,6 +111,7 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
             type='number'
             placeholder='0'
             value={homeTeamScore}
+            disabled={!isFinished}
             onChange={(e) => changeTeamScoreHandler(e, false)}
           >
           </Form.Control>
@@ -123,6 +124,7 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
             type='number'
             placeholder='0'
             value={guestTeamScore}
+            disabled={!isFinished}
             onChange={(e) => changeTeamScoreHandler(e, true)}
           >
           </Form.Control>
@@ -139,6 +141,7 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
                   className='admin__search-input admin__search-input--short admin__search-input--set'
                   type='number'
                   placeholder='0'
+                  disabled={!isFinished}
                   value={setResultsHome[i].value}
                   onChange={(e) => setResultsHandler(e.target.value, i, false)}
                 >
@@ -151,6 +154,7 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
                   className='admin__search-input admin__search-input--short admin__search-input--set'
                   type='number'
                   placeholder='0'
+                  disabled={!isFinished}
                   value={setResultsGuest[i].value}
                   onChange={(e) => setResultsHandler(e.target.value, i, true)}
                 >

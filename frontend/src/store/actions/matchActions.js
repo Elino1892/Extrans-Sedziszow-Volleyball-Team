@@ -8,6 +8,10 @@ import {
   MATCH_ROUND_LIST_SUCCESS,
   MATCH_ROUND_LIST_FAIL,
 
+  MATCH_LAST_LIST_REQUEST,
+  MATCH_LAST_LIST_SUCCESS,
+  MATCH_LAST_LIST_FAIL,
+
   MATCH_DETAILS_REQUEST,
   MATCH_DETAILS_SUCCESS,
   MATCH_DETAILS_FAIL,
@@ -66,6 +70,27 @@ export const listMatchesWithRound = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MATCH_ROUND_LIST_FAIL,
+      payload: error.response && error.response.data.detail
+        ? error.response.data.detail
+        : error.message,
+    })
+  }
+}
+
+export const listLastMatches = () => async (dispatch) => {
+  try {
+    dispatch({ type: MATCH_LAST_LIST_REQUEST })
+
+    const { data } = await axios.get('http://127.0.0.1:8000/api/matches/last')
+
+    dispatch({
+      type: MATCH_LAST_LIST_SUCCESS,
+      payload: data
+    })
+
+  } catch (error) {
+    dispatch({
+      type: MATCH_LAST_LIST_FAIL,
       payload: error.response && error.response.data.detail
         ? error.response.data.detail
         : error.message,

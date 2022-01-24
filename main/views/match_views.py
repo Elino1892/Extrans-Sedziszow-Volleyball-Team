@@ -7,7 +7,7 @@ from rest_framework import status
 
 from main.serializers import MatchSerializer, SetSerializer, TeamSerializer
 
-from main.models import Match, Team, Set
+from main.models import Match, Team, Set, Table
 from datetime import datetime
 import babel.dates
 
@@ -16,7 +16,7 @@ import babel.dates
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def getMatches(request):
-  matches = Match.objects.order_by('id')
+  matches = Match.objects.order_by('round')
   serializer = MatchSerializer(matches, many = True)
 
   for match in serializer.data:
@@ -28,7 +28,7 @@ def getMatches(request):
     match['guest_team'] = guest_team_serializer.data['name']
     time = match['date'][:16]
     time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-    match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
+    match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
 
   return Response(serializer.data)
 
@@ -39,100 +39,49 @@ def getMatchesWithRound(request):
   matches = Match.objects.order_by('-round')
   serializer = MatchSerializer(matches, many = True)
 
-
-
-  theLastRound = serializer.data[0]['round']
-
-  
-
-
-# [
-#   {
-#     'id': 1,
-#     'round': '1',
-#     'matches': [
-#       {
-#         'id': 1,
-#         'homeTeam': 'Kępa MOSiR Dębica',
-#         'logoHomeTeam': teamLogo1,
-#         'awayTeam': 'MCKiS Jaworzno',
-#         'logoAwayTeam': teamLogo2,
-#         'isHome': false,
-#         'homeTeamScore': '0',
-#         'awayTeamScore': '3',
-#         'isFinished': true,
-#         'smallPoints': ['20:25', '12:25', '20:25'],
-#         // 'homeTeamScoreSet': [{
-#         //   '1': '20',
-#         //   '2': '12',
-#         //   '3': '20'
-#         // }],
-#         // 'awayTeamScoreSet': [{
-#         //   '1': '25',
-#         //   '2': '25',
-#         //   '3': '25'
-#         // }],
-#         'date': 'sobota, 25 września 2021'
-#       },
-#       {
-#         'id': 2,
-#         'homeTeam': 'Kępa MOSiR Dębica',
-#         'logoHomeTeam': teamLogo1,
-#         'awayTeam': 'MCKiS Jaworzno',
-#         'logoAwayTeam': teamLogo2,
-#         'homeTeamScore': '0',
-#         'isHome': true,
-#         'awayTeamScore': '3',
-#         'isFinished': true,
-#         'smallPoints': ['20:25', '12:25', '20:25'],
-#         // 'homeTeamScoreSet': [{
-#         //   '1': '20',
-#         //   '2': '12',
-#         //   '3': '20'
-#         // }],
-#         // 'awayTeamScoreSet': [{
-#         //   '1': '25',
-#         //   '2': '25',
-#         //   '3': '25'
-#         // }],
-#         'date': 'sobota, 25 września 2021'
-#       },
-#       {
-#         'id': 3,
-#         'homeTeam': 'Kępa MOSiR Dębica',
-#         'logoHomeTeam': teamLogo1,
-#         'awayTeam': 'MCKiS Jaworzno',
-#         'logoAwayTeam': teamLogo2,
-#         'isHome': false,
-#         'homeTeamScore': '0',
-#         'awayTeamScore': '3',
-#         'isFinished': true,
-#         'smallPoints': ['20:25', '12:25', '20:25'],
-#         // 'homeTeamScoreSet': [{
-#         //   '1': '20',
-#         //   '2': '12',
-#         //   '3': '20'
-#         // }],
-#         // 'awayTeamScoreSet': [{
-#         //   '1': '25',
-#         //   '2': '25',
-#         //   '3': '25'
-#         // }],
-#         'date': 'sobota, 25 września 2021'
-#       },
-
-#     ],
-#   },
-
-
-
   matchesWithRound = []
 
-  for i in range(theLastRound):
-    matches = Match.objects.filter(round=i+1)
-    serializer_matches = MatchSerializer(matches, many=True)
+  if(serializer.data):
+    theLastRound = serializer.data[0]['round']
 
-    for match in serializer_matches.data:
+    
+
+    for i in range(theLastRound):
+      matches = Match.objects.filter(round=i+1)
+      serializer_matches = MatchSerializer(matches, many=True)
+
+      for match in serializer_matches.data:
+        home_team = Team.objects.get(id=match['home_team'])
+        home_team_serializer = TeamSerializer(home_team, many=False)
+        match['home_team'] = home_team_serializer.data['name']
+        match['home_team_logo'] = home_team_serializer.data['logo']
+        guest_team = Team.objects.get(id=match['guest_team'])
+        guest_team_serializer = TeamSerializer(guest_team, many=False)
+        match['guest_team'] = guest_team_serializer.data['name']
+        match['guest_team_logo'] = guest_team_serializer.data['logo']
+        time = match['date'][:16]
+        time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
+        match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
+
+      matchWithRound ={
+        'round': i+1,
+        'matches': serializer_matches.data
+      }
+      matchesWithRound.append(matchWithRound)
+
+
+
+  return Response(matchesWithRound)
+
+
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def getLastMatches(request):
+
+  matches_finished = Match.objects.filter(is_home=True, is_finished = True).order_by('round')
+  serializer_matches_finished = MatchSerializer(matches_finished, many = True)
+
+  for match in serializer_matches_finished.data:
       home_team = Team.objects.get(id=match['home_team'])
       home_team_serializer = TeamSerializer(home_team, many=False)
       match['home_team'] = home_team_serializer.data['name']
@@ -143,36 +92,78 @@ def getMatchesWithRound(request):
       match['guest_team_logo'] = guest_team_serializer.data['logo']
       time = match['date'][:16]
       time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-      match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
+      match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
+  # print(serializer_matches_finished.data[-2:])
+  # print('elooo')
+  # serializer_matches_finished.data = serializer_matches_finished.data[-2:]
 
-    matchWithRound ={
-      'round': i+1,
-      'matches': serializer_matches.data
-    }
-    matchesWithRound.append(matchWithRound)
+  matches_next = Match.objects.filter(is_home=True,is_finished=False).order_by('round')
+  serializer_matches_next = MatchSerializer(matches_next, many = True)
+  # serializer_matches_next.data = serializer_matches_next.data[:2]
+
+  for match in serializer_matches_next.data:
+      home_team = Team.objects.get(id=match['home_team'])
+      home_team_serializer = TeamSerializer(home_team, many=False)
+      match['home_team'] = home_team_serializer.data['name']
+      match['home_team_logo'] = home_team_serializer.data['logo']
+      guest_team = Team.objects.get(id=match['guest_team'])
+      guest_team_serializer = TeamSerializer(guest_team, many=False)
+      match['guest_team'] = guest_team_serializer.data['name']
+      match['guest_team_logo'] = guest_team_serializer.data['logo']
+      time = match['date'][:16]
+      time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
+      match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
+
+  last_matches = serializer_matches_finished.data[-2:] + serializer_matches_next.data[:3]
+  # theLastRound = serializer.data[0]['round']
+
+  # matchesWithRound = []
+
+  # for i in range(theLastRound):
+  #   matches = Match.objects.filter(round=i+1)
+  #   serializer_matches = MatchSerializer(matches, many=True)
+
+  #   for match in serializer_matches.data:
+  #     home_team = Team.objects.get(id=match['home_team'])
+  #     home_team_serializer = TeamSerializer(home_team, many=False)
+  #     match['home_team'] = home_team_serializer.data['name']
+  #     match['home_team_logo'] = home_team_serializer.data['logo']
+  #     guest_team = Team.objects.get(id=match['guest_team'])
+  #     guest_team_serializer = TeamSerializer(guest_team, many=False)
+  #     match['guest_team'] = guest_team_serializer.data['name']
+  #     match['guest_team_logo'] = guest_team_serializer.data['logo']
+  #     time = match['date'][:16]
+  #     time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
+  #     match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
+
+  #   matchWithRound ={
+  #     'round': i+1,
+  #     'matches': serializer_matches.data
+  #   }
+  #   matchesWithRound.append(matchWithRound)
 
 
 
-  return Response(matchesWithRound)
+  return Response(last_matches)
 
 
 @api_view(['GET'])
 def getMatch(request, pk): 
     match = Match.objects.get(id = pk)
     serializer = MatchSerializer(match, many=False)
-    match_item = serializer.data
+    # match_item = serializer.data
 
-    home_team = Team.objects.get(id=match_item['home_team'])
-    home_team_serializer = TeamSerializer(home_team, many=False)
-    match_item['home_team'] = home_team_serializer.data['name']
-    guest_team = Team.objects.get(id=match_item['guest_team'])
-    guest_team_serializer = TeamSerializer(guest_team, many=False)
-    match_item['guest_team'] = guest_team_serializer.data['name']
-    time = match_item['date'][:16]
-    time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-    match_item['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
+    # home_team = Team.objects.get(id=match_item['home_team'])
+    # home_team_serializer = TeamSerializer(home_team, many=False)
+    # match_item['home_team'] = home_team_serializer.data['name']
+    # guest_team = Team.objects.get(id=match_item['guest_team'])
+    # guest_team_serializer = TeamSerializer(guest_team, many=False)
+    # match_item['guest_team'] = guest_team_serializer.data['name']
+    # time = match_item['date'][:16]
+    # time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
+    # match_item['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
 
-    return Response(match_item)
+    return Response(serializer.data)
 
 
 @api_view(['POST'])
@@ -180,7 +171,10 @@ def getMatch(request, pk):
 def createMatch(request):
     data = request.data
 
-    result = f"{data['home_team_score']}:{data['guest_team_score']}"
+    if(data['home_team_score'] or data['guest_team_score']):
+      result = f"{data['home_team_score']}:{data['guest_team_score']}"
+    else:
+      result = ""
 
     set_results = []
 
@@ -226,6 +220,78 @@ def createMatch(request):
           match = match
         )
 
+    if(data['is_finished']):
+      home_team_table = Table.objects.get(team=data['home_team'])
+      guest_team_table = Table.objects.get(team=data['guest_team'])
+
+      if(data['home_team_score'] == 3 and (data['guest_team_score'] == 0 or data['guest_team_score'] == 1)):
+        home_team_table.points += 3
+
+        home_team_table.matches_won += 1
+        guest_team_table.matches_lost += 1
+
+      elif(data['home_team_score'] == 3 and data['guest_team_score'] == 2):
+        home_team_table.points += 2
+        guest_team_table.points += 1
+        home_team_table.matches_won += 1
+        guest_team_table.matches_lost += 1
+      elif(data['guest_team_score'] == 3 and (data['home_team_score'] == 0 or data['home_team_score'] == 1)):
+        guest_team_table.points += 3
+        guest_team_table.matches_won += 1
+        home_team_table.matches_lost += 1
+      elif(data['guest_team_score'] == 3 and data['home_team_score'] == 2):
+        guest_team_table.points += 2
+        home_team_table.points += 1
+        guest_team_table.matches_won += 1
+        home_team_table.matches_lost += 1
+
+      small_points_home_team = 0
+      small_points_guest_team = 0
+
+      for index in range(len(data['set_results_home'])):
+        if(data['set_results_home'][index] and data['set_results_guest'][index]):
+          small_points_home_team += int(data['set_results_home'][index])
+          small_points_guest_team += int(data['set_results_guest'][index])
+          
+
+      home_team_table.small_points_won += small_points_home_team
+      home_team_table.small_points_lost += small_points_guest_team
+      guest_team_table.small_points_won += small_points_guest_team
+      guest_team_table.small_points_lost += small_points_home_team
+
+      home_team_table.sets_won += data['home_team_score']
+      home_team_table.sets_lost += data['guest_team_score']
+      guest_team_table.sets_won += data['guest_team_score']
+      guest_team_table.sets_lost += data['home_team_score']
+
+      if(home_team_table.sets_lost):
+        home_team_table.ratio_sets = home_team_table.sets_won /home_team_table.sets_lost
+      else:
+        home_team_table.ratio_sets = 0
+
+      if(guest_team_table.sets_lost):
+        guest_team_table.ratio_sets = guest_team_table.sets_won /guest_team_table.sets_lost
+      else:
+        guest_team_table.ratio_sets = 0
+      
+      if(home_team_table.small_points_lost):
+        home_team_table.ratio_small_points = home_team_table.small_points_won / home_team_table.small_points_lost
+      else:
+        home_team_table.ratio_small_points = 0
+    
+      if(guest_team_table.small_points_lost):
+        guest_team_table.ratio_sets = guest_team_table.small_points_won / guest_team_table.small_points_lost
+      else:
+        guest_team_table.ratio_sets
+      
+      home_team_table.ratio_small_points = home_team_table.small_points_won / home_team_table.small_points_lost
+      guest_team_table.ratio_sets = guest_team_table.small_points_won / guest_team_table.small_points_lost
+      
+      home_team_table.matches_played += 1
+      guest_team_table.matches_played += 1
+
+      home_team_table.save()
+      guest_team_table.save()
     serializer = MatchSerializer(match, many=False)
     return Response(serializer.data)
     # return Response()
@@ -240,7 +306,10 @@ def updateMatch(request, pk):
 
     
 
-    result = f"{data['home_team_score']}:{data['guest_team_score']}"
+    if(data['home_team_score'] or data['guest_team_score']):
+      result = f"{data['home_team_score']}:{data['guest_team_score']}"
+    else:
+      result = ""
 
     set_results = []
 
@@ -259,9 +328,15 @@ def updateMatch(request, pk):
       set = f" {set_result} |"
       set_results_text += set
 
+    print(data['home_team'])
+    print(type(data['home_team']))
+    print(data['guest_team'])
+    print(type(data['guest_team']))
+
     home_team = Team.objects.get(id=data['home_team'])
     guest_team = Team.objects.get(id=data['guest_team'])
 
+    print('elooo')
     # serializer_home_team = TeamSerializer(home_team, many=False)
     # print(serializer_home_team.data)
     # print(type(guest_team))
@@ -326,5 +401,76 @@ def updateMatch(request, pk):
 @permission_classes([IsAdminUser])
 def deleteMatch(request,pk):
   match = Match.objects.get(id = pk)
+  serializer = MatchSerializer(match, many=False)
+
+  home_team_table = Table.objects.get(team=serializer.data['home_team'])
+  guest_team_table = Table.objects.get(team=serializer.data['guest_team'])
+
+  if(serializer.data['home_team_score'] == 3 and (serializer.data['guest_team_score'] == 0 or serializer.data['guest_team_score'] == 1)):
+      home_team_table.points -= 3
+
+      home_team_table.matches_won -= 1
+      guest_team_table.matches_lost -= 1
+
+  elif(serializer.data['home_team_score'] == 3 and serializer.data['guest_team_score'] == 2):
+      home_team_table.points -= 2
+      guest_team_table.points -= 1
+      home_team_table.matches_won -= 1
+      guest_team_table.matches_lost -= 1
+  elif(serializer.data['guest_team_score'] == 3 and (serializer.data['home_team_score'] == 0 or serializer.data['home_team_score'] == 1)):
+      guest_team_table.points -= 3
+      guest_team_table.matches_won -= 1
+      home_team_table.matches_lost -= 1
+  elif(serializer.data['guest_team_score'] == 3 and serializer.data['home_team_score'] == 2):
+      guest_team_table.points -= 2
+      home_team_table.points -= 1
+      guest_team_table.matches_won -= 1
+      home_team_table.matches_lost -= 1
+
+  small_points_home_team = 0
+  small_points_guest_team = 0
+
+  for index in range(len(serializer.data['set'])):
+      # if(serializer.data['set_results_home'][index] and serializer.data['set_results_guest'][index]):
+        small_points_home_team += int(serializer.data['set'][index]['home_team_score_set'])
+        small_points_guest_team += int(serializer.data['set'][index]['guest_team_score_set'])
+        
+
+  home_team_table.small_points_won -= small_points_home_team
+  home_team_table.small_points_lost -= small_points_guest_team
+  guest_team_table.small_points_won -= small_points_guest_team
+  guest_team_table.small_points_lost -= small_points_home_team
+
+  home_team_table.sets_won -= serializer.data['home_team_score']
+  home_team_table.sets_lost -= serializer.data['guest_team_score']
+  guest_team_table.sets_won -= serializer.data['guest_team_score']
+  guest_team_table.sets_lost -= serializer.data['home_team_score']
+
+  if(home_team_table.sets_lost):
+    home_team_table.ratio_sets = home_team_table.sets_won /home_team_table.sets_lost
+  else:
+    home_team_table.ratio_sets = 0
+
+  if(guest_team_table.sets_lost):
+    guest_team_table.ratio_sets = guest_team_table.sets_won /guest_team_table.sets_lost
+  else:
+    guest_team_table.ratio_sets = 0
+    
+  if(home_team_table.small_points_lost):
+    home_team_table.ratio_small_points = home_team_table.small_points_won / home_team_table.small_points_lost
+  else:
+    home_team_table.ratio_small_points = 0
+  
+  if(guest_team_table.small_points_lost):
+    guest_team_table.ratio_sets = guest_team_table.small_points_won / guest_team_table.small_points_lost
+  else:
+    guest_team_table.ratio_sets
+    
+  home_team_table.matches_played -= 1
+  guest_team_table.matches_played -= 1
+
+  home_team_table.save()
+  guest_team_table.save()
+
   match.delete()
   return Response('Mecz został usunięty')

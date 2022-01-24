@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/players/', include('main.urls.player_urls')),
     path('api/groups/', include('main.urls.group_urls')),
     path('api/teams/', include('main.urls.team_urls')),
+    path('api/table/', include('main.urls.table_urls')),
     path('api/matches/', include('main.urls.match_urls')),
     path('api/previous-clubs/', include('main.urls.previousClub_urls')),
     path('api/players-previous-clubs/', include('main.urls.playerPreviousClub_urls')),
