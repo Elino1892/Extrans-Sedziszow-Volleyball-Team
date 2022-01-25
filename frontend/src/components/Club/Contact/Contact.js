@@ -13,6 +13,13 @@ const Contact = () => {
               </div>
               <h2 className="club__title" >Kontakt</h2>
               <div className="club__text">
+                <p>Stowarzyszenie Inicjatyw Niezależnych Galicja</p>
+                <p>ul. Konopnickiej 5</p>
+                <p>39-120 Sędziszów Małopolski</p>
+                <p>Polska / Poland</p>
+                <p>e-mail: <span>singalicja@gmail.com</span></p>
+                <p>telefon: 504124638</p>
+                <p>KRS / NIP: 8181719040</p>
               </div>
             </div>
           </div>

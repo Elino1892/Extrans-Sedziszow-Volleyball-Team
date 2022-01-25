@@ -1,0 +1,21 @@
+.sponsors{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 50%;
+      background-color: white;
+      border-radius: 30%;
+      padding: 20px;
+      margin-bottom: 20px;
+      &__image{
+      width: 80%;
+      opacity: 0.7;
+      transition: opacity .5s linear;
+      filter: grayscale(100%);
+      &:hover{
+        opacity: 1;
+        filter: grayscale(0%);
+      }
+    }
+ }
+    

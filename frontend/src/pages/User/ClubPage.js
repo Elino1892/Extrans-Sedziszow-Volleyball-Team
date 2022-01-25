@@ -1,4 +1,7 @@
 import Club from "../../components/Club/Club";
+import { useSelector, useDispatch } from "react-redux";
+import { listSponsors } from "../../store/actions/sponsorActions";
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 
 import sponsorLogo1 from "../../images/logo_company_extrans.png"
 import sponsorLogo2 from "../../images/sponsor-logo/busik.png"
@@ -47,15 +50,28 @@ const dummySponsors = [
 
 const ClubPage = () => {
 
+  const dispatch = useDispatch();
+
+  const sponsorList = useSelector(state => state.sponsorList)
+  const { sponsors } = sponsorList
+
   useEffect(() => {
     document.title = 'Klub - Extrans Sędziszów Małopolski'
     window.scrollTo(0, 0)
+    // if (!sponsors.length) {
+    //   dispatch(listSponsors())
+    // }
+
   }, [])
 
   return (
-    <Club
-      sponsors={dummySponsors}
-    />
+    <>
+      {!sponsors.length ? <LoadingSpinner /> :
+        <Club
+          sponsors={sponsors}
+        />
+      }
+    </>
   )
 }
 

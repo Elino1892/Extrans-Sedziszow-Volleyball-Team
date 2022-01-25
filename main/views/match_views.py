@@ -114,7 +114,7 @@ def getLastMatches(request):
       time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
       match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
 
-  last_matches = serializer_matches_finished.data[-2:] + serializer_matches_next.data[:3]
+  last_matches = serializer_matches_finished.data[-2:] + serializer_matches_next.data[:4]
   # theLastRound = serializer.data[0]['round']
 
   # matchesWithRound = []

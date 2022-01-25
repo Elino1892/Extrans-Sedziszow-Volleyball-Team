@@ -13,8 +13,7 @@ const Authority = () => {
               </div>
               <h2 className="club__title" >Władze</h2>
               <div className="club__text">
-                {/* <p className="club__president-title">Prezes</p>
-                <p className="club__president-name">Mariola Flis</p> */}
+                <p>Prezes zarządu: Mariola Flis</p>
               </div>
             </div>
           </div>

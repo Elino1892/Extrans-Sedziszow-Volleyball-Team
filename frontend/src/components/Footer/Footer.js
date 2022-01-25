@@ -15,8 +15,8 @@ const Footer = ({ sponsors }) => {
         <div className="footer__sponsors-container">
           {sponsors.map(sponsor =>
 
-            <a href={sponsor.link} className="footer__sponsors-container-image">
-              <img className="footer__sponsors-image" src={sponsor.image} alt="Logo firmy busik" />
+            <a key={sponsor.id} href={sponsor.link} className="footer__sponsors-container-image">
+              <img className="footer__sponsors-image" src={sponsor.image} alt={`Logo firmy ${sponsor.name}`} />
             </a>
           )}
         </div>

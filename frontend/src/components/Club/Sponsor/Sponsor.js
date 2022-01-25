@@ -1,4 +1,4 @@
-const Sponsor = () => {
+const Sponsor = ({ sponsors }) => {
   return (
     <div className="article-item__text-container">
       <div className="article-item__text">
@@ -13,6 +13,12 @@ const Sponsor = () => {
               </div>
               <h2 className="club__title" >Sponsorzy</h2>
               <div className="club__text">
+                {sponsors.map(sponsor =>
+
+                  <a key={sponsor.id} href={sponsor.link} className="sponsors">
+                    <img className="sponsors__image" src={sponsor.image} alt={`Logo firmy ${sponsor.name}`} />
+                  </a>
+                )}
               </div>
             </div>
           </div>

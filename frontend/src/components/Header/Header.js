@@ -11,21 +11,42 @@ const Header = () => {
         <img className="header__image-volleyball-team" src={logoVolleyballTeam} alt="logo-drużyna-siatkarska" />
       </Link>
       <div className="header__upper">
+        <p className="header__official-site-text">
+          Oficjalna strona
+          <br />
+          Extrans Sędziszów Małopolski
+        </p>
         <div className="header__logo-company-extrans">
           <img className="header__image-company-extrans" src={logoExtrans} alt="logo-firma-extrans" />
         </div>
         <div className="header__team-info">
           <div className="header__social">
-            <span className="fab fa-facebook"></span>
-            <span className="fab fa-youtube"></span>
+            <a className="header__social-item header__social-item--facebook" href="/">
+              <span className="fab fa-facebook"></span>
+            </a>
+            <a className="header__social-item header__social-item--youtube" href="/">
+              <span className="fab fa-youtube"></span>
+            </a>
+            <a className="header__social-item header__social-item--instagram" href="/">
+              <span className="fab fa-instagram"></span>
+            </a>
+            <a className="header__social-item header__social-item--twitter" href="/">
+              <span className="fab fa-twitter"></span>
+            </a>
           </div>
           <div className="header__contact">
-            <span className="fas fa-location-arrow"></span>
-            <span className="header__contact-info">Hala przy LO w Sędziszowie Małopolskim, ul. Fabyrczna 5</span>
-            <span className="fas fa-phone-alt"></span>
-            <span className="header__contact-info">504 124 638</span>
-            <span className="fas fa-envelope"></span>
-            <span className="header__contact-info">singalicja@gmail.com</span>
+            <div className="header__contact-item">
+              <span className="fas fa-location-arrow"></span>
+              <span className="header__contact-info">Hala przy LO w Sędziszowie Małopolskim, ul. Fabryczna 5</span>
+            </div>
+            <div className="header__contact-item">
+              <span className="fas fa-phone-alt"></span>
+              <span className="header__contact-info">504 124 638</span>
+            </div>
+            <div className="header__contact-item">
+              <span className="fas fa-envelope"></span>
+              <span className="header__contact-info">singalicja@gmail.com</span>
+            </div>
           </div>
         </div>
       </div>
