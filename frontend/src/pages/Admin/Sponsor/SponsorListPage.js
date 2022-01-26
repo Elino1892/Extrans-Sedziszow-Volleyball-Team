@@ -13,7 +13,6 @@ import SponsorList from '../../../components/Admin/Sponsor/SponsorList/SponsorLi
 const SponsorListPage = () => {
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const sponsorList = useSelector(state => state.sponsorList)
@@ -29,7 +28,7 @@ const SponsorListPage = () => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Sponsorzy - Administrator"
       window.scrollTo(0, 0)
-      dispatch(listSponsors())
+      // dispatch(listSponsors())
       dispatch({ type: SPONSOR_DETAILS_RESET })
     } else {
       navigate('/logowanie')
@@ -48,7 +47,7 @@ const SponsorListPage = () => {
 
   return (
     <AdminLayout>
-      {loading ? <LoadingSpinner /> :
+      {!sponsors.length ? <LoadingSpinner /> :
         <SponsorList
           sponsors={sponsors}
           deleteHandler={deleteHandler}

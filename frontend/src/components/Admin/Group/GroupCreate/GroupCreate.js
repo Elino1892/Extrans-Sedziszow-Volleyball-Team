@@ -10,7 +10,7 @@ const GroupCreate = ({ submitHandler, loadingCreate, errorCreate }) => {
 
   return (
     <>
-      <Link className='admin__link-text' to='/admin/zawodnicy'>
+      <Link className='admin__link-text' to='/admin/grupy'>
         Powrót
       </Link>
       <h1 className='admin__title admin__title--edit-user'>Tworzenie grupy</h1>

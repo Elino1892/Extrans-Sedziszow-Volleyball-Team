@@ -13,7 +13,7 @@ from main.models import Sponsor
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def getSponsors(request):
-  sponsors = Sponsor.objects.order_by('id')
+  sponsors = Sponsor.objects.all()
   serializer = SponsorSerializer(sponsors, many = True)
 
   return Response(serializer.data)
