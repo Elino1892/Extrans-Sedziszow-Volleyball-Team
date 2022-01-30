@@ -14,7 +14,6 @@ import django_heroku
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
-import environ
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
