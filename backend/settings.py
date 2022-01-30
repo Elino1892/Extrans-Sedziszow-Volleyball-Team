@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
@@ -203,3 +203,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if os.getcwd() == '/app':
     DEBUG = False
+
+django_heroku.settings(locals())
