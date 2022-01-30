@@ -5,6 +5,7 @@ import logoVolleyballTeam from '../../images/logo_volleyball_team.png'
 import logoExtrans from '../../images/logo_company_extrans.png'
 
 const Header = () => {
+
   return (
     <header className="header">
       <Link className="header__logo-volleyball-team" to={"/"}>

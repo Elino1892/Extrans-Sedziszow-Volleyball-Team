@@ -3,8 +3,6 @@ import Header from "../Header/Header";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listSponsors } from '../../store/actions/sponsorActions'
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
-
 
 const Layout = ({ children }) => {
 
@@ -19,15 +17,11 @@ const Layout = ({ children }) => {
 
   return (
     <div className="wrapper">
-      {loading ? <LoadingSpinner /> :
-        <>
-          <Header />
-          {children}
-          <Footer
-            sponsors={sponsors}
-          />
-        </>
-      }
+      <Header />
+      {children}
+      <Footer
+        sponsors={sponsors}
+      />
     </div>
   )
 }

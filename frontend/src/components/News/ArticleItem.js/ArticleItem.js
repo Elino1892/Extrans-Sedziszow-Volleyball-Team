@@ -39,7 +39,7 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
         <div className="artice-item__photo-container">
           <img src={background} alt="" className="article-item__photo-bgc" />
         </div>
-        <Gradient type="bottom-opacity-gradient"></Gradient>
+        <Gradient type="bottom-opacity-gradient article-item__bottom-gradient"></Gradient>
       </div>
 
       <div className="article-item__text-container">

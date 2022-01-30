@@ -1,23 +1,44 @@
 .short-league-table{
-  padding: 20px;
+  padding: 20px 0;
+
+  @include media(xsmall){
+    padding: 20px;
+  }
+
   color: white;
   &__title{
     font-size: 3.5rem;
     font-weight: 300;
     padding-bottom: 20px;
+    text-align: center;
+    @include media(xsmall){
+    padding: 20px;
+    text-align: left;
+  }
+
   }
   &__container{
     width: 100%;
     border-spacing: 0;
   }
   &__table-head{
-    font-size: 1.7rem;
+    font-size: 1.2rem;
+
+    @include media(xsmall){
+      font-size: 1.7rem;
+    }
+
     opacity: 60%;
     &-line{
       // background-color: $light-main-color;
       th{
         // text-align: start;
-        padding: 10px;
+        padding: 0 5px;
+
+        @include media(xsmall){
+    padding: 10px;
+  }
+
         font-weight: 300;
         &:nth-of-type(2){
           text-align: start;
@@ -31,10 +52,21 @@
     font-weight: 300;
     text-align: center;
     &-image{
-      width: 120px;
-      height: 120px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       margin-right: 20px;
+
+      @include media(xsmall){
+width: 70px;
+      height: 70px;
+      }
+
+      @include media(small){
+width: 120px;
+      height: 120px;
+      }
+
     }
     &-line{
       &--highlighted{
@@ -62,4 +94,14 @@
       text-align: start;
     }
   }
+
+  // &__team-name{
+  //   display: none;
+
+  //   @include media(xsmall){
+  //     display: block;
+  //   }
+
+  // }
+
 }

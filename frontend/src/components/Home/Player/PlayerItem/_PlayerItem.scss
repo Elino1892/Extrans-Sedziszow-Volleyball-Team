@@ -11,13 +11,60 @@
   transition: .5s;
   cursor: pointer;
   
+  @include media(small){
+        margin: 0 50px;
+      }
+
+      @media (min-width: 730px) {
+        margin: 0 60px;
+      }
+
+      // @include media(medium){
+      //   margin: 0 80px;
+      // }
+
+  @include media(large){
+        margin: 0 40px;
+      }
+
+  @include media(xlarge){
+        margin: 0 45px;
+      }
+
+  @include media(xxlarge){
+        margin: 0 35px;
+      }
+
   // display: flex;
   // margin-bottom: 20px;
   &__image-container{
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 60%;
+    width: 185px;
+
+    // @media (min-width: 930px) {
+    //   width: 50%;
+    // }
+
+    @include media(small) {
+      width: 180px;
+    }
+
+    @media (min-width: 730px) {
+        width: 195px;
+      }
+
+    @include media(xlarge) {
+      width: 210px;
+    }
+
+    // @media (min-width: 1100px) {
+    //   width: 44%;
+    // }
+
+    // max-width: 220px;
+    // max-height: 360px;
     &--team{
       width: 45%;
       right: 10px;
@@ -25,6 +72,8 @@
   }
   &__image{
     width: 100%;
+    // max-width: 220px;
+    // max-height: 360px;
     // height: 100%;
   }
   &__info{
@@ -45,6 +94,9 @@
   &__number{
     flex-basis: 100%;
     font-size: 6rem;
+
+    
+
     // color: $dark-main-color;
     &--team{
       // flex-basis: 20%;
@@ -68,6 +120,14 @@
     font-size: 2rem;
     letter-spacing: 1.5px;
     
+    @media (min-width: 730px) {
+      font-size: 3rem;
+    }
+
+    @include media(large){
+         font-size: 2.5rem;
+      }
+
     &--team{
       font-size: 3rem;
       display: flex;
@@ -81,6 +141,15 @@
     flex-basis: 50%;
     font-size: 2rem;
     letter-spacing: 1.5px;
+
+     @media (min-width: 730px) {
+      font-size: 3rem;
+    }
+
+    @include media(large){
+         font-size: 2.5rem;
+      }
+
     &--team{
       font-size: 3rem;
       flex-basis: 100%;
@@ -89,6 +158,14 @@
   &__position{
     font-size: 1.3rem;
     padding-top: 20px;
+
+    // @include media(large){
+    //      padding-top: 20px;
+    //   }
+ @media (min-width: 730px) {
+      font-size: 1.5rem;
+      padding-top: 13px;
+    }
   }
 
   &--team{
@@ -108,7 +185,7 @@
     overflow: hidden;
     // justify-content: center;
     // align-items: center;
-    text-align: center;
+    // text-align: center;
     // padding-left: 20px;
     // font-size: 3rem;
   }

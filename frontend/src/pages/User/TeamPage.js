@@ -4,7 +4,7 @@ import playerImage from '../../images/players/Piotr_Świeczka.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { listPlayers } from '../../store/actions/playerActions';
 import { listGroups } from '../../store/actions/groupActions';
-import LoadingSpinner from '../../components/UI/LoadingSpinner/LoadingSpinner';
+import LoadingCover from "../../components/UI/LoadingCover/LoadingCover";
 import { PLAYER_DETAILS_RESET } from '../../constants/playerConstants';
 
 const TeamPage = () => {
@@ -27,12 +27,12 @@ const TeamPage = () => {
 
   return (
     <>
-      {loadingPlayerList ? <LoadingSpinner /> :
-        loading ? <LoadingSpinner /> :
-          <PlayerList
-            team={players}
-            groups={groups}
-          />
+      {!players.length || !groups.length ? <LoadingCover /> :
+
+        <PlayerList
+          team={players}
+          groups={groups}
+        />
       }
     </>
   )

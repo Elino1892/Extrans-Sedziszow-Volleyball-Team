@@ -39,9 +39,7 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
   useEffect(() => {
     if (Number(homeTeamScore) + Number(guestTeamScore) <= 5) {
       setNumberOfSets(Number(homeTeamScore) + Number(guestTeamScore));
-      // setSetResults(new Array(numberOfSets.length).fill({}))
     }
-    // console.log(setResults)
 
   }, [guestTeamScore, homeTeamScore])
 

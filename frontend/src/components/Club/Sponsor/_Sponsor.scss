@@ -9,13 +9,19 @@
       margin-bottom: 20px;
       &__image{
       width: 80%;
-      opacity: 0.7;
+      
       transition: opacity .5s linear;
+
+      @include media(large){
+      opacity: 0.7;
       filter: grayscale(100%);
       &:hover{
         opacity: 1;
         filter: grayscale(0%);
       }
+      }
+
+      
     }
  }
     

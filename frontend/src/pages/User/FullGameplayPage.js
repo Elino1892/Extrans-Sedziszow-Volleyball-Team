@@ -2,7 +2,7 @@ import FullGameplay from "../../components/FullGameplay/FullGameplay";
 import { useEffect } from "react";
 import { listMatchesWithRound } from '../../store/actions/matchActions'
 import { useDispatch, useSelector } from 'react-redux'
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+import LoadingCover from '../../components/UI/LoadingCover/LoadingCover'
 import { getTableDetails } from '../../store/actions/tableActions'
 
 
@@ -25,8 +25,8 @@ const GameplayPage = () => {
 
   return (
     <>
-      {loading ? <LoadingSpinner /> :
-        loadingTableDetails ? <LoadingSpinner /> :
+      {
+        !matches.length || !Object.keys(table).length ? <LoadingCover /> :
           <FullGameplay
             matches={matches}
             leagueTable={table}

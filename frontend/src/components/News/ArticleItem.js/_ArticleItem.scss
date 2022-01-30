@@ -23,8 +23,15 @@
   }
 
   &__text{
-    flex: 0 0 calc(100% * 2 / 3);
+    flex: 0 0 calc(100%);
+    max-width: calc(100%);
+
+    @include media(large){
+      flex: 0 0 calc(100% * 2 / 3);
     max-width: calc(100% * 2 / 3);
+
+    }
+
     &-skew-container{
       margin-bottom: 19rem;
       transform: skewY(-10deg);
@@ -63,16 +70,29 @@
     &-author{
       opacity: 0.6;
       font-size: 1.3rem;
-      margin-top: 10px;
+      margin-top: 15px;
       margin-bottom: 20px;
     }
 
     &-title{
-      font-size: 5rem;
-      // font-weight: 400;
+      padding-bottom: 50px;
+     font-size: 3rem;
+        letter-spacing: 1px;
+        line-height: 5rem;
+        margin-top: 20px;
+
+      @include media(small){
+        font-size: 4rem;
+      line-height: 6rem;
+      }
+
+      @include media(large){
+        font-size: 5rem;
       letter-spacing: 2px;
       line-height: 7rem;
-      padding-bottom: 50px;
+      margin-top: 0;
+      }
+
     }
 
     &-date{
@@ -83,24 +103,68 @@
     }
 
     &-subtitle{
-      font-size: 3rem;
       font-weight: 400;
-      text-align: justify;
-      line-height: 5.2rem;
       margin-top: 30px;
       margin-bottom: 50px;
-      text-indent: 30px;
+      font-size: 2rem;
+      line-height: 5rem;
+      text-align: left;
+      line-height: 2.2;
+      // text-indent: 20px;
+
+      @include media(small){
+        font-size: 3rem;
+      }
+
+      @include media(large){
+        font-size: 3rem;
+        text-align: justify;
+        line-height: 5.2rem;
+        text-indent: 30px;
+      }
+
     }
 
     &-paragraph{  
       text-align: justify;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 300;
       margin-bottom: 20px;
       line-height: 4.5rem;
       text-indent: 30px;
+
+      @include media(small){
+        font-size: 1.6rem;
+      }
+
+      @include media(large){
+        font-size: 1.7rem;
+      }
+
     }
 
+  }
+
+  &__bottom-gradient{
+    margin-top: 0;
+    height: 120px;
+
+    @include media(xsmall){
+      height: 200px;
+    }
+
+    @include media(small){
+      height: 270px;
+    }
+
+    @include media(medium){
+      height: 340px;
+    }
+
+    @include media(large){
+      height: 395px;
+  margin-top: -150px;
+    }
   }
 
   &__comments{
@@ -125,8 +189,11 @@
     }
 
     &-users{
-      // flex: 0 0 calc(100%*2/3);
-      flex-basis: 70%;
+      flex-basis: 100%;
+      @include media(medium){
+flex-basis: 70%;
+      }
+      
     }
 
     &-form{
@@ -157,7 +224,8 @@
       line-height: 2rem;
       border: none;
       outline: none;
-      // transition: .2s;
+      margin: 0 auto;
+      max-width: 1000px;
       
        &:focus{
         border: 2px solid $main-color;

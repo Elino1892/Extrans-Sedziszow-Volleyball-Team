@@ -7,7 +7,7 @@ import { PLAYER_DETAILS_RESET } from "../../constants/playerConstants";
 import playerImage from '../../images/players/Piotr_Świeczka.png'
 import playerBgc from '../../images/players/Piotr_Świeczka_background.jpg'
 import PlayerInfo from "../../components/Player/PlayerInfo/PlayerInfo";
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+import LoadingCover from "../../components/UI/LoadingCover/LoadingCover";
 
 const dummyPlayer = {
 
@@ -72,7 +72,7 @@ const PlayerPage = () => {
 
   return (
     <>
-      {Object.keys(player).length === 0 ? <LoadingSpinner /> :
+      {!Object.keys(player).length ? <LoadingCover /> :
         <PlayerInfo
           id={player.id}
           firstName={player.first_name}

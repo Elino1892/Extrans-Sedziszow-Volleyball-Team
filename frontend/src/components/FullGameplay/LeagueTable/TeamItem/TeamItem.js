@@ -7,7 +7,7 @@ const TeamItem = ({ place, name, numberOfMatches, numberOfWonMatches, numberOfLo
           <img src={image} alt={`Logo zespołu ${name}`} className="league-table__logo-team-img" />
         </div>
       </td>
-      <td>{name}</td>
+      <td style={{ padding: '0 20px' }}>{name}</td>
       <td>{points}</td>
       <td>{numberOfMatches}</td>
       <td>{numberOfWonMatches}</td>

@@ -13,8 +13,8 @@ const MatchList = ({ matches }) => {
             {matchRound.matches.map(match =>
               <MatchItem
                 key={match.id}
-                homeTeam={match.homeTeam}
-                awayTeam={match.guestTeam}
+                homeTeam={match.home_team}
+                awayTeam={match.guest_team}
                 isFinished={match.is_finished}
                 logoHomeTeam={match.home_team_logo}
                 logoAwayTeam={match.guest_team_logo}

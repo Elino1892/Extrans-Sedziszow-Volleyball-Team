@@ -12,22 +12,43 @@
   }
 
   &__date{
-    flex-basis: 20%;
+    flex-basis: 100%;
+    padding-bottom: 20px;
     display: flex;
       justify-content: center;
       align-items: center;
+
+    @include media(medium){
+      flex-basis: 20%;
+      padding-bottom: 0;
+    }
+
     &-day{
       font-size: 1.3rem;
+
+      @include media(xsmall){
+      font-size: 1.5rem;
+    }
+
       // color: black;
     }
   }
   &__result{
     display: flex;
-    flex-basis: 60%;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
+    flex-basis: 100%;
+
+@include media(medium){
+      flex-basis: 60%;
+    }
+    
     justify-content: space-evenly;
     align-items: center;
+
+    @include media(medium){
+border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    }
+
     &-container{
       flex-basis: 70px;
       height: 60px;
@@ -41,6 +62,10 @@
       border-radius: 20%;
       color: white;
       margin: 0 20px;
+      padding: 0 10px;
+      @include media(medium){
+        padding: 0;
+      }
 
       &--VS{
         background-color: transparent;
@@ -79,19 +104,33 @@
     //   // }
     // }
     &-logo{
-      width: 115px;
+      
+      width: 82px;
          height: 115px;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-right: 0;
+        
+      @include media(xsmall){
+      width: 115px;
+    }
+
+      @include media(medium){
         margin-left: 20px;
-      // height: 115px;
-      // padding-left: 20px;
-      // width: 115px;
+      }
       
       &-image{
-        width: 115px;
+width: 85px;
+        @include media(xsmall){
+      width: 100px;
+    }
+
+        @include media(small){
+          
+          width: 115px;
+        }
+        
         //  height: 115px;
         // border-radius: 50%;
       }
@@ -103,8 +142,15 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-basis: 20%;
+    flex-basis: 100%;
+    padding-top: 20px;
     font-size: 1.5rem;
+
+    @include media(medium){
+      flex-basis: 20%;
+      padding-top: 0;
+    }
+
     &-set{
       padding: 0 5px;
       border-right: 1px solid gray;

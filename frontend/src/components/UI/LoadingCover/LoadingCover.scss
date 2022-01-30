@@ -1,0 +1,24 @@
+.loading-cover{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999999;
+  background: linear-gradient(to top, $light-main-color, $dark-main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 30%;
+    animation: puls 2.4s infinite;
+  }
+
+  // &--opacity{
+  //   animation: opacity 1s linear;
+  // }
+
+}

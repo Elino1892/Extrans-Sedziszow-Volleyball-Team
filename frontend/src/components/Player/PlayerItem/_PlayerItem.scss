@@ -1,0 +1,63 @@
+.team{
+  &__player{
+    &-link{
+    flex-basis: 100%;
+    margin: 0 10px 60px !important;
+      max-width: 500px;
+    @include media(xsmall){
+      margin: 0 20px 120px !important;
+    }
+
+    @media (min-width: 600px) {
+      flex-basis: 80%;
+      margin: 0 auto 120px !important;
+    }
+
+    @include media(large){
+      flex-basis: 45%;
+      margin: 0 20px 120px !important;
+    }
+
+    }
+
+    &-info{
+      padding-left: 0;
+    }
+
+    &-number{
+      font-size: 15rem;
+      padding-left: 0;
+
+      @include media(xsmall){
+      font-size: 17rem;
+      padding-left: 15px;
+    }
+
+    }
+
+    &-first-name{
+      font-size: 2.4rem;
+      justify-content: flex-start;
+
+      @include media(xsmall){
+      font-size: 3.5rem;
+      padding-left: 15px;
+    }
+    }
+    &-last-name{
+font-size: 2.4rem;
+@include media(xsmall){
+      font-size: 3.5rem;
+      padding-left: 15px;
+    }
+    }
+
+    &-image-container{
+      width: 150px;
+
+      @include media(xsmall){
+      width: 180px;
+    }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 .league-table{
   // min-height: 100vh;
   overflow: hidden;
+  overflow-x: auto;
   &__container{
     width: 100%;
     margin: 100px 0;
@@ -86,7 +87,7 @@ font-weight: bold;
     &-img{
       width: 100%;
       
-      border-radius: 50%;
+      // border-radius: 50%;
     
     }
   }

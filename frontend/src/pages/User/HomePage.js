@@ -9,6 +9,7 @@ import { listPlayers } from '../../store/actions/playerActions'
 import { PLAYER_DETAILS_RESET } from "../../constants/playerConstants";
 import { listLastMatches } from '../../store/actions/matchActions'
 import { getShortTableDetails } from '../../store/actions/tableActions'
+import LoadingCover from "../../components/UI/LoadingCover/LoadingCover";
 
 const HomePage = () => {
 
@@ -40,33 +41,21 @@ const HomePage = () => {
 
   return (
     <>
-      {!news.length ? <LoadingSpinner /> :
+      {!news.length || !players.length || !matches.length || !Object.keys(shortTable).length ? <LoadingCover /> :
         <>
-          {loadingMatchLastList ? <LoadingSpinner /> :
-            <>
-              {loadingPlayerList ? <LoadingSpinner /> :
-                <>
-                  {loadingShortTableDetails ? <LoadingSpinner /> :
-                    <>
-                      <NewsListBanner
-                        news={news}
-                      />
+          <NewsListBanner
+            news={news}
+          />
 
-                      <Gameplay
-                        matches={matches}
-                        table={shortTable}
-                      />
+          <Gameplay
+            matches={matches}
+            table={shortTable}
+          />
 
 
-                      <Player
-                        players={players}
-                      />
-                    </>
-                  }
-                </>
-              }
-            </>
-          }
+          <Player
+            players={players}
+          />
         </>
       }
     </>

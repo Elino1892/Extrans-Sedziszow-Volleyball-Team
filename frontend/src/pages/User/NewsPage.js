@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import NewsList from "../../components/News/NewsList/NewsList"
 import { listNews } from "../../store/actions/newsActions"
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner"
+import LoadingCover from "../../components/UI/LoadingCover/LoadingCover";
 
 // import bgc1 from "../../images/268437504_261248222659880_4987107035931412424_n.jpg"
 // import bgc2 from "../../images/267728645_260641312720571_5759638841539975658_n.jpg"
@@ -116,7 +116,7 @@ const NewsPage = () => {
 
   return (
     <>
-      {loading ? <LoadingSpinner /> :
+      {loading ? <LoadingCover /> :
         <NewsList
           news={news}
         />

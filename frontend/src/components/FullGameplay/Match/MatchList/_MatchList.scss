@@ -18,7 +18,13 @@
     // min-height: 80vh;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
+    // flex-basis: 90%;
+
+    @include media(medium){
+      width: 80%;
+    }
+
     &-info{
       display: flex;
       align-items: center;

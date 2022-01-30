@@ -1,7 +1,7 @@
 import Club from "../../components/Club/Club";
 import { useSelector, useDispatch } from "react-redux";
 import { listSponsors } from "../../store/actions/sponsorActions";
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+import LoadingCover from '../../components/UI/LoadingCover/LoadingCover'
 
 import sponsorLogo1 from "../../images/logo_company_extrans.png"
 import sponsorLogo2 from "../../images/sponsor-logo/busik.png"
@@ -66,7 +66,7 @@ const ClubPage = () => {
 
   return (
     <>
-      {!sponsors.length ? <LoadingSpinner /> :
+      {!sponsors.length ? <LoadingCover /> :
         <Club
           sponsors={sponsors}
         />

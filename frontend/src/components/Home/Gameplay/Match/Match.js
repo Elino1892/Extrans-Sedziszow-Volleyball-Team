@@ -10,6 +10,7 @@ const Match = ({ round, date, hour, teamHome, logoTeamHome, teamAway, logoTeamAw
       <Button className="button-match prev-match" disabled={index === 0} onClick={showPrevMatchHandler}><span className="fas fa-arrow-left"></span></Button>
       <Button className="button-match next-match" disabled={index === 4} onClick={showNextMatchHandler}><span className="fas fa-arrow-right"></span></Button>
       <h2 className="next-game__title">{index === 0 || index === 1 ? 'Poprzedni mecz' : 'Następny mecz'}</h2>
+
       <div className="next-game__info">
         <p className="next-game__round">{round} Kolejka</p>
         <p className="next-game__date">{date}</p>

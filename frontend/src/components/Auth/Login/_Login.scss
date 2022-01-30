@@ -3,15 +3,29 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 80vh;
+	min-height: 720px;
 	font-family: Raleway, sans-serif;
+
+	@include media(large){
+		min-height: 80vh;
+	}
+
 }
 .screen {
 	background: linear-gradient(90deg, #5D54A4, #7C78B8);
 	position: relative;
-	height: 600px;
-	width: 500px;
+	height: 550px;
+	width: 270px;
 	box-shadow: 0px 0px 24px #5C5696;
+
+	@include media(small){
+	width: 400px;
+	}
+
+	@include media(large){
+		height: 600px;
+	width: 500px;
+	}
 
   &__content{
 z-index: 1;
@@ -69,9 +83,17 @@ position: absolute;
 
 
 .login {
-	width: 460px;
+	width: 285px;
 	padding: 30px;
 	padding-top: 156px;
+
+	@include media(small){
+		width: 350px;
+	}
+
+	@include media(large){
+		width: 460px;
+	}
 
 	&-register{
 		padding-top: 0;
@@ -115,9 +137,14 @@ border: none;
 	padding: 10px;
 	padding-left: 24px;
 	font-weight: 700;
-	width: 75%;
+	width: 100%;
 	transition: .2s;
 	font-size: 2rem;
+
+		@include media(large){
+			width: 75%;
+		}
+
 	&:active {
 		outline: none;
 		border-bottom-color: #6A679E;
@@ -145,6 +172,9 @@ border: none;
 	width: 100%;
 	color: #4C489D;
 	box-shadow: 0px 2px 2px #5C5696;
+
+		
+
 	cursor: pointer;
 	transition: .2s;
 	&:active {

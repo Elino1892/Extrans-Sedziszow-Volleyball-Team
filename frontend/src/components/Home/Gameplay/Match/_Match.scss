@@ -1,18 +1,50 @@
 .next-game{
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   // margin: 0 50px;
   // margin-right: ;
-  flex-basis: 100%;
+  // flex-basis: 100%;
+  flex-basis: calc(20%);
   &__title{
     flex-basis: 100%;
-    font-size: 4rem;
+    font-size: 2rem;
     text-align: center;
     padding: 20px 0;
     font-weight: 300;
+
+    @include media(small){
+font-size: 3rem;
+    }
+
+    @include media(medium){
+font-size: 4rem;
+    }
+
   }
+
+  &__swap-icon{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    img{
+      width: 100%;
+    }
+
+    @include media(xsmall){
+width: 60px;
+    height: 60px;
+    }
+    @include media(small){
+width: 80px;
+    height: 80px;
+    right: 30px;
+    }
+  }
+
   &__info{
     flex-basis: 100%;
     text-align: center;
@@ -30,7 +62,8 @@
     padding: 10px 0;
     font-weight: bold;
     background-color: #ccc;
-    width: 10%;
+    width: 20%;
+    max-width: 70px;
     // text-align: center;
     margin: 0 auto;
     font-size: 1.5rem;
@@ -65,8 +98,23 @@
     flex-wrap: wrap;
     &-logo{
       // width: 50%;
-      width: 192px;
+      width: 50px;
+      height: 50px;
+
+      @include media(xsmall){
+        width: 100px;
+      height: 100px;
+      }
+
+      @include media(medium){
+        width: 150px;
+      height: 150px;
+      }
+
+      @include media(large){
+        width: 192px;
       height: 192px;
+      }
     }
     &-name{
       margin-top: auto;
@@ -74,7 +122,21 @@
       text-align: center;
       margin-top: 20px;
       font-weight: 300;
-      font-size: 1.7rem;
+      font-size: 1rem;
+
+        @media (min-width: 350px) {
+        font-size: 1.2rem;
+      }
+
+      @media (min-width: 400px) {
+        font-size: 1.6rem;
+      }
+
+      @include media(small){
+        width: 192px;
+      height: 192px;
+      font-size: 2rem;
+      }
     }
   }
   &__hall-info{
@@ -100,17 +162,30 @@
 
 .VS{
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 2rem;
+
+  @include media(xsmall){
+    font-size: 3rem;
+  }
+
+  @include media(small){
+    font-size: 4rem;
+  }
 }
 
 .button-match{
-  display: block;
+  display: none;
   height: 40px;
   width: 40px;
   border-radius: 50%;
   background-color: white;
   cursor: pointer;
   transition: .3s;
+
+  @include media(large){
+    display: block;
+  }
+
   &:hover{
     background-color: #ccc;
   }

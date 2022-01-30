@@ -6,7 +6,7 @@ import ArticleItem from "../../components/News/ArticleItem.js/ArticleItem";
 // import bgc1 from "../../images/268437504_261248222659880_4987107035931412424_n.jpg"
 
 import { getNewsDetails, listNews } from "../../store/actions/newsActions";
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+import LoadingCover from '../../components/UI/LoadingCover/LoadingCover'
 
 import { NEWS_CREATE_COMMENT_RESET, NEWS_DETAILS_RESET } from "../../constants/newsConstants";
 
@@ -48,7 +48,7 @@ const ArticleItemPage = () => {
 
   return (
     <>
-      {Object.keys(news).length === 0 ? <LoadingSpinner /> :
+      {!Object.keys(news).length ? <LoadingCover /> :
         <ArticleItem
           // id={dummyNewsItem.id}
           title={news.title}
