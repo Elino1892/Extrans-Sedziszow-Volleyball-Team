@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'extrans-sedziszow-volleyball.herokuapp.com']
 
@@ -178,7 +178,7 @@ STATICFILES_DIRS = [
 
 
 
-MEDIA_ROOT = BASE_DIR / 'staticfiles/images'
+MEDIA_ROOT = BASE_DIR / 'static/images'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
@@ -192,6 +192,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # print(MEDIA_URL)
 # print("\n")
 # print("\n")
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 
