@@ -2,8 +2,6 @@ import Button from "../../../UI/Button/Button";
 
 const Match = ({ round, date, hour, teamHome, logoTeamHome, teamAway, logoTeamAway, result, set, hallInfo, showNextMatchHandler, showPrevMatchHandler, index }) => {
 
-  console.log(set)
-
   return (
     <div className="next-game">
 

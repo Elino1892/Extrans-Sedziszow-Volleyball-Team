@@ -146,7 +146,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       config
     )
 
-    // console.log(data)
 
     dispatch({
       type: USER_DETAILS_SUCCESS,

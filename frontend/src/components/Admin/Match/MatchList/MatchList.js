@@ -4,7 +4,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Form, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import LoadingSpinner from '../../../../components/UI/LoadingSpinner/LoadingSpinner'
-// import Message from '../components/Message'
 import { Container } from 'react-bootstrap'
 
 
@@ -14,33 +13,17 @@ const MatchList = ({ matches, deleteHandler, loading, error }) => {
   const [searchHomeTeamMatch, setSearchHomeTeamMatch] = useState('')
   const [searchGuestTeamMatch, setSearchGuestTeamMatch] = useState('')
 
-  // const searchGroupHandler = (e) => {
-  //   const { value } = e.target;
-
-  //   setSearchGroup(value)
-  // }
-
-
   return (
     <>
-
-      {/* <Row className='align-items-center'> */}
-      {/* <Col> */}
       <div className="admin__container-action">
         <h1 className='admin__title'>Mecze</h1>
-        {/* </Col> */}
-
-        {/* <Col className='text-right'> */}
         <Link className='button admin__link-text admin__link-text--create' to={"/admin/mecze/tworzenie"}>
           <i className='fas fa-plus'></i> Dodaj mecz
         </Link>
       </div>
-      {/* </Col> */}
-      {/* </Row> */}
       <Form.Control
         type='text'
         placeholder='Wyszukaj mecz po gospodarzu...'
-        // value={searchEmail}
         onChange={(e) => setSearchHomeTeamMatch(e.target.value)}
         style={{ margin: '20px 0' }}
         className='admin__search-input'
@@ -50,7 +33,6 @@ const MatchList = ({ matches, deleteHandler, loading, error }) => {
       <Form.Control
         type='text'
         placeholder='Wyszukaj mecz po gościu...'
-        // value={searchEmail}
         onChange={(e) => setSearchGuestTeamMatch(e.target.value)}
         style={{ margin: '20px 0' }}
         className='admin__search-input'

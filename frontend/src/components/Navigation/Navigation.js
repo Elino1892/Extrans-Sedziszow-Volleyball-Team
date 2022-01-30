@@ -63,9 +63,6 @@ const Navigation = () => {
           <li className="nav__item">
             <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/klub"}>Klub</NavLink>
           </li>
-          {/* <li className="nav__item">
-          <NavLink className={navData => navData.isActive ? "nav__link active" : "nav__link"} to={"/galeria"}>Galeria</NavLink>
-        </li> */}
           {userInfo ?
             <li className="nav__item nav__dropdown">
               <p className="nav__link nav__link-dropbtn">{userInfo.name} <span className="fas fa-arrow-down"></span></p>

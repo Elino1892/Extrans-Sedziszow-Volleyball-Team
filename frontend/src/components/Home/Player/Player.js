@@ -9,7 +9,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 
-// const WINDOW_SIZE_XSMALL = 460;
 const WINDOW_SIZE_SMALL = 639;
 const WINDOW_SIZE_MEDIUM = 859;
 const WINDOW_SIZE_LARGE = 1024;
@@ -42,7 +41,6 @@ const Player = ({ players }) => {
       {size.width <= WINDOW_SIZE_SMALL
         ?
         <div className="player__details-container"
-        // style={{ transform: `translate3d(${numberItem * -(100 / players.length)}%, 0px, 0px)`, width: `${players.length * 100}%` }}
         >
           <Swiper className="mySwiper" style={{ width: '100%' }}>
             {players.map((player, index) =>

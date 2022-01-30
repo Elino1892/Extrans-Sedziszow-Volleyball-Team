@@ -1,11 +1,8 @@
 .matches{
-  // min-height: 100vh;
   padding-top: 50px;
   display: flex;
   flex-direction: column;
-  // justify-content: space-evenly;
   align-items: center;
-  // flex-wrap: wrap;
   &__skewed-box{
     width: 28px;
     height: 40px;
@@ -15,11 +12,9 @@
   }
 
   &__round{
-    // min-height: 80vh;
     display: flex;
     flex-direction: column;
     width: 90%;
-    // flex-basis: 90%;
 
     @include media(medium){
       width: 80%;
@@ -31,8 +26,6 @@
       margin-bottom: 40px;
     }
     &-title{
-      // width: 90%;
-      // margin-bottom: 40px;
       font-size: 3rem;
       letter-spacing: 1.5px;
     }

@@ -4,7 +4,7 @@
 	align-items: center;
 	justify-content: center;
 	min-height: 720px;
-	font-family: Raleway, sans-serif;
+	font-family: Lato, sans-serif;
 
 	@include media(large){
 		min-height: 80vh;
@@ -116,7 +116,6 @@ position: absolute;
       font-weight: bold;
       &:hover{
         text-decoration: underline;
-        // border-bottom: 1px solid #4C489D;
       }
     }
   }

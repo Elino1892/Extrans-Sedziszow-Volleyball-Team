@@ -1,5 +1,4 @@
 .player{
-    // height: 150vh;
      overflow: hidden;
      display: flex;
      flex-direction: column;
@@ -7,7 +6,6 @@
      background-color: black;
     &__details-container{
       display: flex;
-      // justify-content: center;
       transition: .5s;
       min-height: 720px;
 
@@ -18,34 +16,15 @@
       @media (orientation: landscape)and (max-width: 1023px) {
         min-height: 780px;
       }
-
-      // @media (orientation: landscape)  {
-      //   min-height: 780px;
-      // }
-
-      // @include media(small){
-      //   height: 100vh;
-      // }
-
-      // @include media(large){
-      //   height: 100%;
-      // }
-
     }
     &__list-player-container{
       display: flex;
       transition: .5s;
       flex: 0 0 auto;
-      // background-color: black;
-      // width: 70%;
     }
     &__list-player-visible{
-      // display: flex;
-      // flex-basis: 80vw;
-      // overflow: hidden;
       margin-top: -300px;
       max-width: 1100px;
-      // background-color: black;
       width: 85%;
       margin-left: auto;
       margin-right: auto;
@@ -87,15 +66,7 @@
         max-width: 1460px;
       }
 
-      // transition: .5s;
     }
-    // &__list-player-bgc{
-    //   background-color: black;
-    //   width: 100vw;
-    //   // position: absolute;
-    //   // left: 0;
-
-    // }
     &__list-player-ovh{
       overflow: hidden;
       width: 100%;
@@ -115,10 +86,6 @@
       @include media(xlarge){
         height: 435px;
       }
-
-      // @include media(small){
-      //   height: 420px;
-      // }
 
     }
 }

@@ -3,8 +3,6 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux"
 import ArticleItem from "../../components/News/ArticleItem.js/ArticleItem";
 
-// import bgc1 from "../../images/268437504_261248222659880_4987107035931412424_n.jpg"
-
 import { getNewsDetails, listNews } from "../../store/actions/newsActions";
 import LoadingCover from '../../components/UI/LoadingCover/LoadingCover'
 
@@ -33,7 +31,6 @@ const ArticleItemPage = () => {
   useEffect(() => {
     document.title = "Aktualności - Extrans Sędziszów Małopolski"
     window.scrollTo(0, 0)
-    // dispatch(listNews())
     dispatch(getNewsDetails(articleId));
 
     if (successCommentCreate) {
@@ -50,7 +47,6 @@ const ArticleItemPage = () => {
     <>
       {!Object.keys(news).length ? <LoadingCover /> :
         <ArticleItem
-          // id={dummyNewsItem.id}
           title={news.title}
           subtitle={news.subtitle}
           description={news.description}
@@ -67,46 +63,3 @@ const ArticleItemPage = () => {
 }
 
 export default ArticleItemPage;
-
-// const ArticleItemPage = () => {
-
-
-//   const params = useParams();
-//   const { articleId } = params;
-
-//   console.log(articleId);
-
-
-//   const dispatch = useDispatch();
-
-//   const newsDetails = useSelector(state => state.newsDetails);
-//   const { news, loading, error } = newsDetails;
-
-//   useEffect(() => {
-//     // document.title = news.title
-//     // window.scrollTo(0, 0)
-//     console.log('jestem')
-//     dispatch(getNewsDetails(articleId));
-
-//   }, [dispatch])
-
-//   return (
-//     <>
-//       {loading ? <LoadingSpinner /> :
-//         <ArticleItem
-//           // id={dummyNewsItem.id}
-//           title={news.title}
-//           subtitle={news.subtitle}
-//           description={news.description}
-//           background={news.image}
-//           author={news.user}
-//           createdAt={news.createdAt}
-
-//           comments={dummyComments}
-//         />
-//       }
-//     </>
-//   )
-// }
-
-// export default ArticleItemPage;

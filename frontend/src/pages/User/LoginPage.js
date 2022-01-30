@@ -27,9 +27,6 @@ const LoginPage = () => {
   const submitHandler = (e, emailInputRef, passwordInputRef) => {
     e.preventDefault();
 
-    // console.log(e)
-    console.log(emailInputRef.current.value)
-    console.log(passwordInputRef.current.value)
 
     dispatch(login(emailInputRef.current.value, passwordInputRef.current.value))
     if (error && error === 'No active account found with the given credentials') {

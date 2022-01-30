@@ -22,8 +22,6 @@ const MatchList = ({ matches }) => {
                 homeTeamScore={match.home_team_score}
                 awayTeamScore={match.guest_team_score}
                 smallPoints={match.set_results}
-                // homeTeamScoreSet={match.homeTeamScoreSet}
-                // awayTeamScoreSet={match.awayTeamScoreSet}
                 date={match.date}
               />
             )}

@@ -9,7 +9,6 @@ const LoadingSpinner = () => {
           </filter>
         </defs>
         <circle className="spinner"
-          // style="fill:transparent;stroke:#dd2476;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);"
           style={{ filter: "url(#shadow)" }}
           cx="50" cy="50" r="45" />
       </svg>

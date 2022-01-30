@@ -167,7 +167,6 @@ export const updatePlayer = (player) => async (dispatch, getState) => {
       }
     }
 
-    console.log(player)
 
     const { data } = await axios.put(
       `https://extrans-sedziszow-volleyball.herokuapp.com/api/players/update/${player.id}/`,

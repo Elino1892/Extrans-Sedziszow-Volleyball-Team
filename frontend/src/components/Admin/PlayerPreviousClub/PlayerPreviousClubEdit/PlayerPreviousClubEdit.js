@@ -8,8 +8,6 @@ import { getPlayerPreviousClubDetails } from '../../../../store/actions/playerPr
 
 const PlayerPreviousClubEdit = ({ players, groups, clubs, submitHandler, loadingUpdate, errorUpdate }) => {
 
-  // console.log(groups)
-
   const params = useParams()
   const { id: previousClubPlayerId } = params;
 
@@ -17,12 +15,10 @@ const PlayerPreviousClubEdit = ({ players, groups, clubs, submitHandler, loading
   const playerPreviousClubDetails = useSelector(state => state.playerPreviousClubDetails)
   const { loading, error, playerPreviousClub } = playerPreviousClubDetails
 
-  // const [player, setPlayer] = useState('')
   const [previousClub, setPreviousClub] = useState('')
   const [season, setSeason] = useState('')
   const [position, setPosition] = useState('')
   const [isBelongGroupList, setIsBelongGroupList] = useState([new Array(groups.length).fill(false)])
-  // const [isBelongPlayersList, setIsBelongPlayersList] = useState([new Array(players.length).fill(false)])
   const [isBelongClubsList, setIsBelongClubsList] = useState([new Array(clubs.length).fill(false)])
 
   useEffect(() => {
@@ -59,10 +55,6 @@ const PlayerPreviousClubEdit = ({ players, groups, clubs, submitHandler, loading
       setIsBelongClubsList(tempArray4)
     }
   }, [playerPreviousClub])
-  // console.log(players)
-  // console.log(groups)
-  // console.log(clubs)
-  // console.log(playerPreviousClub)
 
   const changeInputValueHandler = (e, index) => {
     const { value } = e.target;
@@ -101,32 +93,6 @@ const PlayerPreviousClubEdit = ({ players, groups, clubs, submitHandler, loading
           {loadingUpdate && <LoadingSpinner />}
           {errorUpdate && <p>Błąd: {errorUpdate}</p>}
           <Form className='admin__form' onSubmit={(e) => submitHandler(e, playerPreviousClub.player.id, position, previousClub, season)}>
-
-            {/* <Form.Group controlId='player' className='admin__form-checkbox-container'>
-              <Form.Label className='admin__form-label'>Zawodnik </Form.Label>
-              <Form.Control
-                className='admin__search-input admin__search-input--short'
-                type='text'
-                placeholder='Zawodnik'
-                value={playerPreviousClub.player.name}
-                disabled */}
-            {/* // onChange={(e) => setSeason(e.target.value)} */}
-            {/* > */}
-            {/* </Form.Control> */}
-            {/* {players.map(player => (
-            <Form.Check
-              type='radio'
-              key={player.id}
-              className='admin__search-input admin__search-input--short'
-              name='player-option'
-              id={player.id}
-              inline
-              onChange={(e) => setPlayer(e.target.value)}
-              value={player.id}
-              label={`${player.first_name} ${player.last_name}`}
-            />
-          ))} */}
-            {/* </Form.Group> */}
 
             <Form.Group controlId='previousClub' className='admin__form-checkbox-container'>
               <Form.Label className='admin__form-label'>Poprzedni klub</Form.Label>

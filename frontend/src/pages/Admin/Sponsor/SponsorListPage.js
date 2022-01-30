@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import LoadingSpinner from '../../../components/UI/LoadingSpinner/LoadingSpinner'
-// import Message from '../components/Message'
 import { listSponsors, deleteSponsor } from '../../../store/actions/sponsorActions'
 import { useNavigate } from 'react-router'
 import { SPONSOR_DETAILS_RESET } from '../../../constants/sponsorConstants'
@@ -28,7 +27,6 @@ const SponsorListPage = () => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Sponsorzy - Administrator"
       window.scrollTo(0, 0)
-      // dispatch(listSponsors())
       dispatch({ type: SPONSOR_DETAILS_RESET })
     } else {
       navigate('/logowanie')

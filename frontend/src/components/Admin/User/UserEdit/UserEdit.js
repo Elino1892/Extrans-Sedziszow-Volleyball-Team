@@ -20,11 +20,8 @@ const UserEdit = ({ user, submitHandler, loadingUpdate, errorUpdate }) => {
       <Link className='admin__link-text' to='/admin/uzytkownicy'>
         Powrót
       </Link>
-
-      {/* <FormContainer> */}
       <h1 className='admin__title admin__title--edit-user'>Edycja użytkownika</h1>
       {loadingUpdate && <LoadingSpinner />}
-      {/* {loadingAllGroupList && <LoadingSpinner />} */}
       {errorUpdate && <p>Błąd: {errorUpdate}</p>}
       <Form className='admin__form' onSubmit={(e) => submitHandler(e, name, email, isAdmin)}>
         <Form.Group controlId='name'>
@@ -65,7 +62,6 @@ const UserEdit = ({ user, submitHandler, loadingUpdate, errorUpdate }) => {
           Zaktualizuj
         </Button>
       </Form>
-      {/* </FormContainer> */}
     </>
   )
 }

@@ -1,9 +1,3 @@
-import busikLogo from "../../images/sponsor-logo/busik.png"
-import pzlLogo from "../../images/sponsor-logo/pzl.png"
-import iteLogo from "../../images/sponsor-logo/ITE.png"
-import vertipolLogo from "../../images/sponsor-logo/vertipol.png"
-import { Link } from 'react-router-dom'
-
 const Footer = ({ sponsors }) => {
 
   const currentYear = new Date().getFullYear()

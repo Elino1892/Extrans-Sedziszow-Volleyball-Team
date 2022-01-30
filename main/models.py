@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 class News(models.Model):
   id = models.AutoField(primary_key=True)
@@ -97,7 +96,7 @@ class Player_Previous_Club(models.Model):
   previous_club = models.ForeignKey(Previous_Club, on_delete=models.CASCADE, null=False)
   position = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
   season = models.CharField(max_length=20, default='')
-  # position = models.CharField(max_length=30, default='')
+
 
 
   def __str__(self):
@@ -110,7 +109,7 @@ class Team(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100)
   logo = models.ImageField(null=True, blank=True)
-  # coach = models.CharField(max_length=100)
+
 
   def __str__(self):
     return f"{self.name}"
@@ -140,7 +139,6 @@ class Match(models.Model):
 
 class Table(models.Model):
   id = models.AutoField(primary_key=True)
-  # place = models.IntegerField(blank=True, null=True)
   points = models.IntegerField(blank=True, null=True, default=0)
   matches_played = models.IntegerField(blank=True, null=True, default=0)
   matches_won = models.IntegerField(blank=True, null=True, default=0)

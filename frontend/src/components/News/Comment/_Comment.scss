@@ -14,7 +14,6 @@
     font-weight: bold;
     letter-spacing: 1px;
     margin-top: 20px;
-    // flex-basis: 75%;
   }
 
   &__date{
@@ -23,14 +22,13 @@
     font-size: 1.3rem;
     opacity: 0.6;
     margin-top: 20px;
-    // flex-basis: 25%;
   }
 
   &__text{
     flex-basis: 100%;
     margin-top: 30px;
     font-size: 1.8rem;
-    font-family: 'Open Sans', 'Roboto', 'sans-serif';
+    font-family: 'Lato', 'Roboto', 'sans-serif';
     line-height: 3rem;
     letter-spacing: 1px;
   }

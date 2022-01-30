@@ -20,16 +20,6 @@ const PlayerCreate = ({ groups, submitHandler, loadingCreate, errorCreate }) => 
   const [pictureBackground, setPictureBackground] = useState([])
   const [group, setGroup] = useState('')
 
-  // const getGroupFromInputHandler = (e) => {
-  //   const { value, id } = e.target;
-
-  //   setGroup({
-  //     id,
-  //     name: value,
-  //   });
-  // }
-
-
   return (
     <>
       <Link className='admin__link-text' to='/admin/zawodnicy'>

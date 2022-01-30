@@ -1,14 +1,11 @@
 .match{
   width: 100%;
   display: flex;
-  // border-bottom: 1px solid gray;
   flex-wrap: wrap;
   padding: 15px;
-  // margin-bottom: 10px;
   &-bgc{
     background: #aaa;
     border-radius: 10px;
-    // border-bottom: none;
   }
 
   &__date{
@@ -30,7 +27,6 @@
       font-size: 1.5rem;
     }
 
-      // color: black;
     }
   }
   &__result{
@@ -53,7 +49,6 @@ border-left: 1px solid gray;
       flex-basis: 70px;
       height: 60px;
       display: flex;
-      // height: auto;
       justify-content: center;
       align-items: center;
       font-size: 2rem;
@@ -91,18 +86,10 @@ border-left: 1px solid gray;
         margin-right:20px;
         margin-left: 0;
         order: -1;
-        // padding-right: 20px;
-        // padding-left: 0;
+
       }
     }
-    // &:nth-child(2){
-    //   justify-content: flex-start;
-    // }
-    // &:nth-of-type(2)-logo{
-    //   // &-logo{
-    //     order: 1;
-    //   // }
-    // }
+
     &-logo{
       
       width: 82px;
@@ -131,8 +118,6 @@ width: 85px;
           width: 115px;
         }
         
-        //  height: 115px;
-        // border-radius: 50%;
       }
     }
   }

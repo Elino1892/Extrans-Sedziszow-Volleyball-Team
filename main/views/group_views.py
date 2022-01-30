@@ -12,7 +12,6 @@ from main.models import Group
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getGroups(request):
   group = Group.objects.order_by('id')
   serializer = GroupSerializer(group, many = True)

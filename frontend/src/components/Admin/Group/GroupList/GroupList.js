@@ -2,11 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Form, Row, Col } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
 import LoadingSpinner from '../../../../components/UI/LoadingSpinner/LoadingSpinner'
-// import Message from '../components/Message'
-import { Container } from 'react-bootstrap'
-
 
 
 const GroupList = ({ groups, deleteHandler, loading, error }) => {
@@ -22,24 +18,15 @@ const GroupList = ({ groups, deleteHandler, loading, error }) => {
 
   return (
     <>
-
-      {/* <Row className='align-items-center'> */}
-      {/* <Col> */}
       <div className="admin__container-action">
         <h1 className='admin__title'>Grupy</h1>
-        {/* </Col> */}
-
-        {/* <Col className='text-right'> */}
         <Link className='button admin__link-text admin__link-text--create' to={"/admin/grupy/tworzenie"}>
           <i className='fas fa-plus'></i> Stwórz grupę
         </Link>
       </div>
-      {/* </Col> */}
-      {/* </Row> */}
       <Form.Control
         type='text'
         placeholder='Wyszukaj grupę po nazwie...'
-        // value={searchEmail}
         onChange={searchGroupHandler}
         style={{ margin: '20px 0' }}
         className='admin__search-input'

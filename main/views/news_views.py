@@ -13,7 +13,6 @@ import babel.dates
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getNews(request):
   news = News.objects.order_by('-createdAt')
   serializer = NewsSerializer(news, many = True)

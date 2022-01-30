@@ -47,12 +47,10 @@ const MatchCreate = ({ teams, submitHandler, loadingCreate, errorCreate }) => {
     if (isGuest) {
       const setResultsTemp = [...setResultsGuest];
       setResultsTemp[index] = value;
-      // console.log(setResultsTemp)
       setSetResultsGuest(setResultsTemp);
     } else {
       const setResultsTemp = [...setResultsHome];
       setResultsTemp[index] = value;
-      // console.log(setResultsTemp)
       setSetResultsHome(setResultsTemp)
     }
 

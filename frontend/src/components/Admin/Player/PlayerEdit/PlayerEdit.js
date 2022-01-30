@@ -20,7 +20,6 @@ const PlayerEdit = ({ player, groups, submitHandler, loadingUpdate, errorUpdate 
   const [pictureBackground, setPictureBackground] = useState([])
   const [image, setImage] = useState('')
   const [backgroundImage, setBackgroundImage] = useState('')
-  const [isChangeGroup, setIsChangeGroup] = useState(false)
   const [groupItem, setGroup] = useState(0)
   const [isBelongGroupList, setisBelongGroupList] = useState([new Array(groups.length).fill(false)])
 

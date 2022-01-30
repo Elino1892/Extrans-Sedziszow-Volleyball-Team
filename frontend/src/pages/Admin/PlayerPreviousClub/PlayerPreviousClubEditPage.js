@@ -30,9 +30,6 @@ const PlayerPreviousClubEditPage = () => {
   const previousClubList = useSelector(state => state.previousClubList)
   const { loading: loadingPreviousClubsList, error: errorPreviousClubsList, previousClubs } = previousClubList
 
-  // const playerList = useSelector(state => state.playerList)
-  // const { loading: loadingPlayers, error: errorPlayers, players } = playerList
-
   const groupList = useSelector(state => state.groupList)
   const { loading: loadingGroupList, error: errorGroupList, groups } = groupList
 
@@ -40,17 +37,12 @@ const PlayerPreviousClubEditPage = () => {
     if (userInfo && userInfo.isAdmin) {
       document.title = "Edycja zawodnika";
       window.scrollTo(0, 0)
-      // dispatch(listPlayers())
       dispatch(listPreviousClubs())
       dispatch(listGroups())
       if (successUpdate) {
         dispatch({ type: PLAYER_PREVIOUS_CLUB_UPDATE_RESET })
         navigate('/admin/poprzednie-kluby');
       }
-      // else if (!playerPreviousClub.player || playerPreviousClub.id !== Number(playerPreviousClub)) {
-      //   // dispatch(getPlayerPreviousClubDetails(previousClubPlayerId))
-
-      // }
     } else {
       navigate('/logowanie');
     }
@@ -72,20 +64,14 @@ const PlayerPreviousClubEditPage = () => {
   return (
     <AdminLayout>
       {
-        // Object.keys(playerPreviousClub).length === 0
-        //   &&
-        // players.length === 0
-        // &&
         groups.length === 0 ? <LoadingSpinner /> :
           previousClubs.length === 0
             ? <LoadingSpinner /> :
             <PlayerPreviousClubEdit
-              // playerPreviousClub={playerPreviousClub}
               submitHandler={submitHandler}
               loadingUpdate={loadingUpdate}
               errorUpdate={errorUpdate}
               clubs={previousClubs}
-              // players={players}
               groups={groups}
             />
       }

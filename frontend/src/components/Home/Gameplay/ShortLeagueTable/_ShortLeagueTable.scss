@@ -30,9 +30,7 @@
 
     opacity: 60%;
     &-line{
-      // background-color: $light-main-color;
       th{
-        // text-align: start;
         padding: 0 5px;
 
         @include media(xsmall){
@@ -94,14 +92,4 @@ width: 120px;
       text-align: start;
     }
   }
-
-  // &__team-name{
-  //   display: none;
-
-  //   @include media(xsmall){
-  //     display: block;
-  //   }
-
-  // }
-
 }

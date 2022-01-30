@@ -5,8 +5,6 @@ import Button from "../UI/Button/Button";
 
 const FullGameplay = ({ matches, leagueTable }) => {
 
-  // POBRAĆ OD RAZU WSZYSTKIE MECZE I CAŁĄ TABELĘ, ŻEBY ŁATWO SIĘ PRZEMIESZCZAĆ
-
   const [isMatchActive, setIsMatchActive] = useState(true);
 
   const changeViewScreenHandler = (isMatchButton) => {

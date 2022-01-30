@@ -15,9 +15,6 @@ const LeagueTable = ({ leagueTable }) => {
             <th colSpan={2}>Stosunek</th>
           </tr>
           <tr className="league-table__table-head-line-second">
-            {/* <th></th>
-            <th></th>
-            <th></th> */}
             <th>Rozegrane</th>
             <th>Wygrane</th>
             <th>Przegrane</th>
@@ -35,7 +32,6 @@ const LeagueTable = ({ leagueTable }) => {
               key={team.id}
               place={index + 1}
               name={team.team}
-              // isHome={team.isHome}
               numberOfMatches={team.matches_played}
               numberOfWonMatches={team.matches_won}
               numberOfLostMatches={team.matches_lost}

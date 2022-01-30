@@ -6,6 +6,8 @@ import Match from "./Match/Match"
 import ShortLeagueTable from "./ShortLeagueTable/ShortLeagueTable"
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import swapIcon from '../../../images/slide-icon-18.png'
+
 import "swiper/css";
 
 const WIDTH_SCREEN_MOBILE_SWAP = 1023;
@@ -39,7 +41,6 @@ const Gameplay = ({ matches, table }) => {
 
             {size.width < WIDTH_SCREEN_MOBILE_SWAP ?
               <div className="game-container"
-              // style={{ transform: `translate3d(${numberItem * -20}%, 0px, 0px)` }}
               >
                 <Swiper className="mySwiper"
                   initialSlide={2}
@@ -47,7 +48,7 @@ const Gameplay = ({ matches, table }) => {
                   {matches.map((match, index) =>
                     <SwiperSlide key={match.id}>
                       <div className="next-game__swap-icon">
-                        <img src="../../../../images/slide-icon-18.png" alt="" />
+                        <img src={swapIcon} alt="ikona przewijania" />
                       </div>
                       <Match
 

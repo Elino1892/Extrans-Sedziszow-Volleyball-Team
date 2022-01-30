@@ -6,7 +6,6 @@ import LoadingSpinner from '../../../UI/LoadingSpinner/LoadingSpinner'
 
 const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) => {
 
-  // console.log(match)
   const [homeTeam, setHomeTeam] = useState('')
   const [guestTeam, setGuestTeam] = useState('')
   const [homeTeamScore, setHomeTeamScore] = useState('')
@@ -22,14 +21,11 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
   const [isBelongHomeTeamList, setIsBelongHomeTeamList] = useState([new Array(teams.length).fill(false)])
   const [isBelongGuestTeamList, setIsBelongGuestTeamList] = useState([new Array(teams.length).fill(false)])
 
-  console.log(match.is_finished)
-
   useEffect(() => {
     setHomeTeam(match.home_team)
     setGuestTeam(match.guest_team)
     setHomeTeamScore(match.home_team_score)
     setGuestTeamScore(match.guest_team_score)
-    // setDate(match.date)
     setHall(match.hall)
     setIsHome(match.is_home)
     setIsFinished(match.is_finished)
@@ -108,9 +104,7 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
   useEffect(() => {
     if (Number(homeTeamScore) + Number(guestTeamScore) <= 5) {
       setNumberOfSets(Number(homeTeamScore) + Number(guestTeamScore));
-      // setSetResults(new Array(numberOfSets.length).fill({}))
     }
-    // console.log(setResults)
 
   }, [guestTeamScore, homeTeamScore])
 
@@ -118,12 +112,10 @@ const MatchEdit = ({ match, teams, submitHandler, loadingUpdate, errorUpdate }) 
     if (isGuest) {
       const setResultsTemp = [...setResultsGuest];
       setResultsTemp[index] = value;
-      // console.log(setResultsTemp)
       setSetResultsGuest(setResultsTemp);
     } else {
       const setResultsTemp = [...setResultsHome];
       setResultsTemp[index] = value;
-      // console.log(setResultsTemp)
       setSetResultsHome(setResultsTemp)
     }
 

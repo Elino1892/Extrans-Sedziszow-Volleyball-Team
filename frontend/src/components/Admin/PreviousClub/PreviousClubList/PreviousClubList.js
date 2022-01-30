@@ -4,7 +4,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Form, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import LoadingSpinner from '../../../../components/UI/LoadingSpinner/LoadingSpinner'
-// import Message from '../components/Message'
 import { Container } from 'react-bootstrap'
 
 
@@ -22,24 +21,15 @@ const PreviousClubList = ({ previousClubs, deleteHandler, loading, error }) => {
 
   return (
     <>
-
-      {/* <Row className='align-items-center'> */}
-      {/* <Col> */}
       <div className="admin__container-action">
         <h1 className='admin__title'>Poprzednie kluby zawodników</h1>
-        {/* </Col> */}
-
-        {/* <Col className='text-right'> */}
         <Link className='button admin__link-text admin__link-text--create' to={"/admin/poprzednie-kluby/tworzenie"}>
           <i className='fas fa-plus'></i> Dodaj klub
         </Link>
       </div>
-      {/* </Col> */}
-      {/* </Row> */}
       <Form.Control
         type='text'
         placeholder='Wyszukaj klub po nazwie...'
-        // value={searchEmail}
         onChange={searchPreviousClubHandler}
         style={{ margin: '20px 0' }}
         className='admin__search-input'

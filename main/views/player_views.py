@@ -13,18 +13,9 @@ import babel.dates
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getPlayers(request):
   players = Player.objects.order_by('number')
   serializer = PlayerSerializer(players, many = True)
-
-  # for newsItem in serializer.data:
-  #   user = User.objects.get(id=newsItem['user'])
-  #   user_serializer = UserSerializer(user, many=False)
-  #   newsItem['user'] = f"{user_serializer.data['name']} {user_serializer.data['last_name']}" 
-  #   time = newsItem['createdAt'][:16]
-  #   time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-  #   newsItem['createdAt'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
 
   return Response(serializer.data)
 
@@ -34,13 +25,6 @@ def getPlayer(request, pk):
     
     player = Player.objects.get(id = pk)
     serializer = PlayerSerializer(player, many=False)
-    # news_item = serializer.data
-    # user = User.objects.get(id=news_item['user'])
-    # user_serializer = UserSerializer(user, many=False)
-    # news_item['user'] = f"{user_serializer.data['name']} {user_serializer.data['last_name']}"
-    # time = news_item['createdAt'][:16]
-    # time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-    # news_item['createdAt'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
 
     return Response(serializer.data)
 
@@ -68,7 +52,6 @@ def createPlayer(request):
 
     serializer = PlayerSerializer(player, many=False)
     return Response(serializer.data)
-    # return Response()
 
 
 @api_view(['PUT'])

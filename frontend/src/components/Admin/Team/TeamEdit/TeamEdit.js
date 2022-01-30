@@ -50,7 +50,6 @@ const TeamEdit = ({ team, submitHandler, loadingUpdate, errorUpdate }) => {
           <Form.Control
             type="file"
             label='Wybierz plik'
-            // value={picture}
             onChange={(e) => setPicture([e.target.files[0]])}
           >
 

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { NavLink } from "react-router-dom";
 
 import Button from "../../UI/Button/Button";

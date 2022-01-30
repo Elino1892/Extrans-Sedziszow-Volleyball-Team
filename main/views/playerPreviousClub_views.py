@@ -10,7 +10,6 @@ from main.models import Group, Previous_Club, Player_Previous_Club, Player
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getPlayerPreviousClubs(request):
   player_previous_clubs = Player_Previous_Club.objects.order_by('player')
   serializer = PlayerPreviousClubSerializer(player_previous_clubs, many = True)
@@ -79,10 +78,7 @@ def createPlayerPreviousClub(request):
       position = group,
       season = data['season'],
     )
-    # serializer = PreviousClubSerializer(player_previous_club, many=False)
-    # player_previous_clubs.append(serializer.data)
 
-    
     return Response()
 
 
@@ -101,8 +97,7 @@ def updatePlayerPreviousClub(request, pk):
     player_previous_club.season = data['season']
 
     player_previous_club.save()
-
-    # serializer = PreviousClubSerializer(player_previous_club, many=False)
+    
     return Response()
 
 @api_view(['DELETE'])

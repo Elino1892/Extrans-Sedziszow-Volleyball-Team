@@ -14,11 +14,6 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
 
   const dispatch = useDispatch();
 
-  // const newsCommentCreate = useSelector(state => state.newsCommentCreate);
-  // const { loading, error, success } = newsCommentCreate;
-
-
-
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -33,7 +28,6 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
     <section className="article-item">
       <div
         className="article-item__photo"
-      // style={{ backgroundImage: `url(${background})` }}
       >
         <Gradient type="top-opacity-gradient"></Gradient>
         <div className="artice-item__photo-container">
@@ -50,9 +44,7 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
               <h1 className="article-item__text-title">{title}</h1>
               <p className="article-item__text-date">{createdAt}</p>
               <h2 className="article-item__text-subtitle">{subtitle}</h2>
-              {/* {description.map((paragraph, index) => */}
               <p className="article-item__text-paragraph">{description}</p>
-              {/* )} */}
             </div>
           </div>
         </div>
@@ -62,9 +54,6 @@ const ArticleItem = ({ title, subtitle, description, background, author, created
       <div className="article-item__comments">
         <p className="article-item__comments-title">Komentarze ({comments.length})</p>
         <div className="article-item__comments-users">
-
-          {/* {success} */}
-
           {userInfo ? (
             <form className="article-item__comments-form" onSubmit={(e) => submitHandler(e)}>
               <textarea

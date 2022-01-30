@@ -11,7 +11,6 @@
     top: 40px;
     left: 10px;
     height: 95%;
-    // cursor: pointer;
     z-index: 1;
     @media (small) {
       top: 0px;
@@ -19,11 +18,9 @@
     }
   }
   &__image-volleyball-team{
-    // width: 100%;
+
     height: 70%;
-    // @media (min-width: 1200px) {
-    //   height: 100%;
-    // }
+
     @include media(xsmall){
       height: 100%;
     }
@@ -33,12 +30,10 @@
   &__upper{
     flex-basis: 100%;
     height: 50%;
-    // margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     position: relative;
-    // background-color: black;
   }
 
   &__official-site-text{
@@ -49,7 +44,7 @@
     margin-left: 250px;
     text-transform: uppercase;
     font-size: 1.3rem;
-    font-family: 'Open Sans', 'Roboto', 'sans-serif';
+    font-family: 'Lato', 'Roboto', 'sans-serif';
     letter-spacing: 2px;
     position: relative;
     z-index: 2;
@@ -85,12 +80,6 @@
     @include media(large){
       left: 50%;
     }
-
-    
-
-    // @include media(small){
-    //   left: 50%;
-    // }
 
   }
   &__image-company-extrans{
@@ -151,8 +140,6 @@
 
       .fab{
         transition: .3s;
-        // width: 30px;
-        // height: 30px;
         border-radius: 50%;
         color: black;
 
@@ -163,16 +150,14 @@
     }
   }
   &__contact{
-    // flex-grow: 1;
     flex-basis: 40%;
     display: none;
-    // flex-direction: column;
     flex-wrap: wrap;
 
     align-items: space-evenly;
     margin-left: 25px;
     margin-right: 10px;
-    // padding-top: 20px;
+
     @include media(large){
       display: flex;
 
@@ -180,13 +165,11 @@
     &-item{
       flex-basis: 100%;
     display: flex;
-    // flex-direction: column;
     flex-wrap: wrap;  
     transition: .5s;
 
     align-items: space-evenly;
     opacity: 0.5;
-    // margin-left: 50px;
       
 
     &:hover{
@@ -197,7 +180,6 @@
 
     &-info{
       display: flex;
-      // justify-content: flex-end;
       padding-left: 10px;
       align-items: center;
       flex-basis: 90%;

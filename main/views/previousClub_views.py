@@ -12,7 +12,6 @@ from main.models import Previous_Club, Player_Previous_Club, Player
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getPreviousClubs(request):
   previous_clubs = Previous_Club.objects.order_by('id')
   serializer = PreviousClubSerializer(previous_clubs, many = True)

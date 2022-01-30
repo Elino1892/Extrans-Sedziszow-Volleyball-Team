@@ -3,18 +3,9 @@
   padding: 50px;
   font-size: 2rem;
   text-align: center;
-  // color: white;
-  // height: 100%;
-	// display: flex;
-	// align-items: center;
-	// justify-content: center;
 	min-height: 80vh;
-	// font-family: Raleway, sans-serif;
 
   &__container-action{
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     position: relative;
   }
 
@@ -23,7 +14,6 @@
     color: white;
     flex-basis: 100%;
     &--edit-user{
-      // text-align: start;
       margin-bottom: 50px !important;
     }
   }
@@ -50,10 +40,9 @@
   &__link{
     margin-right: 20px;
 
-    // margin-top: 20px;
+
     &--margin{
       margin-right: 10px;
-      // margin-bottom: 20px;
     }
     &-text{
       
@@ -65,7 +54,6 @@
       width: 70px;
       &:hover{
         text-decoration: underline !important;
-        // transform: translateY(0) !important;
       }
 
       &--create{
@@ -82,7 +70,6 @@
         background-color: white !important;
         color: #1A1A1A !important;
         text-decoration: none !important;
-        // transform: translateY(0) !important;
       }
     }
     }

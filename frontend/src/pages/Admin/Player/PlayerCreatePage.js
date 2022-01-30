@@ -61,12 +61,7 @@ const PlayerCreatePage = () => {
     })).then((data) => {
       uploadFileHandler(picture[0], data.id, false)
       setTimeout(() => { uploadFileHandler(pictureBackground[0], data.id, true) }, 2000)
-      // return data;
     })
-    //   .then((data) => {
-
-    // })
-
   }
 
 
@@ -75,7 +70,6 @@ const PlayerCreatePage = () => {
 
     formData.append('image', file)
     formData.append('player_id', id)
-    // formData.append('isBgc', isBgc)
 
     try {
       const config = {

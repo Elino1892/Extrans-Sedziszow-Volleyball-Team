@@ -24,7 +24,6 @@
       flex-wrap: wrap;
       justify-content: space-evenly;
       padding: 20px;
-      // padding: 20px 100px;
       margin-top: 20px;
 
 
@@ -38,14 +37,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      // flex-basis: 20%;
       flex-basis: 100%;
       background-color: white;
       border-radius: 30%;
       padding: 10px 0;
       height: 160px;
       margin-bottom: 20px;
-      // margin-bottom: 0;
+
       @include media(small){
       flex-basis: 40%;
       
@@ -90,7 +88,6 @@
     padding: 20px 0;
     color: #ddd;
     border-top: 2px solid gray;
-    // margin-top: 40px;
      margin-top: 200px;
 
     @include media(small){

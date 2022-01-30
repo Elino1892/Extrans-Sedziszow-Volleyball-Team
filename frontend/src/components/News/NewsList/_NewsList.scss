@@ -13,18 +13,10 @@ background-image: url("../../../images/logo_volleyball_team.png")
   z-index: -5;
 }
 .news{
-  // display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   display: flex;
   flex-wrap: wrap;
-  // justify-content: space-evenly;
   width: 80%; 
-  // gap: 15px;
   margin: 0 auto;
   padding: 50px 0;
   max-width: 1600px;
-  // overflow: hidden;
-  // opacity: 0.8;
-  // background-color: rgba(0,0,0,0.5);
-  // min-height: 100vh;
 }

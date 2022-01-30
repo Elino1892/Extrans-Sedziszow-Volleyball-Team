@@ -2,12 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Form, Row, Col } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
 import LoadingSpinner from '../../../../components/UI/LoadingSpinner/LoadingSpinner'
-// import Message from '../components/Message'
-import { Container } from 'react-bootstrap'
-
-
 
 const PlayerPreviousClubList = ({ playerPreviousClubs, deletePlayerHandler, loading, error }) => {
 
@@ -22,24 +17,15 @@ const PlayerPreviousClubList = ({ playerPreviousClubs, deletePlayerHandler, load
 
   return (
     <>
-
-      {/* <Row className='align-items-center'> */}
-      {/* <Col> */}
       <div className="admin__container-action">
         <h1 className='admin__title'>Zawodnicy</h1>
-        {/* </Col> */}
-
-        {/* <Col className='text-right'> */}
         <Link className='button admin__link-text admin__link-text--create' to={"/admin/poprzednie-kluby/zawodnicy/tworzenie"}>
           <i className='fas fa-plus'></i> Dodaj zawodnika
         </Link>
       </div>
-      {/* </Col> */}
-      {/* </Row> */}
       <Form.Control
         type='text'
         placeholder='Wyszukaj zawodnika po nazwisku...'
-        // value={searchEmail}
         onChange={searchPlayerPreviousClubHandler}
         style={{ margin: '20px 0' }}
         className='admin__search-input'

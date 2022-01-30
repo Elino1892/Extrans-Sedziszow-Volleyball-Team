@@ -11,7 +11,6 @@ from main.models import Sponsor
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getSponsors(request):
   sponsors = Sponsor.objects.all()
   serializer = SponsorSerializer(sponsors, many = True)

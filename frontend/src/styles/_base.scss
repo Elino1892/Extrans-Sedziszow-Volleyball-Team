@@ -7,27 +7,7 @@ html{
   
 }
 
-// ::-webkit-scrollbar {
-//   width: 20px;
-// }
-
-// body{
-//   scrollbar-width: thin;
-//   scrollbar-color: $main-color white;
-// }
-
-// body::-webkit-scrollbar-track {
-//   background: white;
-// }
-
-// body::-webkit-scrollbar-thumb {
-//   background-color: $main-color ;
-//   border-radius: 6px;
-//   border: 3px solid $main-color;
-// }
-
 .wrapper{
-// min-height: 100vh;
 display: flex;
 flex-direction: column;
 overflow: hidden;

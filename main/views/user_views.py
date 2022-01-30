@@ -10,8 +10,6 @@ from main.serializers import UserSerializer, UserSerializerWithToken
 
 from django.contrib.auth.models import  User
 
-# from main.models import UserGroup, GroupOfUsers
-
 from django.contrib.auth.hashers import make_password
 
 
@@ -46,7 +44,7 @@ def registerUser(request):
 
       serializer = UserSerializerWithToken(user, many=False)
       return Response(serializer.data)
-  except:                                             # DODAĆ KOLEJNE WALIDACJE!
+  except:                                         
       message = {'detail': 'Istnieje już użytkownik z tym adresem email!'}
       return Response(message, status=status.HTTP_400_BAD_REQUEST)
 

@@ -11,7 +11,6 @@ from main.models import Team, Table
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getTeams(request):
   team = Team.objects.order_by('name')
   serializer = TeamSerializer(team, many = True)
@@ -90,8 +89,7 @@ def uploadImage(request):
     image = serializer.data['logo']
     uploaded_file = request.FILES.get('image')
     
-    # print(uploaded_file.name)
-    # print(type(uploaded_file.name))
+
     if(not image):
         team.logo = uploaded_file
         team.save()

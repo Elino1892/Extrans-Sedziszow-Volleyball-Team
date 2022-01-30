@@ -1,12 +1,10 @@
 .league-table{
-  // min-height: 100vh;
   overflow: hidden;
   overflow-x: auto;
   &__container{
     width: 100%;
     margin: 100px 0;
-    // padding: 0 50px;
-    font-family: 'Open Sans', 'Roboto', 'sans-serif';
+    font-family: 'Lato', 'Roboto', 'sans-serif';
     border-collapse: collapse;
   }
   &__table-head{
@@ -40,8 +38,6 @@
          th{
             padding: 10px 0;
          }
-         
-        //  margin-bottom: 20px;
       }
     }
 
@@ -85,10 +81,7 @@ font-weight: bold;
     
 
     &-img{
-      width: 100%;
-      
-      // border-radius: 50%;
-    
+      width: 100%; 
     }
   }
 

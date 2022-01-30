@@ -12,7 +12,6 @@ import babel.dates
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getMatches(request):
   matches = Match.objects.order_by('round')
   serializer = MatchSerializer(matches, many = True)
@@ -32,7 +31,6 @@ def getMatches(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getMatchesWithRound(request):
   matches = Match.objects.order_by('-round')
   serializer = MatchSerializer(matches, many = True)
@@ -73,7 +71,6 @@ def getMatchesWithRound(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
 def getLastMatches(request):
 
   matches_finished = Match.objects.filter(is_home=True, is_finished = True).order_by('round')
@@ -91,13 +88,11 @@ def getLastMatches(request):
       time = match['date'][:16]
       time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
       match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
-  # print(serializer_matches_finished.data[-2:])
-  # print('elooo')
-  # serializer_matches_finished.data = serializer_matches_finished.data[-2:]
+
 
   matches_next = Match.objects.filter(is_home=True,is_finished=False).order_by('round')
   serializer_matches_next = MatchSerializer(matches_next, many = True)
-  # serializer_matches_next.data = serializer_matches_next.data[:2]
+
 
   for match in serializer_matches_next.data:
       home_team = Team.objects.get(id=match['home_team'])
@@ -113,34 +108,6 @@ def getLastMatches(request):
       match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | HH:mm', locale='pl_PL')
 
   last_matches = serializer_matches_finished.data[-2:] + serializer_matches_next.data[:4]
-  # theLastRound = serializer.data[0]['round']
-
-  # matchesWithRound = []
-
-  # for i in range(theLastRound):
-  #   matches = Match.objects.filter(round=i+1)
-  #   serializer_matches = MatchSerializer(matches, many=True)
-
-  #   for match in serializer_matches.data:
-  #     home_team = Team.objects.get(id=match['home_team'])
-  #     home_team_serializer = TeamSerializer(home_team, many=False)
-  #     match['home_team'] = home_team_serializer.data['name']
-  #     match['home_team_logo'] = home_team_serializer.data['logo']
-  #     guest_team = Team.objects.get(id=match['guest_team'])
-  #     guest_team_serializer = TeamSerializer(guest_team, many=False)
-  #     match['guest_team'] = guest_team_serializer.data['name']
-  #     match['guest_team_logo'] = guest_team_serializer.data['logo']
-  #     time = match['date'][:16]
-  #     time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-  #     match['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
-
-  #   matchWithRound ={
-  #     'round': i+1,
-  #     'matches': serializer_matches.data
-  #   }
-  #   matchesWithRound.append(matchWithRound)
-
-
 
   return Response(last_matches)
 
@@ -149,17 +116,6 @@ def getLastMatches(request):
 def getMatch(request, pk): 
     match = Match.objects.get(id = pk)
     serializer = MatchSerializer(match, many=False)
-    # match_item = serializer.data
-
-    # home_team = Team.objects.get(id=match_item['home_team'])
-    # home_team_serializer = TeamSerializer(home_team, many=False)
-    # match_item['home_team'] = home_team_serializer.data['name']
-    # guest_team = Team.objects.get(id=match_item['guest_team'])
-    # guest_team_serializer = TeamSerializer(guest_team, many=False)
-    # match_item['guest_team'] = guest_team_serializer.data['name']
-    # time = match_item['date'][:16]
-    # time_data = datetime.strptime(time, '%Y-%m-%dT%H:%M')
-    # match_item['date'] = babel.dates.format_datetime(time_data, 'EEEE, d MMMM yyyy | H:mm', locale='pl_PL')
 
     return Response(serializer.data)
 
@@ -190,8 +146,7 @@ def createMatch(request):
       set = f" {set_result} |"
       set_results_text += set
     
-    # print(result)
-    # print(set_results[:-2])
+
     team_home = Team.objects.get(id=data['home_team'])
     guest_home = Team.objects.get(id=data['guest_team'])
 
@@ -292,7 +247,6 @@ def createMatch(request):
       guest_team_table.save()
     serializer = MatchSerializer(match, many=False)
     return Response(serializer.data)
-    # return Response()
 
 
 @api_view(['PUT'])
@@ -300,9 +254,6 @@ def createMatch(request):
 def updateMatch(request, pk):
     data = request.data
     match = Match.objects.get(id=pk)
-
-
-    
 
     if(data['home_team_score'] or data['guest_team_score']):
       result = f"{data['home_team_score']}:{data['guest_team_score']}"
@@ -312,32 +263,21 @@ def updateMatch(request, pk):
     set_results = []
 
 
-
     for index in range(len(data['set_results_home'])):
       if(data['set_results_home'][index] and data['set_results_guest'][index]):
         set_text = f"{data['set_results_home'][index]}:{data['set_results_guest'][index]}"
         set_results.append(set_text)
         
 
-
-
     set_results_text = ""
     for set_result in set_results:
       set = f" {set_result} |"
       set_results_text += set
 
-    print(data['home_team'])
-    print(type(data['home_team']))
-    print(data['guest_team'])
-    print(type(data['guest_team']))
 
     home_team = Team.objects.get(id=data['home_team'])
     guest_team = Team.objects.get(id=data['guest_team'])
 
-    print('elooo')
-    # serializer_home_team = TeamSerializer(home_team, many=False)
-    # print(serializer_home_team.data)
-    # print(type(guest_team))
 
     match.date = data['date']
     match.home_team = home_team
@@ -353,17 +293,8 @@ def updateMatch(request, pk):
     match.save()
     serializer = MatchSerializer(match, many=False)
     sets = Set.objects.filter(match = serializer.data['id']) # 5
-    # print()
+
     for index in range(len(data['set_results_home'])): # 3
-      # if(data['set_results_home'][index] and data['set_results_guest'][index]):
-
-        # match.set[index]['home_team_score_set'] = data['set_results_home'][index]
-        # match.set[index]['guest_team_score_set'] = data['set_results_guest'][index]
-        
-        # serializer_sets = SetSerializer(sets, many=True)
-
-        # for set in sets:
-          # 
           try: 
             set = Set.objects.get(match = serializer.data['id'], number = index+1)
             set.home_team_score_set = data['set_results_home'][index]
@@ -380,20 +311,10 @@ def updateMatch(request, pk):
 
     if len(data['set_results_home']) - len(sets) < 0:
         number_delete_item = len(sets) - range(len(data['set_results_home']))
-        print(number_delete_item)
         Set.objects.filter(match = serializer.data['id'])[:number_delete_item].delete()
 
-        # set = Set.objects.create(
-        #   number = index + 1,
-        #   home_team_score_set = data['set_results_home'][index],
-        #   guest_team_score_set = data['set_results_guest'][index],
-        #   match = match
-        # )
-
-    
-    
     return Response(serializer.data)
-    # return Response()
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
@@ -429,7 +350,6 @@ def deleteMatch(request,pk):
   small_points_guest_team = 0
 
   for index in range(len(serializer.data['set'])):
-      # if(serializer.data['set_results_home'][index] and serializer.data['set_results_guest'][index]):
         small_points_home_team += int(serializer.data['set'][index]['home_team_score_set'])
         small_points_guest_team += int(serializer.data['set'][index]['guest_team_score_set'])
         
