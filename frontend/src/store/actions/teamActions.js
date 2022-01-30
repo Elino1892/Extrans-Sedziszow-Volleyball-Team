@@ -29,7 +29,7 @@ export const listTeams = () => async (dispatch) => {
   try {
     dispatch({ type: TEAM_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/teams')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/teams')
 
 
     dispatch({
@@ -51,7 +51,7 @@ export const getTeamDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: TEAM_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/teams/${id}`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/teams/${id}`)
 
 
     dispatch({
@@ -88,7 +88,7 @@ export const deleteTeam = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `http://127.0.0.1:8000/api/teams/delete/${id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/teams/delete/${id}/`,
       config
     )
 
@@ -128,7 +128,7 @@ export const createTeam = (group) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/teams/create/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/teams/create/`,
       group,
       config
     )
@@ -169,7 +169,7 @@ export const updateTeam = (group) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/teams/update/${group.id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/teams/update/${group.id}/`,
       group,
       config
     )

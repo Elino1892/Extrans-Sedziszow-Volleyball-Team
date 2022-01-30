@@ -43,7 +43,7 @@ export const listNews = () => async (dispatch) => {
   try {
     dispatch({ type: NEWS_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/news')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/news')
 
     dispatch({
       type: NEWS_LIST_SUCCESS,
@@ -64,7 +64,7 @@ export const listLastNews = () => async (dispatch) => {
   try {
     dispatch({ type: NEWS_LAST_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/news/last`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/news/last`)
 
     dispatch({
       type: NEWS_LAST_SUCCESS,
@@ -86,7 +86,7 @@ export const getNewsDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: NEWS_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/news/${id}`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/news/${id}`)
 
 
     dispatch({
@@ -123,7 +123,7 @@ export const deleteNews = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `http://127.0.0.1:8000/api/news/delete/${id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/news/delete/${id}/`,
       config
     )
 
@@ -163,7 +163,7 @@ export const createNews = (article) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/news/create/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/news/create/`,
       article,
       config
     )
@@ -204,7 +204,7 @@ export const updateNews = (news) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/news/update/${news.id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/news/update/${news.id}/`,
       news,
       config
     )
@@ -248,7 +248,7 @@ export const createNewsComment = (articleId, comment) => async (dispatch, getSta
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/news/${articleId}/comments/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/news/${articleId}/comments/`,
       comment,
       config
     )
@@ -287,7 +287,7 @@ export const deleteNewsComment = (commentId) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.delete(
-      `http://127.0.0.1:8000/api/news/comments/delete/${commentId}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/news/comments/delete/${commentId}/`,
       config
     )
     dispatch({

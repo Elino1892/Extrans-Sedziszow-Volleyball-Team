@@ -63,7 +63,7 @@ const NewsCreatePage = () => {
         }
       }
 
-      await axios.post('http://127.0.0.1:8000/api/news/upload/', formData, config)
+      await axios.post('https://extrans-sedziszow-volleyball.herokuapp.com/api/news/upload/', formData, config)
 
     } catch (error) {
       throw new Error(error)

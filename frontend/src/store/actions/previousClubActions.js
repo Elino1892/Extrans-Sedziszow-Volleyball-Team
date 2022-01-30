@@ -30,7 +30,7 @@ export const listPreviousClubs = () => async (dispatch) => {
   try {
     dispatch({ type: PREVIOUS_CLUB_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/previous-clubs')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/previous-clubs')
 
 
     dispatch({
@@ -52,7 +52,7 @@ export const getPreviousClubDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PREVIOUS_CLUB_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/previous-clubs/${id}`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/previous-clubs/${id}`)
 
 
     dispatch({
@@ -89,7 +89,7 @@ export const deletePreviousClub = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `http://127.0.0.1:8000/api/previous-clubs/delete/${id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/previous-clubs/delete/${id}/`,
       config
     )
 
@@ -129,7 +129,7 @@ export const createPreviousClub = (previousClub) => async (dispatch, getState) =
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/previous-clubs/create/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/previous-clubs/create/`,
       previousClub,
       config
     )
@@ -170,7 +170,7 @@ export const updatePreviousClub = (previousClub) => async (dispatch, getState) =
     }
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/previous-clubs/update/${previousClub.id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/previous-clubs/update/${previousClub.id}/`,
       previousClub,
       config
     )

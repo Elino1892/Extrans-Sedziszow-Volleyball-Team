@@ -85,9 +85,9 @@ const PlayerEditPage = () => {
       }
 
       if (isBgc) {
-        await axios.post('http://127.0.0.1:8000/api/players/upload-bgc/', formData, config)
+        await axios.post('https://extrans-sedziszow-volleyball.herokuapp.com/api/players/upload-bgc/', formData, config)
       } else {
-        await axios.post('http://127.0.0.1:8000/api/players/upload/', formData, config)
+        await axios.post('https://extrans-sedziszow-volleyball.herokuapp.com/api/players/upload/', formData, config)
       }
 
     } catch (error) {

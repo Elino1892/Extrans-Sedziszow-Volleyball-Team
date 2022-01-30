@@ -15,7 +15,7 @@ export const getTableDetails = () => async (dispatch) => {
   try {
     dispatch({ type: TABLE_DETAILS_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/table')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/table')
 
 
     dispatch({
@@ -38,7 +38,7 @@ export const getShortTableDetails = () => async (dispatch) => {
   try {
     dispatch({ type: SHORT_TABLE_DETAILS_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/table/short')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/table/short')
 
 
     dispatch({

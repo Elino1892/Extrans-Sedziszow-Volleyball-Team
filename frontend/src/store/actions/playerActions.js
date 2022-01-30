@@ -29,7 +29,7 @@ export const listPlayers = () => async (dispatch) => {
   try {
     dispatch({ type: PLAYER_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/players')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/players')
 
 
     dispatch({
@@ -51,7 +51,7 @@ export const getPlayerDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PLAYER_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/players/${id}`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/players/${id}`)
 
     dispatch({
       type: PLAYER_DETAILS_SUCCESS,
@@ -87,7 +87,7 @@ export const deletePlayer = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `http://127.0.0.1:8000/api/players/delete/${id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/players/delete/${id}/`,
       config
     )
 
@@ -127,7 +127,7 @@ export const createPlayer = (player) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/players/create/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/players/create/`,
       player,
       config
     )
@@ -170,7 +170,7 @@ export const updatePlayer = (player) => async (dispatch, getState) => {
     console.log(player)
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/players/update/${player.id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/players/update/${player.id}/`,
       player,
       config
     )

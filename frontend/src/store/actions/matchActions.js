@@ -37,7 +37,7 @@ export const listMatches = () => async (dispatch) => {
   try {
     dispatch({ type: MATCH_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/matches')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/matches')
 
 
     dispatch({
@@ -60,7 +60,7 @@ export const listMatchesWithRound = () => async (dispatch) => {
   try {
     dispatch({ type: MATCH_ROUND_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/matches/round')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/matches/round')
 
     dispatch({
       type: MATCH_ROUND_LIST_SUCCESS,
@@ -81,7 +81,7 @@ export const listLastMatches = () => async (dispatch) => {
   try {
     dispatch({ type: MATCH_LAST_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/matches/last')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/matches/last')
 
     dispatch({
       type: MATCH_LAST_LIST_SUCCESS,
@@ -103,7 +103,7 @@ export const getMatchDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: MATCH_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/matches/${id}`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/matches/${id}`)
 
 
     dispatch({
@@ -140,7 +140,7 @@ export const deleteMatch = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `http://127.0.0.1:8000/api/matches/delete/${id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/matches/delete/${id}/`,
       config
     )
 
@@ -180,7 +180,7 @@ export const createMatch = (match) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/matches/create/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/matches/create/`,
       match,
       config
     )
@@ -221,7 +221,7 @@ export const updateMatch = (match) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/matches/update/${match.id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/matches/update/${match.id}/`,
       match,
       config
     )

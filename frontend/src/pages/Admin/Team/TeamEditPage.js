@@ -67,7 +67,7 @@ const TeamEditPage = () => {
         }
       }
 
-      await axios.post('http://127.0.0.1:8000/api/teams/upload/', formData, config)
+      await axios.post('https://extrans-sedziszow-volleyball.herokuapp.com/api/teams/upload/', formData, config)
 
     } catch (error) {
       throw new Error(error)

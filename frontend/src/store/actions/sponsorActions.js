@@ -29,7 +29,7 @@ export const listSponsors = () => async (dispatch) => {
   try {
     dispatch({ type: SPONSOR_LIST_REQUEST })
 
-    const { data } = await axios.get('http://127.0.0.1:8000/api/sponsors')
+    const { data } = await axios.get('https://extrans-sedziszow-volleyball.herokuapp.com/api/sponsors')
 
 
     dispatch({
@@ -51,7 +51,7 @@ export const getSponsorDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: SPONSOR_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/sponsors/${id}`)
+    const { data } = await axios.get(`https://extrans-sedziszow-volleyball.herokuapp.com/api/sponsors/${id}`)
 
 
     dispatch({
@@ -88,7 +88,7 @@ export const deleteSponsor = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `http://127.0.0.1:8000/api/sponsors/delete/${id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/sponsors/delete/${id}/`,
       config
     )
 
@@ -128,7 +128,7 @@ export const createSponsor = (sponsor) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/sponsors/create/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/sponsors/create/`,
       sponsor,
       config
     )
@@ -169,7 +169,7 @@ export const updateSponsor = (sponsor) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/sponsors/update/${sponsor.id}/`,
+      `https://extrans-sedziszow-volleyball.herokuapp.com/api/sponsors/update/${sponsor.id}/`,
       sponsor,
       config
     )

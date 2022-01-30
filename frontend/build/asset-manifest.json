@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.72e2a53a.css",
-    "main.js": "/static/js/main.8d91232d.js",
+    "main.js": "/static/js/main.4636be09.js",
     "static/media/4006.jpg": "/static/media/4006.5c12011cf0d826a0714d.jpg",
     "static/media/logo_volleyball_team.png": "/static/media/logo_volleyball_team.3528614fb3050011bae0.png",
     "static/media/busik.png": "/static/media/busik.6aef2234a2360ce14986.png",
@@ -16,10 +16,10 @@
     "static/media/vertipol.png": "/static/media/vertipol.43f70715044054066304.png",
     "index.html": "/index.html",
     "main.72e2a53a.css.map": "/static/css/main.72e2a53a.css.map",
-    "main.8d91232d.js.map": "/static/js/main.8d91232d.js.map"
+    "main.4636be09.js.map": "/static/js/main.4636be09.js.map"
   },
   "entrypoints": [
     "static/css/main.72e2a53a.css",
-    "static/js/main.8d91232d.js"
+    "static/js/main.4636be09.js"
   ]
 }
