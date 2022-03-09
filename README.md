@@ -136,7 +136,7 @@ Live Demo can be viewed at https://extrans-sedziszow-volleyball.herokuapp.com/
 <!-- CONTACT -->
 ## Contact
 
-Marcin - [Linkedin](https://www.linkedin.com/in/marcin-marciniak-9b66b8220/) - m.elino1892@gmail.com
+Marcin Marciniak - [Linkedin](https://www.linkedin.com/in/marcin-marciniak-9b66b8220/) - m.elino1892@gmail.com
 
 Project Link: [https://github.com/Elino1892/Extrans-Sedziszow-Volleyball-Team](https://github.com/Elino1892/Extrans-Sedziszow-Volleyball-Team)
 
